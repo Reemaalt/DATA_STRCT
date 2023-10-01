@@ -83,8 +83,8 @@ public void setNotes(String notes) {
 
 @Override
 public String toString() {
-    return "Contac [name=" + name + ", PhoneNumber=" + PhoneNumber + ", EmailAddr=" + EmailAddr + ", Address=" + Address
-            + ", birthday=" + birthday + ", notes=" + notes + "]";
+    return "Contac [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
+            + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
 }
 
 
