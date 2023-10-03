@@ -1,10 +1,12 @@
 import java.util.*;
-public class Phonebook {
+public class PhoneBook {
 
    
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
        LinkedList contactlist = new LinkedList();
+       LinkedList eventlist= new LinkedList();
+
         System.out.println("Welcome to the Linked Tree Phonebook!\n");
         System.out.println("Please choose an option:\n 1.Add a contact\n 2. Search for a contact\n 3.Delete a contact\n 4.Scheduleanevent \n 5.Printeventdetails\n 6.Printcontact byfirstname\n 7. Print all events alphabetically\n 8.Exit");
         int choice;
@@ -25,7 +27,7 @@ public class Phonebook {
                 System.out.println("Enter any notes for the contact:");
                 String note= input.nextLine();
                 
-                Contact c1=new Contact(name,phone,email,address,bday,note);
+                Contact c1= new Contact(name,phone,email,address,bday,note);
                 contactlist.Add(c1);
                 
                 break;
@@ -75,8 +77,40 @@ public class Phonebook {
                 String eloc= input.nextLine();
                 
                 Event e1=new Event(title,edate,eloc,Cname);
-                e1.addEvent(e1);
-                
+                eventlist.addEvent(e1);
+                break;
+            case 5:
+             System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
+                   int scriteria =input.nextLine();
+                   switch(scriteria){
+                    case1:
+                    System.out.println("Enter contact's name");
+                     String cname=input.nextLine()
+                     eventlist.Searchevent(cname);
+                     break;
+                     case 2:
+                     System.out.println("Enter event title");
+                     String etitle =input.nextLine();
+                     eventlist.Searchevent(etitle);
+                     break;
+                   }
+            break;
+
+            case 6:
+            System.out.println("Enter the first name:");
+            String fname= input.nextLine();
+            contactlist.Search(fname);
+            break;
+
+            case 7:
+            eventlist.print();//do we have this method?
+            break;
+
+            case 8:
+            System.out.println("Goodbye!");
+            break;
+
+            break;//should we?
                 
                 
                 
