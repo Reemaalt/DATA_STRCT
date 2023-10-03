@@ -23,9 +23,30 @@ public T [] Search (String nContact ){
 
 }
 
+
 public void Delete (T contact){
-
-}
-
+    if ( head == null )
+         return;
+    else if (head.data.equals(contact)){
+        head = head.next ;
+    }
+    else {
+        Node<T> previous = null ;
+        current = head.next;
+    
+        while (current != null && !current.data.equals(contact)){
+            previous = current;
+            current = current.next;
+    
+        }
+    
+        if (current == null)
+        return ;
+    
+     current = current.next ;   
+    previous.next = current ;
+    
+    
+    }
 
 }
