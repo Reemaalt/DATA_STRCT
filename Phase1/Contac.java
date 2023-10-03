@@ -20,8 +20,7 @@ public Contac (String name ,String PhoneNumber ,String EmailAddr ,String Address
  
 }
 
-
-public String getName() {
+public String getname(){
     return name;
 }
 

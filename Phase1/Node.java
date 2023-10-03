@@ -26,4 +26,26 @@ public Node (T val) {
         this.next = next;
     }
  
-} 
+
+
+    // Fields for the event data and the next node reference
+    private Event event;
+
+
+    // Constructor that takes the event data as a parameter
+    public Node(Event event) {
+        this.event = event;
+        this.next = null;
+    }
+
+    // Getter and setter methods for the fields
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+   
+    }
