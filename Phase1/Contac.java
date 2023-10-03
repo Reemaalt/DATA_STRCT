@@ -1,4 +1,4 @@
-public class Contac{
+public class Contac implements Comparable<Contac>{
 
     
 private String name;
