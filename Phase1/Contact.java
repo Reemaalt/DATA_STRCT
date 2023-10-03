@@ -1,4 +1,4 @@
-public class Contac implements Comparable<Contac>{
+public class Contact implements Comparable<Contact>{
 
     
 private String name;
@@ -9,7 +9,7 @@ private String birthday ;
 private String notes ;
 
 
-public Contac (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes ){
+public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes ){
 
     this.name = name ;
     this.PhoneNumber = PhoneNumber ;
@@ -82,10 +82,17 @@ public void setNotes(String notes) {
 
 @Override
 public String toString() {
-    return "Contac [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
+    return "Contact [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
             + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
 }
-
+/* 
+IDK if we need this or not lol
+@Override
+public int compareTo(Contact o) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+}
+*/
 
  
 }
