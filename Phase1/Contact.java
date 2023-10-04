@@ -97,10 +97,9 @@ public int compareToFirstN(Contact o) {
     
 }
 
+
 public LinkedList <Event> getEvents() {
 
 return Events;
 }
-
- 
 }

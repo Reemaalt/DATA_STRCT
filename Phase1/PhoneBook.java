@@ -1,6 +1,6 @@
 import java.util.*;
 public class PhoneBook {
-    private LinkedList <Contact> contacts;
+    private static LinkedList <Contact> contacts;
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
@@ -79,7 +79,7 @@ public class PhoneBook {
     }
 //yara
     public void printContactsSharingEvent(Event event) {
-        List<Contact> contactsSharingEvent = new LinkedList<>();
+        List<Contact> SharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
             if (contact.hasEvent(event)) {
                 contactsSharingEvent.add(contact);
@@ -95,7 +95,7 @@ public class PhoneBook {
         }
     }
 
-    public void printAllEventsAlphabetically() {
+    public static void printAllEventsAlphabetically() {
         LinkedList<Event> allEvents = new LinkedList<>();
         for (Contact contact : contacts) {
             allEvents.addAll(contact.getEvents());
@@ -112,7 +112,9 @@ public class PhoneBook {
         }
     }
 
-    private boolean hasEventConflict(Contact contact, Event newEvent) {
+    private boolean EventConflict(Contact contact, Event newEvent)
+    //the method checks if a contact already has an event scheduled at same time as the new event returns true if there is conflict and false other wise
+    {
         for (Event event : contact.getEvents()) {
             if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
                 return true;
@@ -148,7 +150,7 @@ public class PhoneBook {
                 String note= input.nextLine();
                 
                 Contact c1= new Contact(name,phone,email,address,bday,note);
-                contactlist.Add(c1);
+                contacts.Add(c1);
                 
                 break;
             case 2:
@@ -158,33 +160,33 @@ public class PhoneBook {
                     case 1:
                         System.out.println("Enter the contact's name:"); 
                         String Sname=input.next();
-                        contactlist.Search(Sname);
+                        contacts.Search(Sname);
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
                         String Sphone=input.next();
-                        contactlist.Search(Sphone);
+                        contacts.Search(Sphone);
                         break;
                     case 3:
                         System.out.println("Enter the contact's email address:");
                         String Semail=input.next();
-                        contactlist.Search(Semail);
+                        contacts.Search(Semail);
                         break;
                     case 4:
                         System.out.println("Enter the contact's address:");
                         String Saddress=input.next();
-                        contactlist.Search(Saddress);
+                        contacts.Search(Saddress);
                         break;
                     case 5:
                         System.out.println("Enter the contact's birthday:");
                         String Sbday=input.next();
-                        contactlist.Search(Sbday);
+                        contacts.Search(Sbday);
                         break;
                 }
                 
                 break;
             case 3:
-                contactlist.Delete();
+                contacts.Delete();
                 break;
             case 4:
                 System.out.println("Enter event title:");
@@ -197,17 +199,20 @@ public class PhoneBook {
                 String eloc= input.nextLine();
                 
                 Event e1=new Event(title,edate,eloc,Cname);
+                //event list wrong
                 eventlist.addEvent(e1);
                 break;
             case 5:
              System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
-                   int scriteria =input.nextLine();
+                   int scriteria =input.nextInt();
                    switch(scriteria){
-                    case1:
+                    case 1:
                     System.out.println("Enter contact's name");
                      String cname=input.nextLine()
+                     //eventlist wrong
                      eventlist.Searchevent(cname);
                      break;
+                     
                      case 2:
                      System.out.println("Enter event title");
                      String etitle =input.nextLine();
@@ -219,11 +224,12 @@ public class PhoneBook {
             case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
-            contactlist.Search(fname);
+            contacts.Search(fname);
             break;
 
             case 7:
-            eventlist.print();//do we have this method?
+
+            printAllEventsAlphabetically();//not sure
             break;
 
             case 8:
