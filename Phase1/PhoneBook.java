@@ -1,5 +1,6 @@
 import java.util.*;
 public class PhoneBook {
+    private LinkedList <Contact> contacts;
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
@@ -130,9 +131,8 @@ public class PhoneBook {
    
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
-       LinkedList contactlist = new LinkedList();
-       LinkedList eventlist= new LinkedList();
-
+       contacts = new LinkedList<>();
+       
         System.out.println("Welcome to the Linked Tree Phonebook!\n");
         System.out.println("Please choose an option:\n 1.Add a contact\n 2. Search for a contact\n 3.Delete a contact\n 4.Scheduleanevent \n 5.Printeventdetails\n 6.Printcontact byfirstname\n 7. Print all events alphabetically\n 8.Exit");
         int choice;
