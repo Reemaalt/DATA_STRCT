@@ -69,7 +69,7 @@ public void Delete (T contact){
     public boolean contains(Contact contact) {
        current = head;
         while (current != null) {
-            if (current.data.equals(contact)) {
+            if (current.data.equalsIgnoreCase(contact)) {
                 return true;
             }
             current = current.next;
