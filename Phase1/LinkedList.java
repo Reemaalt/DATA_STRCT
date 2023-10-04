@@ -9,7 +9,7 @@ private Node <T> current ;
         return head == null;
     }
 //adding Contact to contactList
-public void Add (T contact){
+public void AddContact (T contact){
 Node <T> tmp = new Node <T> (contact) ;
 
  if (isEmpty()){
@@ -25,7 +25,7 @@ Node <T> tmp = new Node <T> (contact) ;
 }
 
  //adding event to eventList 
-public void Add (T Event){
+public void AddEvent (T Event){
 Node <T> tmp = new Node <T> (Event) ;
 //chake befor
  if (isEmpty()){
