@@ -42,11 +42,12 @@ Node <T> tmp = new Node <T> (Event) ;
 
 //delete Contact 
 //idk how to make it delete the the event list within it :)
-public void Delete (T contact){
+public boolean Delete (T contact){
     if ( isEmpty() )
-         return;
+         return false ;
     else if (head.data.equals(contact)){
         head = head.next ;
+      return true;
     }
     else {
         Node<T> previous = null ;
@@ -55,14 +56,15 @@ public void Delete (T contact){
         while (current != null && !current.data.equals(contact)){
             previous = current;
             current = current.next;
-    
         }
     
-        if (current == null)
-        return ;
+        if (current == null){
+        return false ;
+        }
     
      current = current.next ;   
     previous.next = current ;
+      return true ;
     }
     }
 
