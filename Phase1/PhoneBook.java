@@ -1,6 +1,6 @@
 import java.util.*;
 public class PhoneBook {
-    private static LinkedList <Contact> contacts;
+    private LinkedList <Contact> contacts;
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
@@ -19,15 +19,7 @@ public class PhoneBook {
         }
     }
 
-    public List<Contact> searchContactByName(String name) {
-        List<Contact> searchResults = new LinkedList<>();
-        for (Contact contact : contact) {
-            if () {
-                searchResults.add(contact);
-            }
-        }
-        return searchResults;
-    }
+    
 /* 
     public void printContactsSharingFirstName(String firstName) {
         List<Contact> contactsSharingFirstName = new LinkedList<>();
@@ -46,6 +38,7 @@ public class PhoneBook {
         }
     }
 */
+//reema
     public List<Contact> searchContactByCriteria(String criteria) {
         List<Contact> searchResults = new LinkedList<>();
         for (Contact contact : contacts) {
@@ -84,7 +77,7 @@ public class PhoneBook {
             System.out.println("Contact does not exist.");
         }
     }
-
+//yara
     public void printContactsSharingEvent(Event event) {
         List<Contact> contactsSharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
