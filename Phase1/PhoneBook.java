@@ -1,6 +1,6 @@
 import java.util.*;
 public class PhoneBook {
-    private LinkedList <Contact> contacts;
+    private static LinkedList <Contact> contacts;
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
