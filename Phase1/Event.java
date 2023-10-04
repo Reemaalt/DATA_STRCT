@@ -1,11 +1,11 @@
 // Event class that represents events or appointments with contacts
-import java.time.LocalDateTime;
+
 public class Event {
 
 
     // Fields for the event title, date and time, location, and contact
     private String title;
-    private LocalDateTime dateTime;
+    private String dateTime;
     private String location;
     private Contact Contact;
 
@@ -26,11 +26,11 @@ public class Event {
         this.title = title;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime( String dateTime) {
         this.dateTime = dateTime;
     }
 

@@ -7,6 +7,8 @@ private String EmailAddr ;
 private String Address ;
 private String birthday ;
 private String notes ;
+private LinkedList <Event> Events;
+
 
 
 public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes ){
@@ -93,6 +95,11 @@ public int compareToFirstN(Contact o) {
     return 1;
 
     
+}
+
+public LinkedList <Event> getEvents() {
+
+return Events;
 }
 
  
