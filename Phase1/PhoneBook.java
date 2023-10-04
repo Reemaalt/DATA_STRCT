@@ -4,7 +4,7 @@ public class PhoneBook {
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
-            contacts.Add(contact);
+            contacts.AddContact(contact);
             System.out.println("Contact added successfully.");
         } else {
             System.out.println("Contact already exists.");
