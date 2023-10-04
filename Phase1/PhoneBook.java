@@ -99,11 +99,12 @@ public class PhoneBook {
             case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
-            contactlist.Search(fname);
+            System.out.println(contactlist.Search(fname));
+            
             break;
 
             case 7:
-            eventlist.print();//do we have this method?
+            print();//do we have this method?
             break;
 
             case 8:
