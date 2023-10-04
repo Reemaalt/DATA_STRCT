@@ -19,10 +19,11 @@ Node <T> tmp = new Node <T> (contact) ;
 
  }
 }
+
  //adding event to eventList 
 public void Add (T Event){
 Node <T> tmp = new Node <T> (Event) ;
-
+//chake befor
  if (head == null){
       head = tmp ; }
  else {
@@ -61,7 +62,7 @@ public void Delete (T contact){
     }
     }
     
-
+//contacts يوحد
 //public T [] Search (String nContact ){}
 }
 

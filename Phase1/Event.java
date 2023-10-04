@@ -49,11 +49,19 @@ public class Event {
     public void setContact(Contact contact) {
         this.Contact = contact;
     }
-
-    // Method that compares events by their titles alphabetically
-
-    public int compareTo(Event other) {
-        return this.title.compareTo(other.title);
+/* 
+    public void deleteEvent(Event event) {
+        Contact contact = event.getContact();
+        if (contacts.contains(contact)) {
+            if (contact.removeEvent(event)) {
+                System.out.println("Event deleted successfully.");
+            } else {
+                System.out.println("Event not found for this contact.");
+            }
+        } else {
+            System.out.println("Contact does not exist.");
+        }
     }
+*/
 }
 

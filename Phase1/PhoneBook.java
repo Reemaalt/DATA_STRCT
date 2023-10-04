@@ -1,6 +1,132 @@
 import java.util.*;
 public class PhoneBook {
 
+    public void addContact(Contact contact) {
+        if (!contacts.contains(contact)) {
+            contacts.add(contact);
+            System.out.println("Contact added successfully.");
+        } else {
+            System.out.println("Contact already exists.");
+        }
+    }
+
+    public void deleteContact(Contact contact) {
+        if (contacts.remove(contact)) {
+            System.out.println("Contact removed successfully.");
+        } else {
+            System.out.println("Contact not found.");
+        }
+    }
+
+    public List<Contact> searchContactByName(String name) {
+        List<Contact> searchResults = new LinkedList<>();
+        for (Contact contact : contact) {
+            if () {
+                searchResults.add(contact);
+            }
+        }
+        return searchResults;
+    }
+/* 
+    public void printContactsSharingFirstName(String firstName) {
+        List<Contact> contactsSharingFirstName = new LinkedList<>();
+        for (Contact contact : contacts) {
+            if (contact.getName().startsWith(firstName)) {
+                contactsSharingFirstName.add(contact);
+            }
+        }
+        if (contactsSharingFirstName.isEmpty()) {
+            System.out.println("No contacts found sharing this first name.");
+        } else {
+            System.out.println("Contacts sharing the first name:");
+            for (Contact contact : contactsSharingFirstName) {
+                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
+            }
+        }
+    }
+*/
+    public List<Contact> searchContactByCriteria(String criteria) {
+        List<Contact> searchResults = new LinkedList<>();
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(criteria) ||
+                    contact.getPhoneNumber().equalsIgnoreCase(criteria) ||
+                    contact.getEmail().equalsIgnoreCase(criteria) ||
+                    contact.getAddress().equalsIgnoreCase(criteria) ||
+                    contact.getBirthday().equalsIgnoreCase(criteria)) {
+                searchResults.add(contact);
+            }
+        }
+        return searchResults;
+    }
+
+    public void printAllContacts() {
+        if (contacts.isEmpty()) {
+            System.out.println("No contacts found.");
+        } else {
+            for (Contact contact : contacts) {
+                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
+            }
+        }
+    }
+
+    public void scheduleEvent(Event event) {
+        Contact contact = event.getContact();
+        if (contacts.contains(contact)) {
+            // Check for event conflicts
+            if (!hasEventConflict(contact, event)) {
+                contact.addEvent(event);
+                System.out.println("Event scheduled successfully.");
+            } else {
+                System.out.println("There is a conflict with an existing event for this contact.");
+            }
+        } else {
+            System.out.println("Contact does not exist.");
+        }
+    }
+
+    public void printContactsSharingEvent(Event event) {
+        List<Contact> contactsSharingEvent = new LinkedList<>();
+        for (Contact contact : contacts) {
+            if (contact.hasEvent(event)) {
+                contactsSharingEvent.add(contact);
+            }
+        }
+        if (contactsSharingEvent.isEmpty()) {
+            System.out.println("No contacts found sharing this event.");
+        } else {
+            System.out.println("Contacts sharing the event:");
+            for (Contact contact : contactsSharingEvent) {
+                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
+            }
+        }
+    }
+
+    public void printAllEventsAlphabetically() {
+        LinkedList<Event> allEvents = new LinkedList<>();
+        for (Contact contact : contacts) {
+            allEvents.addAll(contact.getEvents());
+        }
+        allEvents.sort((e1, e2) -> e1.getTitle().compareToIgnoreCase(e2.getTitle()));
+
+        if (allEvents.isEmpty()) {
+            System.out.println("No events found.");
+        } else {
+            System.out.println("All events ordered alphabetically:");
+            for (Event event : allEvents) {
+                System.out.println(event.getTitle() + " - " + event.getDateTime() + " - " + event.getLocation());
+            }
+        }
+    }
+
+    private boolean hasEventConflict(Contact contact, Event newEvent) {
+        for (Event event : contact.getEvents()) {
+            if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
+                return true;
+            }
+        }
+    }
+
+
    
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
@@ -99,12 +225,11 @@ public class PhoneBook {
             case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
-            System.out.println(contactlist.Search(fname));
-            
+            contactlist.Search(fname);
             break;
 
             case 7:
-            print();//do we have this method?
+            eventlist.print();//do we have this method?
             break;
 
             case 8:

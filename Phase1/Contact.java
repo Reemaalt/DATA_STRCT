@@ -85,14 +85,15 @@ public String toString() {
     return "Contact [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
             + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
 }
-/* 
-IDK if we need this or not lol
+
 @Override
-public int compareTo(Contact o) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+public int compareToFirstN(Contact o) {
+    //int compareName = this.name.compareToIgnoreCase(o.name);
+    contact.getName().equalsIgnoreCase(name);
+    return 1;
+
+    
 }
-*/
 
  
 }
