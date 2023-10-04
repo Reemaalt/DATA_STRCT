@@ -4,11 +4,15 @@ public class LinkedList <T> implements List <T> {
 private Node <T> head ;
 private Node <T> current ;
 
+
+  public boolean isEmpty() {
+        return head == null;
+    }
 //adding Contact to contactList
 public void Add (T contact){
 Node <T> tmp = new Node <T> (contact) ;
 
- if (head == null){
+ if (isEmpty()){
       head = tmp ; }
  else {
     current = head ;
@@ -24,7 +28,7 @@ Node <T> tmp = new Node <T> (contact) ;
 public void Add (T Event){
 Node <T> tmp = new Node <T> (Event) ;
 //chake befor
- if (head == null){
+ if (isEmpty()){
       head = tmp ; }
  else {
     current = head ;
@@ -39,7 +43,7 @@ Node <T> tmp = new Node <T> (Event) ;
 //delete Contact 
 //idk how to make it delete the the event list within it :)
 public void Delete (T contact){
-    if ( head == null )
+    if ( isEmpty() )
          return;
     else if (head.data.equals(contact)){
         head = head.next ;
@@ -61,8 +65,19 @@ public void Delete (T contact){
     previous.next = current ;
     }
     }
-    
-//contacts يوحد
+
+    public boolean contains(Contact contact) {
+       current = head;
+        while (current != null) {
+            if (current.data.equals(contact)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+}
 //public T [] Search (String nContact ){}
 }
 
