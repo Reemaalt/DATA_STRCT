@@ -4,7 +4,7 @@ public class PhoneBook {
 
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
-            contacts.add(contact);
+            contacts.Add(contact);
             System.out.println("Contact added successfully.");
         } else {
             System.out.println("Contact already exists.");
@@ -12,7 +12,7 @@ public class PhoneBook {
     }
 
     public void deleteContact(Contact contact) {
-        if (contacts.remove(contact)) {
+        if (contacts.Delete(contact)) {
             System.out.println("Contact removed successfully.");
         } else {
             System.out.println("Contact not found.");
