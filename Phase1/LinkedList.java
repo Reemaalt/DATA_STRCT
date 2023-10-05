@@ -29,7 +29,7 @@ Node <T> tmp = new Node <T> (contact) ;
 }
  
 //adding event to eventList 
- // Make sure before adding an event that the contact in the event exist in the contact list
+// Make sure before adding an event that the contact in the event exist in the contact list
     public void AddEvent (T Event){
 Node <T> tmp = new Node <T> (Event) ;
 if(!contains(null)){
@@ -89,6 +89,7 @@ if(!contains(null)){
 
 //exist in the list
 //Make sure before adding an event that the contact in the event exist in the contact list.
+//ERROR4
     public boolean contains(Contact othercontact) {
        current = head;
         while (current != null) {
@@ -102,7 +103,6 @@ if(!contains(null)){
 
 }
 //method we need to do!!!!!
-//public T [] Search (String nContact ){}
 //public String startsWith (String name){}
 //has the event ?
 

@@ -66,6 +66,7 @@ that have these values*/
 
 /*The Phonebook class should have methods for printing all contacts that share an event as well as all
 contacts that share the first name.*/
+//ERROR1
     public void printContactsSharingEvent(Event event) {
         LinkedList <Contact> SharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
@@ -85,25 +86,45 @@ contacts that share the first name.*/
 
 // the search for an event is based on the event title or contact name.
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
-    public static void printAllEventsAlphabetically() {
-        LinkedList<Event> allEvents = new LinkedList<>();
-        for (Contact contact : contacts) {
-            allEvents.AddEvent(contact.getEvents());
-        }
-        allEvents.sort((e1, e2) -> e1.getTitle().compareToIgnoreCase(e2.getTitle()));
-
-        if (allEvents.isEmpty()) {
-            System.out.println("No events found.");
-        } else {
-            System.out.println("All events ordered alphabetically:");
-            for (Event event : allEvents) {
-                System.out.println(event.getTitle() + " - " + event.getDateTime() + " - " + event.getLocation());
-            }
-        }
+//ERROR2
+public void printAllEventsAlphabetically (<T> head) {
+    // Base case:
+    if (head == null) {
+      return;
     }
+    // Find the node with the smallest event name in the list
+    <T> min = head; 
+    <T> current = head.next; 
+    while (current != null) {
+      
+      if (current.event.getTitle().compareTo (min.event.getTitle()) < 0) {
+        min = current;
+      }
+      // Move to the next node
+      current = current.next;
+    }
+    // Print the min node's event
+    System.out.println (min.event);
+  
+    if (min == head) {
+      head = head.next;
+    } 
+    else {
+      Node prev = head;
+      while (prev.next != min) {
+        prev = prev.next;
+      }
+      prev.next = min.next;
+    }
+  
+    // Recursively print the rest of the list
+    printAllEventsAlphabetically (head);
+  }
+  
 
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
+//ERROR3
     private boolean EventConflict(Contact contact, Event newEvent)
     {
         for (Event event : contact.getEvents()) {
@@ -127,7 +148,7 @@ it has a conflict with a current scheduled event.*/
         }
     }
 
-   
+    //ماشفت المين ابددد
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
        contacts = new LinkedList<>();

@@ -12,7 +12,7 @@ private String location;
 private Contact Contact;
 
 // Constructor 
-    public Event(String title, LocalDateTime dateTime, String location, Contact contact) {
+    public Event(String title, String dateTime, String location, Contact contact) {
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
