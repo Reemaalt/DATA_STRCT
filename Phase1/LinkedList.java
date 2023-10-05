@@ -1,15 +1,19 @@
+/*-LinkedList ADT: This class will represent the linked list data structure used to store the contacts.
+It should have methods for adding, searching, and deleting contacts from the list */
 import java.util.List;
+
 public class LinkedList <T> implements List <T> {
   
 private Node <T> head ;
 private Node <T> current ;
 
-
-  public boolean isEmpty() {
+//chaking if the list is empty
+    public boolean isEmpty() {
         return head == null;
     }
+
 //adding Contact to contactList
-public void AddContact (T contact){
+    public void AddContact (T contact){
 Node <T> tmp = new Node <T> (contact) ;
 
  if (isEmpty()){
@@ -23,11 +27,12 @@ Node <T> tmp = new Node <T> (contact) ;
 
  }
 }
-
- //adding event to eventList 
-public void AddEvent (T Event){
+ 
+//adding event to eventList 
+ // Make sure before adding an event that the contact in the event exist in the contact list
+    public void AddEvent (T Event){
 Node <T> tmp = new Node <T> (Event) ;
-//chake befor
+if(!contains(null)){
  if (isEmpty()){
       head = tmp ; }
  else {
@@ -36,13 +41,13 @@ Node <T> tmp = new Node <T> (Event) ;
         current = current.next;
     }
     current.next = tmp ;
+}
  }
 }
 
-
 //delete Contact 
-//idk how to make it delete the the event list within it :)
-public boolean Delete (T contact){
+//When a contact is deleted all events with that contact are also deleted.)
+    public boolean DeleteContact (T contact){
     if ( isEmpty() )
          return false ;
     else if (head.data.equals(contact)){
@@ -66,12 +71,28 @@ public boolean Delete (T contact){
     previous.next = current ;
       return true ;
     }
+    /* 
+    public void deleteEvent(Event event) {
+        Contact contact = event.getContact();
+        if (contacts.contains(contact)) {
+            if (contact.removeEvent(event)) {
+                System.out.println("Event deleted successfully.");
+            } else {
+                System.out.println("Event not found for this contact.");
+            }
+        } else {
+            System.out.println("Contact does not exist.");
+        }
+    }
+*/
     }
 
-    public boolean contains(Contact contact) {
+//exist in the list
+//Make sure before adding an event that the contact in the event exist in the contact list.
+    public boolean contains(Contact othercontact) {
        current = head;
         while (current != null) {
-            if (current.data.equalsIgnoreCase(contact)) {
+            if ( (current.data) == (othercontact.data) ) {
                 return true;
             }
             current = current.next;
@@ -80,6 +101,8 @@ public boolean Delete (T contact){
     }
 
 }
+//method we need to do!!!!!
 //public T [] Search (String nContact ){}
-}
+//public String startsWith (String name){}
+//has the event ?
 

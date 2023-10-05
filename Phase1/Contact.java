@@ -1,6 +1,10 @@
+/* -Contact: This class will represent a single contact in the phonebook. It should have fields for the
+contact’s name, phone number, email address, address, birthday, and notes.
+-The Contact class should implement the Comparable interface so that contacts can be sorted by name
+when added to the linked list. */
 public class Contact implements Comparable<Contact>{
 
-    
+ //Fields for the contact   
 private String name;
 private String PhoneNumber;
 private String EmailAddr ;
@@ -9,8 +13,7 @@ private String birthday ;
 private String notes ;
 private LinkedList <Event> Events;
 
-
-
+//Constructor
 public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes ){
 
     this.name = name ;
@@ -22,6 +25,7 @@ public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Addres
  
 }
 
+// Getter and setter methods for the fields
 public String getname(){
     return name;
 }
@@ -83,11 +87,11 @@ public void setNotes(String notes) {
 
 
 @Override
-public String toString() {
+    public String toString() {
     return "Contact [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
             + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
 }
-
+/* 
 @Override
 public int compareToFirstN(Contact o) {
     //int compareName = this.name.compareToIgnoreCase(o.name);
@@ -96,10 +100,16 @@ public int compareToFirstN(Contact o) {
 
     
 }
-
+*/
 
 public LinkedList <Event> getEvents() {
 
 return Events;
+}
+
+@Override
+public int compareTo(Contact o) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
 }
 }

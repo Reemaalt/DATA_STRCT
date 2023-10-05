@@ -1,7 +1,15 @@
-import java.util.*;
-public class PhoneBook {
-    private static LinkedList <Contact> contacts;
+/*-Phonebook: This class will represent the phonebook application itself. It should have a field for
+the linked list ADT that stores the contacts and methods for interacting with the list (e.g., adding,
+searching, and deleting contacts). You will also need to schedule events and appointments with
+contacts. */
+import java.util.Scanner;
 
+public class PhoneBook {
+
+private static LinkedList <Contact> contacts;
+
+/*Each contact in the phonebook should be unique. You can ensure this by checking if a contact with
+the same name or phone number already exists in the list before adding a new contact.*/
     public void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
             contacts.AddContact(contact);
@@ -11,8 +19,9 @@ public class PhoneBook {
         }
     }
 
+//When a contact is deleted all events with that contact are also deleted.
     public void deleteContact(Contact contact) {
-        if (contacts.Delete(contact)) {
+        if (contacts.DeleteContact(contact)) {
             System.out.println("Contact removed successfully.");
         } else {
             System.out.println("Contact not found.");
@@ -20,85 +29,66 @@ public class PhoneBook {
     }
 
     
-/* 
-    public void printContactsSharingFirstName(String firstName) {
-        List<Contact> contactsSharingFirstName = new LinkedList<>();
+/* The Phonebook class should have methods for printing all contacts that share an event as well as all
+contacts that share the first name.*/
+    public  void printContactsSharingFirstName(String firstName) {
+         LinkedList<Contact> contactsSharingFN = new LinkedList<>();
         for (Contact contact : contacts) {
-            if (contact.getName().startsWith(firstName)) {
-                contactsSharingFirstName.add(contact);
+            if (contact.getname().startsWith(firstName)) {
+                contactsSharingFN.AddContact(contact);
             }
         }
-        if (contactsSharingFirstName.isEmpty()) {
+        if (contactsSharingFN.isEmpty()) {
             System.out.println("No contacts found sharing this first name.");
         } else {
             System.out.println("Contacts sharing the first name:");
-            for (Contact contact : contactsSharingFirstName) {
-                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
+            for (Contact contact : contactsSharingFN) {
+                System.out.println(contact.getname() + " - " + contact.getPhoneNumber() + " - " + contact.getEmailAddr());
             }
         }
     }
-*/
-//reema
-    public List<Contact> searchContactByCriteria(String criteria) {
-        List<Contact> searchResults = new LinkedList<>();
+
+/*When you search for a contact by email address, address, or birthday, you should return all contacts
+that have these values*/
+    public LinkedList<Contact> searchContactByCriteria(String criteria) {
+        LinkedList<Contact> searchResults = new LinkedList<>();
         for (Contact contact : contacts) {
-            if (contact.getName().equalsIgnoreCase(criteria) ||
+            if (contact.getname().equalsIgnoreCase(criteria) ||
                     contact.getPhoneNumber().equalsIgnoreCase(criteria) ||
-                    contact.getEmail().equalsIgnoreCase(criteria) ||
+                    contact.getEmailAddr().equalsIgnoreCase(criteria) ||
                     contact.getAddress().equalsIgnoreCase(criteria) ||
                     contact.getBirthday().equalsIgnoreCase(criteria)) {
-                searchResults.add(contact);
+                searchResults.AddContact(contact);
             }
         }
         return searchResults;
     }
 
-    public void printAllContacts() {
-        if (contacts.isEmpty()) {
-            System.out.println("No contacts found.");
-        } else {
-            for (Contact contact : contacts) {
-                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
-            }
-        }
-    }
-
-    public void scheduleEvent(Event event) {
-        Contact contact = event.getContact();
-        if (contacts.contains(contact)) {
-            // Check for event conflicts
-            if (!hasEventConflict(contact, event)) {
-                contact.addEvent(event);
-                System.out.println("Event scheduled successfully.");
-            } else {
-                System.out.println("There is a conflict with an existing event for this contact.");
-            }
-        } else {
-            System.out.println("Contact does not exist.");
-        }
-    }
-//yara
+/*The Phonebook class should have methods for printing all contacts that share an event as well as all
+contacts that share the first name.*/
     public void printContactsSharingEvent(Event event) {
-        List<Contact> SharingEvent = new LinkedList<>();
+        LinkedList <Contact> SharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
-            if (contact.hasEvent(event)) {
-                contactsSharingEvent.add(contact);
+            if (contact.HasTheEvent(event)) {
+               SharingEvent.AddContact(contact);
             }
         }
-        if (contactsSharingEvent.isEmpty()) {
+        if (SharingEvent.isEmpty()) {
             System.out.println("No contacts found sharing this event.");
         } else {
             System.out.println("Contacts sharing the event:");
-            for (Contact contact : contactsSharingEvent) {
-                System.out.println(contact.getName() + " - " + contact.getPhoneNumber() + " - " + contact.getEmail());
+            for (Contact contact : SharingEvent) {
+                System.out.println(contact.getname() + " - " + contact.getPhoneNumber() + " - " + contact.getEmailAddr());
             }
         }
     }
 
+// the search for an event is based on the event title or contact name.
+//Write a method that will list all events available ordered alphabetically by event name in O(n) time
     public static void printAllEventsAlphabetically() {
         LinkedList<Event> allEvents = new LinkedList<>();
         for (Contact contact : contacts) {
-            allEvents.addAll(contact.getEvents());
+            allEvents.AddEvent(contact.getEvents());
         }
         allEvents.sort((e1, e2) -> e1.getTitle().compareToIgnoreCase(e2.getTitle()));
 
@@ -112,8 +102,9 @@ public class PhoneBook {
         }
     }
 
+/*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
+it has a conflict with a current scheduled event.*/
     private boolean EventConflict(Contact contact, Event newEvent)
-    //the method checks if a contact already has an event scheduled at same time as the new event returns true if there is conflict and false other wise
     {
         for (Event event : contact.getEvents()) {
             if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
@@ -122,7 +113,19 @@ public class PhoneBook {
         }
         return false;
     }
-
+    public void scheduleEvent(Event event) {
+        Contact contact = event.getContact();
+        if (contacts.contains(contact)) {
+            // Check for event conflicts
+            if (!EventConflict(contact, event)) {
+                contact.AddEvent(event);
+                System.out.println("Event scheduled successfully.");
+            } else {
+                System.out.println("There is a conflict with an existing event for this contact.");
+            }
+        
+        }
+    }
 
    
     public static void main(String[] args) {

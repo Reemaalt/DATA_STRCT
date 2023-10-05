@@ -1,15 +1,17 @@
-// Event class that represents events or appointments with contacts
 
-public class Event {
+/*Event: This class will represent events or appointment that can be scheduled with a contact. It
+should have fields for the event title, date and time, location, and the contact involved in this
+event.*/
 
+ public class Event {
 
-    // Fields for the event title, date and time, location, and contact
-    private String title;
-    private String dateTime;
-    private String location;
-    private Contact Contact;
+// Fields for the event 
+private String title;
+private String dateTime;
+private String location;
+private Contact Contact;
 
-    // Constructor 
+// Constructor 
     public Event(String title, LocalDateTime dateTime, String location, Contact contact) {
         this.title = title;
         this.dateTime = dateTime;
@@ -17,7 +19,7 @@ public class Event {
         this.Contact = contact;
     }
 
-    // Getter and setter methods for the fields
+// Getter and setter methods for the fields
     public String getTitle() {
         return title;
     }
@@ -49,19 +51,6 @@ public class Event {
     public void setContact(Contact contact) {
         this.Contact = contact;
     }
-/* 
-    public void deleteEvent(Event event) {
-        Contact contact = event.getContact();
-        if (contacts.contains(contact)) {
-            if (contact.removeEvent(event)) {
-                System.out.println("Event deleted successfully.");
-            } else {
-                System.out.println("Event not found for this contact.");
-            }
-        } else {
-            System.out.println("Contact does not exist.");
-        }
-    }
-*/
+
 }
 
