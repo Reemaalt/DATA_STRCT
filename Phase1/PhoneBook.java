@@ -35,8 +35,9 @@ the same name or phone number already exists in the list before adding a new con
 contacts that share the first name.*/
     public  void printContactsSharingFirstName(String firstName) {
          LinkedList<Contact> contactsSharingFN = new LinkedList<>();
-         for (Contact contact : contacts) {
-            if (startsWith(contact.getname(), firstName)) {
+         Node tem= contacts.getHead() ;
+         for() {
+            if (contacts.startsWith(contact.getname(), firstName)) {
                 contactsSharingFN.AddContact(contact);
             }
         }

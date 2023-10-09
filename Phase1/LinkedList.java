@@ -5,6 +5,14 @@ import java.util.List;
 public class LinkedList <T> {
   
 private Node <T> head ;
+public void setHead(Node<T> head) {
+    this.head = head;
+}
+
+public Node<T> getHead() {
+    return head;
+}
+
 private Node <T> current ;
 
 //chaking if the list is empty
@@ -87,6 +95,9 @@ if(!contains(null)){
 */
     }
 
+    public boolean hasNext (){
+     return current != null;
+    }
 //exist in the list
 //Make sure before adding an event that the contact in the event exist in the contact list.
 //ERROR4

@@ -85,26 +85,15 @@ public void setNotes(String notes) {
     this.notes = notes;
 }
 
+public LinkedList <Event> getEvents() {
+
+return Events;
+}
 
 @Override
     public String toString() {
     return "Contact [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
             + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
-}
-/* 
-@Override
-public int compareToFirstN(Contact o) {
-    //int compareName = this.name.compareToIgnoreCase(o.name);
-    contact.getName().equalsIgnoreCase(name);
-    return 1;
-
-    
-}
-*/
-
-public LinkedList <Event> getEvents() {
-
-return Events;
 }
 
 @Override
