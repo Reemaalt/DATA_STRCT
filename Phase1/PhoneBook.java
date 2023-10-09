@@ -35,18 +35,21 @@ the same name or phone number already exists in the list before adding a new con
 contacts that share the first name.*/
     public  void printContactsSharingFirstName(String firstName) {
          LinkedList<Contact> contactsSharingFN = new LinkedList<>();
-         Node tem= contacts.getHead() ;
-         for() {
-            if (contacts.startsWith(contact.getname(), firstName)) {
-                contactsSharingFN.AddContact(contact);
+         Node<Contact> tem= contacts.getHead() ;
+         while (contacts.hasNext()) {
+            if (contacts.startsWith(((Contact) tem.getData())getname(), firstName)) {
+                contactsSharingFN.AddContact(tem.getData());
             }
-        }
+            tem = tem.getNext();
+        } //end of while 
+
         if (contactsSharingFN.isEmpty()) {
             System.out.println("No contacts found sharing this first name.");
         } else {
-            System.out.println("Contacts sharing the first name:");
-            for (Contact contact : contactsSharingFN) {
-                System.out.println(contact.getname() + " - " + contact.getPhoneNumber() + " - " + contact.getEmailAddr());
+            System.out.println("Contacts Found! /n");
+             Node<Contact> tmp= contacts.getHead() ;
+             while (contactsSharingFN.hasNext()) { {
+                System.out.println(((Contact) tmp.getData()).toString() );
             }
         }
     }

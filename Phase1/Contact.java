@@ -92,8 +92,8 @@ return Events;
 
 @Override
     public String toString() {
-    return "Contact [ name = " + name + ", Phone Number = " + PhoneNumber + ", Email Address = " + EmailAddr + ", Address = " + Address
-            + ", Birthday  = " + birthday + ", Notes = " + notes + "]";
+    return "Name : " + name + " /n Phone Number :" + PhoneNumber + "/n Email Address :" + EmailAddr + "/n Address :" + Address
+            + "/n Birthday : " + birthday + "/n Notes :" + notes;
 }
 
 @Override
