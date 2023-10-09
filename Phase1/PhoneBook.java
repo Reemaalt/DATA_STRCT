@@ -139,22 +139,25 @@ it has a conflict with a current scheduled event.*/
 //erorr3
     private boolean EventConflict(Contact contact, Event newEvent)
     {
-        //which events is it checking?
-        for (Event event : contacts.getData.getEvents()) {
-            //already scheduled = conflict
-            if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
+        Node<Event> temp= (contact.getEvents()).getHead() ;
+        while ((contact.getEvents()).hasNext()) {
+            if (((temp.getData()).getDateTime()).equalsIgnoreCase(newEvent.getDateTime())) {
                 return true;
             }
+            temp = temp.getNext();
         }
         return false;
     }
+           
+
+            
     
     
     public void scheduleEvent(Event event , Contact contact ) {
         
             // Check for event conflicts
             if (!EventConflict(contact, event)) {
-                contact.AddEvent(event);
+               ( contact.getEvents()).AddEvent(event);
                 System.out.println("Event scheduled successfully.");
             } else {
                 System.out.println("There is a conflict with an existing event for this contact.");
