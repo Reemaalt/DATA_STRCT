@@ -14,6 +14,7 @@ public Node<T> getHead() {
 }
 
 private Node <T> current ;
+public Object getData;
 
 //chaking if the list is empty
     public boolean isEmpty() {
@@ -38,8 +39,8 @@ Node <T> tmp = new Node <T> (contact) ;
  
 //adding event to eventList 
 // Make sure before adding an event that the contact in the event exist in the contact list
-    public void AddEvent (T Event){
-Node <T> tmp = new Node <T> (Event) ;
+    public void AddEvent (Event event){
+Node <T> tmp = new Node <T> () ;
 if(!contains(null)){
  if (isEmpty()){
       head = tmp ; }
@@ -79,20 +80,7 @@ if(!contains(null)){
     previous.next = current ;
       return true ;
     }
-    /* 
-    public void deleteEvent(Event event) {
-        Contact contact = event.getContact();
-        if (contacts.contains(contact)) {
-            if (contact.removeEvent(event)) {
-                System.out.println("Event deleted successfully.");
-            } else {
-                System.out.println("Event not found for this contact.");
-            }
-        } else {
-            System.out.println("Contact does not exist.");
-        }
-    }
-*/
+ 
     }
 
     public boolean hasNext (){
@@ -100,7 +88,6 @@ if(!contains(null)){
     }
 //exist in the list
 //Make sure before adding an event that the contact in the event exist in the contact list.
-//ERROR4
     public boolean contains(Contact othercontact) {
        current = head;
         while (current != null) {
@@ -127,6 +114,4 @@ if(!contains(null)){
    
 }
 //method we need to do!!!!!
-//public String startsWith (String name){} : Done
-//has the event ? : what about using contains method 
-
+//has the event 

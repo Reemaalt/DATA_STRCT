@@ -37,7 +37,7 @@ contacts that share the first name.*/
          LinkedList<Contact> contactsSharingFN = new LinkedList<>();
          Node<Contact> tem= contacts.getHead() ;
          while (contacts.hasNext()) {
-            if (contacts.startsWith(((Contact) tem.getData())getname(), firstName)) {
+            if (contacts.startsWith(((Contact) tem.getData()).getname(), firstName)) {
                 contactsSharingFN.AddContact(tem.getData());
             }
             tem = tem.getNext();
@@ -51,30 +51,32 @@ contacts that share the first name.*/
              while (contactsSharingFN.hasNext()) { {
                 System.out.println(((Contact) tmp.getData()).toString() );
             }
-        }
+             }}       
     }
 
 
-
-    /*When you search for a contact by email address, address, or birthday, you should return all contacts
+   
+ /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
     public LinkedList<Contact> searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();
-        for (Contact contact : contacts) {
-            if (contact.getname().equalsIgnoreCase(criteria) ||
-                    contact.getPhoneNumber().equalsIgnoreCase(criteria) ||
-                    contact.getEmailAddr().equalsIgnoreCase(criteria) ||
-                    contact.getAddress().equalsIgnoreCase(criteria) ||
-                    contact.getBirthday().equalsIgnoreCase(criteria)) {
-                searchResults.AddContact(contact);
-            }
+       Node<Contact> tem= contacts.getHead() ;
+         while (contacts.hasNext())  {
+            if (tem.getData().getname().equalsIgnoreCase(criteria) ||
+                    tem.getData().getPhoneNumber().equalsIgnoreCase(criteria) ||
+                    tem.getData().getEmailAddr().equalsIgnoreCase(criteria) ||
+                    tem.getData().getAddress().equalsIgnoreCase(criteria) ||
+                    tem.getData().getBirthday().equalsIgnoreCase(criteria)) {
+                searchResults.AddContact(tem.getData());
+            } tem = tem.getNext();
         }
         return searchResults;
     }
 
 /*The Phonebook class should have methods for printing all contacts that share an event as well as all
 contacts that share the first name.*/
-//ERROR1
+//error1 for loop and has event
+
     public void printContactsSharingEvent(Event event) {
         LinkedList <Contact> SharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
@@ -94,7 +96,7 @@ contacts that share the first name.*/
 
 // the search for an event is based on the event title or contact name.
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
-//ERROR2
+//ERROR2الله اعلم 
 public void printAllEventsAlphabetically (<T> head) {
     // Base case:
     if (head == null) {
@@ -133,12 +135,12 @@ public void printAllEventsAlphabetically (<T> head) {
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
 
-//why is it fiving an error?
 
+//erorr3
     private boolean EventConflict(Contact contact, Event newEvent)
     {
         //which events is it checking?
-        for (Event event : contacts.getEvents()) {
+        for (Event event : contacts.getData.getEvents()) {
             //already scheduled = conflict
             if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
                 return true;
@@ -146,21 +148,21 @@ it has a conflict with a current scheduled event.*/
         }
         return false;
     }
-    public void scheduleEvent(Event event) {
-        Contact contact = event.getContact();
-        //list must contain contact to schedual an event
-        if (contacts.contains(contact)) {
+    
+    
+    public void scheduleEvent(Event event , Contact contact ) {
+        
             // Check for event conflicts
             if (!EventConflict(contact, event)) {
-                contacts.AddEvent(event);
+                contact.AddEvent(event);
                 System.out.println("Event scheduled successfully.");
             } else {
                 System.out.println("There is a conflict with an existing event for this contact.");
             }
         
         }
-    }
-
+    
+    
     //ماشفت المين ابددد
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
@@ -282,4 +284,4 @@ it has a conflict with a current scheduled event.*/
         
     }
     
-}
+    }
