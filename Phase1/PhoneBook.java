@@ -136,7 +136,7 @@ public void printAllEventsAlphabetically (<T> head) {
 it has a conflict with a current scheduled event.*/
 
 
-//erorr3
+//this method itterates through the event list in the recieved contact ,nand checks if there will be any conflict in adding the new event to it 
     private boolean EventConflict(Contact contact, Event newEvent)
     {
         Node<Event> temp= (contact.getEvents()).getHead() ;
@@ -152,10 +152,10 @@ it has a conflict with a current scheduled event.*/
 
             
     
-    
+    //this method calls EventCoflict () then if the contact has no coflict , itll add the event to it
     public void scheduleEvent(Event event , Contact contact ) {
         
-            // Check for event conflicts
+            
             if (!EventConflict(contact, event)) {
                ( contact.getEvents()).AddEvent(event);
                 System.out.println("Event scheduled successfully.");
