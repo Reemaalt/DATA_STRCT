@@ -7,7 +7,7 @@ import java.util.*;
 
 public class PhoneBook {
 
-private static LinkedList<Contact> contacts = new LinkedList<>();
+public static LinkedList<Contact> contacts = new LinkedList<>();
 
 
 /*Each contact in the phonebook should be unique. You can ensure this by checking if a contact with
