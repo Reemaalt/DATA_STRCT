@@ -113,6 +113,10 @@ if(!contains(null)){
 
         return true ;
     }
+    public LinkedList <Event> getEvents() {
+
+        return Events;
+        }
 
 }
 //method we need to do!!!!!

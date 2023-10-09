@@ -128,10 +128,14 @@ public void printAllEventsAlphabetically (<T> head) {
 
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
-//ERROR3
+
+//why is it fiving an error?
+
     private boolean EventConflict(Contact contact, Event newEvent)
     {
-        for (Event event : contact.getEvents()) {
+        //which events is it checking?
+        for (Event event : contacts.getEvents()) {
+            //already scheduled = conflict
             if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
                 return true;
             }
@@ -140,10 +144,11 @@ it has a conflict with a current scheduled event.*/
     }
     public void scheduleEvent(Event event) {
         Contact contact = event.getContact();
+        //list must contain contact to schedual an event
         if (contacts.contains(contact)) {
             // Check for event conflicts
             if (!EventConflict(contact, event)) {
-                contact.AddEvent(event);
+                contacts.AddEvent(event);
                 System.out.println("Event scheduled successfully.");
             } else {
                 System.out.println("There is a conflict with an existing event for this contact.");
