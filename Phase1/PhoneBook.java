@@ -2,11 +2,13 @@
 the linked list ADT that stores the contacts and methods for interacting with the list (e.g., adding,
 searching, and deleting contacts). You will also need to schedule events and appointments with
 contacts. */
-import java.util.Scanner;
+import java.util.*;
+
 
 public class PhoneBook {
 
-private static LinkedList <Contact> contacts;
+private static LinkedList<Contact> contacts = new LinkedList<>();
+
 
 /*Each contact in the phonebook should be unique. You can ensure this by checking if a contact with
 the same name or phone number already exists in the list before adding a new contact.*/
@@ -33,8 +35,8 @@ the same name or phone number already exists in the list before adding a new con
 contacts that share the first name.*/
     public  void printContactsSharingFirstName(String firstName) {
          LinkedList<Contact> contactsSharingFN = new LinkedList<>();
-        for (Contact contact : contacts) {
-            if (contact.getname().startsWith(firstName)) {
+         for (Contact contact : contacts) {
+            if (startsWith(contact.getname(), firstName)) {
                 contactsSharingFN.AddContact(contact);
             }
         }
@@ -48,7 +50,9 @@ contacts that share the first name.*/
         }
     }
 
-/*When you search for a contact by email address, address, or birthday, you should return all contacts
+
+
+    /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
     public LinkedList<Contact> searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();

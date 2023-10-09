@@ -2,7 +2,7 @@
 It should have methods for adding, searching, and deleting contacts from the list */
 import java.util.List;
 
-public class LinkedList <T> implements List <T> {
+public class LinkedList <T> {
   
 private Node <T> head ;
 private Node <T> current ;
@@ -101,8 +101,21 @@ if(!contains(null)){
         return false;
     }
 
+    public boolean startsWith (String name , String searchName ){
+        if (name.length() != searchName.length()) {
+        return false ;
+        }
+        
+        for (int i =0 ; i< searchName.length() ; i++){
+            if (name.charAt(i) != searchName.charAt (i))
+            return false;
+        }
+
+        return true ;
+    }
+
 }
 //method we need to do!!!!!
-//public String startsWith (String name){}
-//has the event ?
+//public String startsWith (String name){} : Done
+//has the event ? : what about using contains method 
 
