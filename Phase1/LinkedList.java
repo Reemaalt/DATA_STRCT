@@ -101,10 +101,6 @@ if(!contains(null)){
         return false;
     }
 
-    public boolean hasNext (){
-        return current != null;
-    }
-
     public boolean startsWith (String name , String searchName ){
         if (name.length() != searchName.length()) {
         return false ;
@@ -117,7 +113,7 @@ if(!contains(null)){
 
         return true ;
     }
-
+   
 }
 //method we need to do!!!!!
 //public String startsWith (String name){} : Done
