@@ -1,6 +1,5 @@
 /*-LinkedList ADT: This class will represent the linked list data structure used to store the contacts.
 It should have methods for adding, searching, and deleting contacts from the list */
-import java.util.List;
 
 public class LinkedList <T> {
   
@@ -91,7 +90,7 @@ if(!contains(null)){
     public boolean contains(Contact othercontact) {
        current = head;
         while (current != null) {
-            if ( (current.data) == (othercontact.data) ) {
+            if ( (current.data) == (othercontact) ) {
                 return true;
             }
             current = current.next;
