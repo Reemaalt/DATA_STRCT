@@ -2,17 +2,17 @@
 /*Event: This class will represent events or appointment that can be scheduled with a contact. It
 should have fields for the event title, date and time, location, and the contact involved in this
 event.*/
-
+import java.time.LocalDateTime;
  public class Event {
 
 // Fields for the event 
 private String title;
-private String dateTime;
+private LocalDateTime dateTime;
 private String location;
 private Contact Contact;
 
 // Constructor 
-    public Event(String title, String dateTime, String location, Contact contact) {
+    public Event(String title, LocalDateTime dateTime, String location, Contact contact) {
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
@@ -28,7 +28,7 @@ private Contact Contact;
         this.title = title;
     }
 
-    public String getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 

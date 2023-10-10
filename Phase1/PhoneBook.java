@@ -141,7 +141,7 @@ it has a conflict with a current scheduled event.*/
     {
         Node<Event> temp= (contact.getEvents()).getHead() ;
         while ((contact.getEvents()).hasNext()) {
-            if (((temp.getData()).getDateTime()).equalsIgnoreCase(newEvent.getDateTime())) {
+            if (((temp.getData()).getDateTime()).equals(newEvent.getDateTime())) {
                 return true;
             }
             temp = temp.getNext();
