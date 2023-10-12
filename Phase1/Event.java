@@ -32,7 +32,7 @@ private Contact Contact;
         return dateTime;
     }
 
-    public void setDateTime( String dateTime) {
+    public void setDateTime( LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 

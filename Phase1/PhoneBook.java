@@ -54,8 +54,7 @@ contacts that share the first name.*/
              }}       
     }
 
-
-   
+    
  /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
     public LinkedList<Contact> searchContactByCriteria(String criteria) {
@@ -97,7 +96,7 @@ contacts that share the first name.*/
 // the search for an event is based on the event title or contact name.
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
 //ERROR2الله اعلم 
-public void printAllEventsAlphabetically (<T> head) {
+public void printAllEventsAlphabetically(<T> head) {
     // Base case:
     if (head == null) {
       return;
@@ -134,30 +133,25 @@ public void printAllEventsAlphabetically (<T> head) {
 
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
-
-
-//this method itterates through the event list in the recieved contact ,nand checks if there will be any conflict in adding the new event to it 
+//erorr3 LIKE SCREENSHOT AND ASK ABT TIME CONFLICT STRING
     private boolean EventConflict(Contact contact, Event newEvent)
     {
-        Node<Event> temp= (contact.getEvents()).getHead() ;
-        while ((contact.getEvents()).hasNext()) {
-            if (((temp.getData()).getDateTime()).equals(newEvent.getDateTime())) {
+        //which events is it checking?
+        for (Event event : contacts.getData.getEvents()) {
+            //already scheduled = conflict
+            if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
                 return true;
             }
-            temp = temp.getNext();
         }
         return false;
     }
-           
-
-            
     
-    //this method calls EventCoflict () then if the contact has no coflict , itll add the event to it
+    
     public void scheduleEvent(Event event , Contact contact ) {
         
-            
+            // Check for event conflicts
             if (!EventConflict(contact, event)) {
-               ( contact.getEvents()).AddEvent(event);
+                contact.getEvents().AddEvent(event);
                 System.out.println("Event scheduled successfully.");
             } else {
                 System.out.println("There is a conflict with an existing event for this contact.");
