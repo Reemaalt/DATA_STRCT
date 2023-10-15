@@ -33,56 +33,45 @@ public String getname(){
     return name;
 }
 
-
 public String getPhoneNumber() {
     return PhoneNumber;
 }
-
 
 public String getEmailAddr() {
     return EmailAddr;
 }
 
-
 public String getAddress() {
     return Address;
 }
-
 
 public String getBirthday() {
     return birthday;
 }
 
-
 public String getNotes() {
     return notes;
 }
-
 
 public void setName(String name) {
     this.name = name;
 }
 
-
 public void setPhoneNumber(String phoneNumber) {
     PhoneNumber = phoneNumber;
 }
-
 
 public void setEmailAddr(String emailAddr) {
     EmailAddr = emailAddr;
 }
 
-
 public void setAddress(String address) {
     Address = address;
 }
 
-
 public void setBirthday(String birthday) {
     this.birthday = birthday;
 }
-
 
 public void setNotes(String notes) {
     this.notes = notes;
@@ -98,7 +87,7 @@ return Events;
     return "Name : " + name + " /n Phone Number :" + PhoneNumber + "/n Email Address :" + EmailAddr + "/n Address :" + Address
             + "/n Birthday : " + birthday + "/n Notes :" + notes;
 }
-
+//lookkkkkkkkk!!!!!!!
 @Override
 public int compareTo(Contact o) {
     // TODO Auto-generated method stub

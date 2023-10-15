@@ -4,31 +4,26 @@ public class Node<T> {
 public Node () { 
     data = null; 
     next = null;
-}
+    }
 public Node (T val) {
     data = val;
     next = null; 
-}
+    }
 
-    public T getData() {
+public T getData() {
         return data;
     }
 
-    public Node<T> getNext() {
+public Node<T> getNext() {
         return next;
     }
 
-    public void setData(T data) {
+public void setData(T data) {
         this.data = data;
     }
 
-    public void setNext(Node<T> next) {
+ public void setNext(Node<T> next) {
         this.next = next;
     }
  
-
-
-
-
-   
-    }
+}
