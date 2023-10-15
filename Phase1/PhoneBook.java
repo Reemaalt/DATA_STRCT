@@ -3,8 +3,6 @@ the linked list ADT that stores the contacts and methods for interacting with th
 searching, and deleting contacts). You will also need to schedule events and appointments with
 contacts. */
 import java.util.*;
-
-
 public class PhoneBook {
 
 public static LinkedList<Contact> contacts = new LinkedList<>();
@@ -29,9 +27,8 @@ the same name or phone number already exists in the list before adding a new con
             System.out.println("Contact not found.");
         }
     }
-
-    
-/* The Phonebook class should have methods for printing all contacts that share an event as well as all
+ 
+/*The Phonebook class should have methods for printing all contacts that share an event as well as all
 contacts that share the first name.*/
     public  void printContactsSharingFirstName(String firstName) {
          LinkedList<Contact> contactsSharingFN = new LinkedList<>();
@@ -53,8 +50,7 @@ contacts that share the first name.*/
             }
              }}       
     }
-
-    
+  
  /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
     public LinkedList<Contact> searchContactByCriteria(String criteria) {
@@ -75,7 +71,6 @@ that have these values*/
 /*The Phonebook class should have methods for printing all contacts that share an event as well as all
 contacts that share the first name.*/
 //error1 for loop and has event
-
     public void printContactsSharingEvent(Event event) {
         LinkedList <Contact> SharingEvent = new LinkedList<>();
         for (Contact contact : contacts) {
@@ -93,44 +88,29 @@ contacts that share the first name.*/
         }
     }
 
-// the search for an event is based on the event title or contact name.
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
-//ERROR2الله اعلم 
-public void printAllEventsAlphabetically(<T> head) {
-    // Base case:
-    if (head == null) {
-      return;
-    }
-    // Find the node with the smallest event name in the list
-    <T> min = head; 
-    <T> current = head.next; 
-    while (current != null) {
-      
-      if (current.event.getTitle().compareTo (min.event.getTitle()) < 0) {
-        min = current;
+// A method to print all events in alphabetical order
+//ERORR2!!
+    public void printAllEventsAlphabetically() {
+    // Use a temporary node to store the head of the list
+    Node<Event> temp = head ;
+    // Loop until the list is empty
+    while (temp != null) {
+      // Find the node with the smallest event name in the list
+      Node<Event> min = temp;
+      Node<Event> current = temp.next;
+      while (current != null) {
+        if (current.Event.getTitle().compareTo(min.Event.getTitle()) < 0) {
+          min = current;
+        }
+        System.out.println(min.event.getTitle());
+        current = current.next;
+
       }
-      // Move to the next node
-      current = current.next;
+    
     }
-    // Print the min node's event
-    System.out.println (min.event);
-  
-    if (min == head) {
-      head = head.next;
-    } 
-    else {
-      Node prev = head;
-      while (prev.next != min) {
-        prev = prev.next;
-      }
-      prev.next = min.next;
-    }
-  
-    // Recursively print the rest of the list
-    printAllEventsAlphabetically (head);
   }
   
-
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
 //erorr3 LIKE SCREENSHOT AND ASK ABT TIME CONFLICT STRING
@@ -145,8 +125,7 @@ it has a conflict with a current scheduled event.*/
         }
         return false;
     }
-    
-    
+     
     public void scheduleEvent(Event event , Contact contact ) {
         
             // Check for event conflicts

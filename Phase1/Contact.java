@@ -13,6 +13,9 @@ private String birthday ;
 private String notes ;
 private LinkedList <Event> Events;
 
+
+
+
 //Constructor
 public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes , LinkedList <Event> Events){
 
@@ -22,7 +25,7 @@ public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Addres
     this.Address = Address;
     this.birthday = birthday ;
     this.notes = notes ;
-    this.Events = Events ;
+    this.Events = new LinkedList<>();
 }
 
 // Getter and setter methods for the fields
