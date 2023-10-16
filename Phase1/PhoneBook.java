@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 
-
+//case5 & bigOs & test all case & exsp 
 
 public class PhoneBook {
 
@@ -88,14 +88,13 @@ public class PhoneBook {
         } else {
             System.out.println("Contacts Found! /n");
             Node<Contact> tmp = searchResults.getHead();
-            while (searchResults.hasNext()) {
-                {
-                    System.out.println(((Contact) tmp.getData()).toString());
-                    tmp = tmp.getNext();
-                }
+            while (tmp != null) {
+                System.out.println(tmp.getData().toString());
+                tmp = tmp.getNext();
+            }
             }
         }
-    }
+    
 
     /*
      * The Phonebook class should have methods for printing all contacts that share
@@ -197,10 +196,11 @@ public class PhoneBook {
     LinkedList <Contact> contacts = new LinkedList<Contact>();
     int choice;
         System.out.println("Welcome to the Linked Tree Phonebook!\n");
-        do {
+      do {  System.gc();
         System.out.println("Please choose an option:\n 1.Add a contact\n 2. Search for a contact\n 3.Delete a contact\n 4.Schedule an event \n 5.Print event details\n 6.Print contact by first name\n 7. Print all events alphabetically\n 8.Exit");
         System.out.println("Enter your choice:");
         choice=input.nextInt();
+        input.nextLine();
         switch (choice){
             //Add a contact
             case 1:
