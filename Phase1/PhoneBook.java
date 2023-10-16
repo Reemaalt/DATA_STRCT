@@ -115,13 +115,13 @@ contacts that share the first name.*/
     while (temp != null) {
       // Find the node with the smallest event name in the list
       Node<Event> min = temp;
-      Node<Event> current = temp.next;
+      Node<Event> current = temp.getNext();
       while (current != null) {
         if (current.getData().getTitle().compareTo(min.getData().getTitle()) < 0) {
           min = current;
         }
         System.out.println(min.getData().getTitle());
-        current = current.next;
+        current = current.getNext();
 
       }
     
@@ -130,23 +130,18 @@ contacts that share the first name.*/
   
 /*There should be no conflict in event scheduling. A new event should not be scheduled for a contact if
 it has a conflict with a current scheduled event.*/
-//erorr3 LIKE SCREENSHOT AND ASK ABT TIME CONFLICT STRING
-    private boolean EventConflict(Contact contact, Event newEvent)
+     private boolean EventConflict(Contact contact, Event newEvent)
     {
-       
-         for (Event event : (contacts.getData).getEvents()){
-
-       /*  Node<Contact> temp = contacts.getHead();
-        while (temp != null) {
-            Contact contact = temp.getData();
-            LinkedList<Event> events = contact.getEvents(); */
+        Node<Event> tmp = (contact.getEvents().getHead());
         
-        for (Event event : contacts.getData.getEvent()) {
-            //already scheduled = conflict
-            if (event.getDateTime().equals(newEvent.getDateTime())) {
+         while (contact.getEvents().hasNext()){
+
+            if (tmp.getData().getDateTime().equals(newEvent.getDateTime())) {
                 return true;
             }
+        tmp= tmp.getNext();
         }
+
         return false;
     }
      
@@ -189,11 +184,8 @@ it has a conflict with a current scheduled event.*/
                 System.out.println("Enter any notes for the contact:");
                 String note= input.nextLine();
                 
-<<<<<<< Updated upstream
                 Contact c1= new Contact(name,phone,email,address,bday,note);
-=======
                 Contact c1= new Contact(name,phone,email,address,bday,note,events);
->>>>>>> Stashed changes
                 contacts.AddContact(c1);
                 
                 break;
@@ -292,4 +284,4 @@ it has a conflict with a current scheduled event.*/
         
     }
     
-    }}
+    }
