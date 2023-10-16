@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import javax.print.attribute.standard.MediaSize.NA;
+
 
 public class PhoneBook {
 
@@ -121,7 +121,6 @@ public class PhoneBook {
                     System.out.println(((Contact) tmp.getData()).toString());
                     tmp = tmp.getNext();
                 }
-
             }
         }
     }
@@ -179,13 +178,16 @@ public class PhoneBook {
         }
 
     }
-    public Node <Contact> searchContact (String Name, LinkedList<Contact> contacts){
-        Node<Contact> tmp = contacts.getHead();
-        while (tmp != null && compareTo(tmp.getData())) {
-            
-        }
-
+    public static Node <Contact> searchContact (String Name, LinkedList<Contact> contacts){
+        Node<Contact> tem = contacts.getHead();
+        while (contacts.hasNext()) {
+            if (tem.getData().getname().equalsIgnoreCase(Name) ){
+     return tem;
     }
+    tem=tem.getNext();
+    }
+    return tem;
+}
 
     // main method
     public static void main(String[] args) {
@@ -203,7 +205,7 @@ public class PhoneBook {
             //Add a contact
             case 1:
                 System.out.println("Enter the contact's name: ");
-                String name= input.nextLine();
+                String namerun= input.nextLine();
                 System.out.println("Enter the contact's phone number:");
                 String phone= input.nextLine();
                 System.out.println("Enter the contact's email address: ");
@@ -216,13 +218,14 @@ public class PhoneBook {
                 String note= input.nextLine();
 
                 //adding a node of type contact to contacts list
-                Contact c1= new Contact(name,phone,email,address,bday,note);
+                Contact c1= new Contact(namerun,phone,email,address,bday,note);
                 addContact(c1,contacts);
                 break;
             //  Search for a contact
             case 2:
                 System.out.println("Enter search criteria:\n1.Name\n2.Phone Number\n 3.Email Address\n 4.Address\n 5.Birthday\n");
-                int criteria;
+                
+                int criteria = input.nextInt();
                 switch(criteria){
                     case 1:
                         System.out.println("Enter the contact's name:"); 
@@ -258,8 +261,10 @@ public class PhoneBook {
                 
             //Delete a contact   
             case 3:
-            //how to give the contact we want to delete?? :/
-                DeleteContact(Contact,contacts);
+            System.out.println("the  FULL name of the contact you want to delete:");
+             String fullN=input.nextLine();
+             
+                 deleteContact((searchContact(fullN,contacts)).getData(),contacts);
                 break;
             //Schedule an event
             case 4:
@@ -273,31 +278,32 @@ public class PhoneBook {
                 LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
                 System.out.println("Enter event location:");
                 String eloc= input.nextLine();
-                //how to give it a contact
-                Event e1=new Event(title,edate,eloc,Cname);
-            
-                events.AddEvent(e1);
+
+                Contact Cfound = searchContact(Cname,contacts).getData();
+                Event e1=new Event(title,edate,eloc,Cfound);
+                scheduleEvent(e1, Cfound);
                 break;
 
             //Print event details
-            case 5:
+          /*   case 5:
                 System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
                    int scriteria =input.nextInt();
                    switch(scriteria){
                     case 1:
                     System.out.println("Enter contact's name");
                      String cname=input.nextLine();
-                     //eventlist wrong
-                     events.Searchevent(cname);
+                     printAllEventsAlphabetically(searchContact(cname,contacts).getData());
                      break;
                      
                      case 2:
                      System.out.println("Enter event title");
                      String etitle =input.nextLine();
-                     events.Searchevent(etitle);
+
+                     
                      break;
                    }
             break;
+            */
             //print ContactsSharing FirstName
             case 6:
             System.out.println("Enter the first name:");
@@ -306,8 +312,10 @@ public class PhoneBook {
             break;
 
             case 7:
+    System.out.println("the  FULL name of the contact you want their events:");
+             String full=input.nextLine();
 
-            printAllEventsAlphabetically(Contact);
+            printAllEventsAlphabetically((searchContact(full,contacts)).getData());
             break;
 
             //exiting 
@@ -318,6 +326,8 @@ default:
 System.out.println("unrecognized input!!");
 }
                  } while(choice != 8);
+
+                 input.close();
                 
                 
 
