@@ -17,7 +17,7 @@ private LinkedList <Event> Events;
 
 
 //Constructor
-public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes , LinkedList <Event> Events){
+public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Address , String birthday ,String notes ){
 
     this.name = name ;
     this.PhoneNumber = PhoneNumber ;

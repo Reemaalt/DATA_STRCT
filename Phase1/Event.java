@@ -52,5 +52,11 @@ private Contact Contact;
         this.Contact = contact;
     }
 
+    @Override
+    public String toString() {
+        return "Event title:" + title + ", event date and Time (MM/DD/YYYY HH:MM):" + dateTime + ", event location:" + location + ", Contact name:" + Contact.getname()
+                ;
+    }
+
 }
 
