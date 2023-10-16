@@ -2,6 +2,9 @@
 the linked list ADT that stores the contacts and methods for interacting with the list (e.g., adding,
 searching, and deleting contacts). You will also need to schedule events and appointments with
 contacts. */
+
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.*;
 public class PhoneBook {
 
@@ -53,7 +56,7 @@ contacts that share the first name.*/
   
  /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
-    public LinkedList<Contact> searchContactByCriteria(String criteria) {
+    public static LinkedList<Contact> searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();
        Node<Contact> tem= contacts.getHead() ;
          while (contacts.hasNext())  {
@@ -150,7 +153,8 @@ it has a conflict with a current scheduled event.*/
     //ماشفت المين ابددد
     public static void main(String[] args) {
        Scanner input=new Scanner (System.in);
-       contacts = new LinkedList<>();
+       LinkedList <Contact> contacts = new LinkedList<Contact>();
+       LinkedList <Event> events = new LinkedList<Event>();
        
         System.out.println("Welcome to the Linked Tree Phonebook!\n");
         System.out.println("Please choose an option:\n 1.Add a contact\n 2. Search for a contact\n 3.Delete a contact\n 4.Scheduleanevent \n 5.Printeventdetails\n 6.Printcontact byfirstname\n 7. Print all events alphabetically\n 8.Exit");
@@ -172,44 +176,49 @@ it has a conflict with a current scheduled event.*/
                 System.out.println("Enter any notes for the contact:");
                 String note= input.nextLine();
                 
+<<<<<<< Updated upstream
                 Contact c1= new Contact(name,phone,email,address,bday,note);
+=======
+                Contact c1= new Contact(name,phone,email,address,bday,note,events);
+>>>>>>> Stashed changes
                 contacts.AddContact(c1);
                 
                 break;
             case 2:
                 System.out.println("Enter search criteria:\n1.Name\n2.Phone Number\n 3.Email Address\n 4.Address\n 5.Birthday\n");
                 int criteria;
-                switch(criteria){
+                switch(criteria){ //move method to ll
                     case 1:
                         System.out.println("Enter the contact's name:"); 
                         String Sname=input.next();
-                        contacts.Search(Sname);
+                        contacts.searchContactByCriteria(Sname);
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
                         String Sphone=input.next();
-                        contacts.Search(Sphone);
+                        contacts.searchContactByCriteria(Sphone);
                         break;
                     case 3:
                         System.out.println("Enter the contact's email address:");
                         String Semail=input.next();
-                        contacts.Search(Semail);
+                        contacts.searchContactByCriteria(Semail);
                         break;
                     case 4:
                         System.out.println("Enter the contact's address:");
                         String Saddress=input.next();
-                        contacts.Search(Saddress);
+                        contacts.searchContactByCriteria(Saddress);
                         break;
                     case 5:
                         System.out.println("Enter the contact's birthday:");
                         String Sbday=input.next();
-                        contacts.Search(Sbday);
+                        contacts.searchContactByCriteria(Sbday);
                         break;
                 }
                 
                 break;
             case 3:
-                contacts.Delete();
+            //how to give the contact we want to delete
+                contacts.DeleteContact();
                 break;
             case 4:
                 System.out.println("Enter event title:");
@@ -217,13 +226,15 @@ it has a conflict with a current scheduled event.*/
                 System.out.println("Enter contact name:");
                 String Cname= input.nextLine();
                 System.out.println("Enter event date and time (MM/DD/YYYY HH:MM): ");
-                String edate = input.nextLine();
+                String useredate = input.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
                 System.out.println("Enter event location:");
                 String eloc= input.nextLine();
-                
+                //how to give it a contact
                 Event e1=new Event(title,edate,eloc,Cname);
                 //event list wrong
-                eventlist.addEvent(e1);
+                events.AddEvent(e1);
                 break;
             case 5:
              System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
@@ -233,13 +244,13 @@ it has a conflict with a current scheduled event.*/
                     System.out.println("Enter contact's name");
                      String cname=input.nextLine()
                      //eventlist wrong
-                     eventlist.Searchevent(cname);
+                     events.Searchevent(cname);
                      break;
                      
                      case 2:
                      System.out.println("Enter event title");
                      String etitle =input.nextLine();
-                     eventlist.Searchevent(etitle);
+                     events.Searchevent(etitle);
                      break;
                    }
             break;
@@ -247,7 +258,7 @@ it has a conflict with a current scheduled event.*/
             case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
-            contacts.Search(fname);
+            contacts.searchContactByCriteria(fname);
             break;
 
             case 7:
