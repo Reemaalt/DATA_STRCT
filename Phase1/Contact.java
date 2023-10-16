@@ -87,10 +87,11 @@ return Events;
     return "Name : " + name + " /n Phone Number :" + PhoneNumber + "/n Email Address :" + EmailAddr + "/n Address :" + Address
             + "/n Birthday : " + birthday + "/n Notes :" + notes;
 }
-//lookkkkkkkkk!!!!!!!
+//comparto for the serch method
 @Override
 public int compareTo(Contact o) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+ 
+   return(this.name.compareTo(o.name)) ;
+   
 }
 }
