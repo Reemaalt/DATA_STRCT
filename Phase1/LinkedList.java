@@ -48,9 +48,9 @@ if(!contains(null)){
     while (current.next != null){
         current = current.next;
     }
-    current.next = tmp ;
+     current.next = tmp ;
 }
- }
+}
 }
 
 //delete Contact 
@@ -83,17 +83,23 @@ if(!contains(null)){
     }
 
     public boolean hasTheEvent(Event targetEvent) {
-
-         for (Object event : events) {
-        //Do i need to handle null ?
-            if (event == null || targetEvent == null) {
+    Node <T> tmp = new Node <T> () ;
+        tmp=head;
+         while(hasNext()) {
+            if (isEmpty() || targetEvent == null) {
                 return false;
             }
-            return event.equals(targetEvent) ;    }}
+
+        else if (tmp.getData().equals(targetEvent)) {
+            return  true;  
+        }
+       tmp=tmp.getNext();
+    } return false; }
 
 //exist in the list
     public boolean hasNext (){
      return current != null;
+     
     }
     public boolean contains(Contact othercontact) {
        current = head;
@@ -119,5 +125,4 @@ if(!contains(null)){
     }
    
 }
-//method we need to do!!!!!
-//has the event 
+

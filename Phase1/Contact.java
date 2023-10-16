@@ -25,7 +25,7 @@ public Contact (String name ,String PhoneNumber ,String EmailAddr ,String Addres
     this.Address = Address;
     this.birthday = birthday ;
     this.notes = notes ;
-    this.Events = new LinkedList<>();
+    this.Events = new LinkedList<Event>();
 }
 
 // Getter and setter methods for the fields

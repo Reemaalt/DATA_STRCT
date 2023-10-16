@@ -6,7 +6,7 @@ contacts. */
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
-public class PhoneBook {
+public class PhoneBook  {
 
 public static LinkedList<Contact> contacts = new LinkedList<>();
 
@@ -24,6 +24,7 @@ the same name or phone number already exists in the list before adding a new con
 
 //When a contact is deleted all events with that contact are also deleted.
     public void deleteContact(Contact contact) {
+        
         if (contacts.DeleteContact(contact)) {
             System.out.println("Contact removed successfully.");
         } else {
@@ -50,13 +51,14 @@ contacts that share the first name.*/
              Node<Contact> tmp= contacts.getHead() ;
              while (contactsSharingFN.hasNext()) { {
                 System.out.println(((Contact) tmp.getData()).toString() );
+                tmp=tmp.getNext();
             }
              }}       
     }
   
  /*When you search for a contact by email address, address, or birthday, you should return all contacts
 that have these values*/
-    public static LinkedList<Contact> searchContactByCriteria(String criteria) {
+    public  void searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();
        Node<Contact> tem= contacts.getHead() ;
          while (contacts.hasNext())  {
@@ -68,12 +70,20 @@ that have these values*/
                 searchResults.AddContact(tem.getData());
             } tem = tem.getNext();
         }
-        return searchResults;
+       if (searchResults.isEmpty()) {
+            System.out.println("No contacts found.");
+        } else {
+            System.out.println("Contacts Found! /n");
+             Node<Contact> tmp= searchResults.getHead() ;
+             while (searchResults.hasNext()) { {
+                System.out.println(((Contact) tmp.getData()).toString() );
+                tmp=tmp.getNext();
+            }
+             }}
     }
 
 /*The Phonebook class should have methods for printing all contacts that share an event as well as all
 contacts that share the first name.*/
-//error1 for loop and has event
     public void printContactsSharingEvent(Event event) {
         LinkedList <Contact> SharingEvent = new LinkedList<>();
         Node<Contact> tem= contacts.getHead() ;
@@ -81,6 +91,7 @@ contacts that share the first name.*/
             if (contacts.hasTheEvent(event)) {
                SharingEvent.AddContact(tem.getData());
             }
+            tem=tem.getNext();
         }
         if (SharingEvent.isEmpty()) {
             System.out.println("No contacts found sharing this event.");
@@ -89,26 +100,27 @@ contacts that share the first name.*/
              Node<Contact> tmp= contacts.getHead() ;
              while (SharingEvent.hasNext()) {  {
                 System.out.println(((Contact) tmp.getData()).toString());
+                tmp=tmp.getNext();
             }
-        }
+     
+                }   }
     }
 
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
 // A method to print all events in alphabetical order
-//ERORR2!!event idk 
-    public void printAllEventsAlphabetically() {
+    public void printAllEventsAlphabetically(Contact c1) {
     // Use a temporary node to store the head of the list
-    Node<Event> temp = head ;
+    Node<Event> temp =  c1.getEvents().getHead() ;
     // Loop until the list is empty
     while (temp != null) {
       // Find the node with the smallest event name in the list
       Node<Event> min = temp;
       Node<Event> current = temp.next;
       while (current != null) {
-        if (current.Event.getTitle().compareTo(min.Event.getTitle()) < 0) {
+        if (current.getData().getTitle().compareTo(min.getData().getTitle()) < 0) {
           min = current;
         }
-        System.out.println(min.event.getTitle());
+        System.out.println(min.getData().getTitle());
         current = current.next;
 
       }
@@ -121,8 +133,7 @@ it has a conflict with a current scheduled event.*/
 //erorr3 LIKE SCREENSHOT AND ASK ABT TIME CONFLICT STRING
     private boolean EventConflict(Contact contact, Event newEvent)
     {
-        //which events is it checking?
-<<<<<<< Updated upstream
+       
          for (Event event : (contacts.getData).getEvents()){
 
        /*  Node<Contact> temp = contacts.getHead();
@@ -130,9 +141,7 @@ it has a conflict with a current scheduled event.*/
             Contact contact = temp.getData();
             LinkedList<Event> events = contact.getEvents(); */
         
-=======
         for (Event event : contacts.getData.getEvent()) {
->>>>>>> Stashed changes
             //already scheduled = conflict
             if (event.getDateTime().equals(newEvent.getDateTime())) {
                 return true;
@@ -283,4 +292,4 @@ it has a conflict with a current scheduled event.*/
         
     }
     
-    }
+    }}
