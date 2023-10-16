@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import javax.print.attribute.standard.MediaSize.NA;
+
 public class PhoneBook {
 
     /*
@@ -174,6 +176,13 @@ public class PhoneBook {
             System.out.println("Event scheduled successfully.");
         } else {
             System.out.println("There is a conflict with an existing event for this contact.");
+        }
+
+    }
+    public Node <Contact> searchContact (String Name, LinkedList<Contact> contacts){
+        Node<Contact> tmp = contacts.getHead();
+        while (tmp != null && compareTo(tmp.getData())) {
+            
         }
 
     }
