@@ -95,7 +95,7 @@ contacts that share the first name.*/
 
 //Write a method that will list all events available ordered alphabetically by event name in O(n) time
 // A method to print all events in alphabetical order
-//ERORR2!!
+//ERORR2!!event idk 
     public void printAllEventsAlphabetically() {
     // Use a temporary node to store the head of the list
     Node<Event> temp = head ;
@@ -122,6 +122,7 @@ it has a conflict with a current scheduled event.*/
     private boolean EventConflict(Contact contact, Event newEvent)
     {
         //which events is it checking?
+<<<<<<< Updated upstream
          for (Event event : (contacts.getData).getEvents()){
 
        /*  Node<Contact> temp = contacts.getHead();
@@ -129,6 +130,9 @@ it has a conflict with a current scheduled event.*/
             Contact contact = temp.getData();
             LinkedList<Event> events = contact.getEvents(); */
         
+=======
+        for (Event event : contacts.getData.getEvent()) {
+>>>>>>> Stashed changes
             //already scheduled = conflict
             if (event.getDateTime().equals(newEvent.getDateTime())) {
                 return true;
