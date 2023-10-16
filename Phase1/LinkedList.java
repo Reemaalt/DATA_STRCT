@@ -21,7 +21,7 @@ public Object getData;
     }
 
 //adding Contact to contactList
-    public void AddContact (T contact){
+    public void AddContact(T contact){
 Node <T> tmp = new Node <T> (contact) ;
 
  if (isEmpty()){
@@ -81,6 +81,15 @@ if(!contains(null)){
     }
  
     }
+
+    public boolean hasTheEvent(Event targetEvent) {
+
+         for (Object event : events) {
+        //Do i need to handle null ?
+            if (event == null || targetEvent == null) {
+                return false;
+            }
+            return event.equals(targetEvent) ;    }}
 
 //exist in the list
     public boolean hasNext (){

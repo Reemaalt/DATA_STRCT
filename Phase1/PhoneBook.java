@@ -73,17 +73,19 @@ contacts that share the first name.*/
 //error1 for loop and has event
     public void printContactsSharingEvent(Event event) {
         LinkedList <Contact> SharingEvent = new LinkedList<>();
-        for (Contact contact : contacts) {
-            if (contact.HasTheEvent(event)) {
-               SharingEvent.AddContact(contact);
+        Node<Contact> tem= contacts.getHead() ;
+         while (contacts.hasNext()) {
+            if (contacts.hasTheEvent(event)) {
+               SharingEvent.AddContact(tem.getData());
             }
         }
         if (SharingEvent.isEmpty()) {
             System.out.println("No contacts found sharing this event.");
         } else {
             System.out.println("Contacts sharing the event:");
-            for (Contact contact : SharingEvent) {
-                System.out.println(contact.getname() + " - " + contact.getPhoneNumber() + " - " + contact.getEmailAddr());
+             Node<Contact> tmp= contacts.getHead() ;
+             while (SharingEvent.hasNext()) {  {
+                System.out.println(((Contact) tmp.getData()).toString());
             }
         }
     }
@@ -117,9 +119,15 @@ it has a conflict with a current scheduled event.*/
     private boolean EventConflict(Contact contact, Event newEvent)
     {
         //which events is it checking?
-        for (Event event : contacts.getData.getEvents()) {
+         for (Event event : (contacts.getData).getEvents()){
+
+       /*  Node<Contact> temp = contacts.getHead();
+        while (temp != null) {
+            Contact contact = temp.getData();
+            LinkedList<Event> events = contact.getEvents(); */
+        
             //already scheduled = conflict
-            if (event.getDateTime().equalsIgnoreCase(newEvent.getDateTime())) {
+            if (event.getDateTime().equals(newEvent.getDateTime())) {
                 return true;
             }
         }
@@ -165,7 +173,7 @@ it has a conflict with a current scheduled event.*/
                 String note= input.nextLine();
                 
                 Contact c1= new Contact(name,phone,email,address,bday,note);
-                contacts.Add(c1);
+                contacts.AddContact(c1);
                 
                 break;
             case 2:
