@@ -13,7 +13,7 @@ public class PhoneBook {
     private LinkedList<Contact> contacts;
 
     public PhoneBook() {
-        contacts = new LinkedList<>();
+        contacts = new LinkedList<Contact>();
     }
 
 
@@ -56,7 +56,7 @@ public class PhoneBook {
         } else {
             System.out.println("Contacts Found! /n");
             Node<Contact> tmp = contacts.getHead();
-            while (contactsSharingFN.hasNext()) {
+            while (tmp != null) {
                 {
                     System.out.println(((Contact) tmp.getData()).toString());
                     tmp = tmp.getNext();
@@ -240,22 +240,22 @@ public void runPhoneBook (){
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
-                        String Sphone=input.next();
+                        String Sphone=input.nextLine();
                         searchContactByCriteria(Sphone);
                         break;
                     case 3:
                         System.out.println("Enter the contact's email address:");
-                        String Semail=input.next();
+                        String Semail=input.nextLine();
                         searchContactByCriteria(Semail);
                         break;
                     case 4: 
                         System.out.println("Enter the contact's address:");
-                        String Saddress=input.next();
+                        String Saddress=input.nextLine();
                         searchContactByCriteria(Saddress);
                         break;
                     case 5:
                         System.out.println("Enter the contact's birthday:");
-                        String Sbday=input.next();
+                        String Sbday=input.nextLine();
                         searchContactByCriteria(Sbday);
                         break;
                     default:
