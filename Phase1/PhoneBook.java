@@ -190,10 +190,7 @@ public class PhoneBook {
                 return node.getData();
             }
 
-            if (node.getData().getEvents().equalsIgnoreCase(contactName)) {
-                return node.getData();
-            }
-    
+            
             return searchLinkedList(node.getNext(), contactName);
         }
          
@@ -376,11 +373,11 @@ System.out.println("unrecognized input!!");
 }
                  } while(choice != 8);
 
-                 input.close();
+                 input.close(); }
                 
                 
 
-                }
+                
     }
 
     // main method
