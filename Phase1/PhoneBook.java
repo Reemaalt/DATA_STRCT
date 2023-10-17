@@ -239,7 +239,7 @@ public void runPhoneBook (){
         input.nextLine();
         switch (choice){
             //Add a contact
-            case 1:
+        case 1:
                 System.out.println("Enter the contact's name: ");
                 String namerun= input.nextLine();
                 System.out.println("Enter the contact's phone number:");
@@ -249,8 +249,9 @@ public void runPhoneBook (){
                 System.out.println("Enter the contact's address:");
                 String address= input.nextLine();
                 System.out.println("Enter the contact's birthday:");
-                String bday= input.nextLine();
-                System.out.println("Enter any notes for the contact:");
+                String bday= input.nextLine(); 
+
+               System.out.println("Enter any notes for the contact:");
                 String note= input.nextLine();
 
                 //adding a node of type contact to contacts list
@@ -258,7 +259,7 @@ public void runPhoneBook (){
                 contacts.AddContact(c1);
                 break;
             //  Search for a contact
-            case 2:
+         case 2:
                 System.out.println("Enter search criteria:\n1.Name\n2.Phone Number\n 3.Email Address\n 4.Address\n 5.Birthday\n");
                 
                 int criteria = input.nextInt();
@@ -268,7 +269,6 @@ public void runPhoneBook (){
                         String Sname=input.nextLine();
 
                         searchContactByCriteria(Sname);
-                    
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
@@ -276,6 +276,7 @@ public void runPhoneBook (){
                          searchContactByCriteria(Sphone);
                    
                         break;
+                        
                     case 3:
                         System.out.println("Enter the contact's email address:");
                         String Semail=input.nextLine();
@@ -293,19 +294,19 @@ public void runPhoneBook (){
                         break;
                     default:
                         System.out.println("invailed input!!");
-
+break;
                         }
                         //to exit case 2
                         break; 
                 
-            //Delete a contact   
-            case 3:
+        //Delete a contact   
+        case 3:
             System.out.println("the  FULL name of the contact you want to delete:");
              String fullN=input.nextLine();
               deleteContact(fullN );
                 break;
             //Schedule an event
-            case 4:
+         case 4:
                 System.out.println("Enter event title:");
                 String title= input.nextLine();
                 System.out.println("Enter contact name:");
@@ -322,8 +323,8 @@ public void runPhoneBook (){
                 scheduleEvent(e1, Cfound);
                 break;
 
-            //Print event details
-          case 5:
+         //Print event details
+        case 5:
                 System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
                    int scriteria =input.nextInt();
                    switch(scriteria){
@@ -347,33 +348,33 @@ public void runPhoneBook (){
                 temp = temp.getNext();
             }
                      break;
-                   }
+                   }}
             break;
             
-            //print ContactsSharing FirstName
-            case 6:
+        //print ContactsSharing FirstName
+        case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
             printContactsSharingFirstName(fname);
             break;
-
-            case 7:
+//print events
+        case 7:
     System.out.println("the  FULL name of the contact you want their events:");
              String full=input.nextLine();
 
             printAllEventsAlphabetically((searchContact(full)));
             break;
 
-            //exiting 
-            case 8:
+        //exiting 
+        case 8:
             System.out.println("Goodbye!");
             break;
 default:
 System.out.println("unrecognized input!!");
-}
+                }
                  } while(choice != 8);
 
-                 input.close(); }
+                 input.close(); 
                 
                 
 
@@ -384,5 +385,5 @@ System.out.println("unrecognized input!!");
    public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
         phoneBook.runPhoneBook();
-    }
-}
+    }//main
+} //class
