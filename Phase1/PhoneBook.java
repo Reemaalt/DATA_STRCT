@@ -7,9 +7,16 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 
-//case5 & bigOs & test all case 
+//case5 & bigOs & test all case & exsp 
 
-public class PhoneBook {
+public class PhoneBook implements Comparable<Contact> {
+
+    @Override
+    public int compareTo(Contact otherContact) {
+        // Implement comparison logic by comparing contact names
+        return 2;
+    }
+
     private LinkedList<Contact> contacts;
 
     public PhoneBook() {
