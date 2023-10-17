@@ -101,7 +101,7 @@ public class PhoneBook {
      * an event as well as all
      * contacts that share the first name.
      */
-    public   void printContactsSharingEvent(Event event, LinkedList<Contact> contacts) {
+    public   void printContactsSharingEvent(Event event) {
         LinkedList<Contact> SharingEvent = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
         while (tem!=null) {
@@ -236,12 +236,15 @@ public void runPhoneBook (){
                     case 1:
                         System.out.println("Enter the contact's name:"); 
                         String Sname=input.nextLine();
+
                         searchContactByCriteria(Sname);
+                    
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
                         String Sphone=input.nextLine();
-                        searchContactByCriteria(Sphone);
+                         searchContactByCriteria(Sphone);
+                   
                         break;
                     case 3:
                         System.out.println("Enter the contact's email address:");
