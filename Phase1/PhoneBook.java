@@ -105,7 +105,7 @@ public class PhoneBook {
         LinkedList<Contact> sharingEvent = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
         while (tem != null) {
-            if (tem.getData().hasTheEvent(event)) {
+            if (tem.getData().getEvents().hasTheEvent(event)) {
                 sharingEvent.AddContact(tem.getData());
             }
             tem = tem.getNext();
@@ -219,14 +219,11 @@ public class PhoneBook {
            tem=tem.getNext();
         }tmp=tmp.getNext(); 
      }   if (EventsSharingtitle.isEmpty()) {
-            System.out.println("No Event");
+          
             return null ;
         } else {
             System.out.println("Event Found! /n");
-           /*  Node<Event> temp = EventsSharingtitle.getHead();
-            while (temp != null) {
-                System.out.println(temp.getData().toString());
-                temp = tmp.getNext();*/
+           
                 return EventsSharingtitle;
             }
             } 
@@ -338,13 +335,21 @@ public void runPhoneBook (){
                      String cname=input.nextLine();
                      printAllEventsAlphabetically(searchContact(cname));
                      break;
-                     /* 
+                      
                      case 2:
                      System.out.println("Enter event title");
                      String etitle =input.nextLine();
-*/
-                     
-                     //1break;
+                   LinkedList<Event> FindEvent= searchEventbyTitle (etitle);
+
+                   if (FindEvent == null)
+                     System.out.println("No Event");
+                     else {
+                     Node<Event> temp = FindEvent.getHead();
+            while (temp != null) {
+                System.out.println(temp.getData().toString());
+                temp = temp.getNext();
+            }
+                     break;
                    }
             break;
             
@@ -375,8 +380,8 @@ System.out.println("unrecognized input!!");
                 
                 
 
-        }
-
+                }
+    }
 
     // main method
    public static void main(String[] args) {

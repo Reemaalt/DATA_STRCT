@@ -86,19 +86,23 @@ if (isEmpty()){
     }
 
     public boolean hasTheEvent(Event targetEvent) {
-        Node<T> tmp = head;
-        while (tmp != null) {
-            if (targetEvent == null) {
-                return false;
-            }
-    Node <Event> tem = new Node <Event> () ;
-        tem= tmp.getData().getEvents().getHead();
-         while(tem!= null) {
-        if (tem.getData().equalsIgnoreCase(targetEvent)) {
-            return  true;  
-        }
-        return false;
-    }
+        if (isEmpty() )
+        return false ;
+    Node <Contact> tmp = new Node <Contact> () ;
+        tmp=(Node<Contact>) head;
+         while(tmp!= null) {
+             Node <Event> tem = new Node <Event> () ;
+            tem= tmp.getData().getEvents().getHead();
+             while(tem!= null) {
+             if (tem.getData().compareTo(targetEvent) == 0) {
+                        return true;
+                    }
+                    tem = tem.getNext();
+                }
+                tmp = tmp.getNext(); 
+                 
+            
+         } return false; }
     
 
 //exist in the list
