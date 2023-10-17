@@ -4,7 +4,7 @@ public class LinkedList <T> {
   
 private Node <T> head ;
 private Node <T> current ;
-public Object getData;
+//public Object getData;
 
 // Getter and setter methods for the fields
     public void setHead(Node<T> head) {
@@ -43,9 +43,8 @@ System.out.println("contact already exist");
 //adding event to eventList 
 // Make sure before adding an event that the contact in the event exist in the contact list
     public void AddEvent (Event event){
-Node <T> tmp = new Node <T> () ;
-if(!contains(null)){
- if (isEmpty()){
+    Node <T> tmp = new Node <T> () ;
+if (isEmpty()){
       head =  tmp ; }
  else {
     current = head ;
@@ -53,7 +52,7 @@ if(!contains(null)){
         current = current.next;
     }
      current.next = tmp ;
-}
+
 }
 }
 
@@ -87,18 +86,23 @@ if(!contains(null)){
     }
 
     public boolean hasTheEvent(Event targetEvent) {
-    Node <T> tmp = new Node <T> () ;
-        tmp=head;
-         while(hasNext()) {
-            if (isEmpty() || targetEvent == null) {
+        if (isEmpty() )
+        return false ;
+    Node <Contact> tmp = new Node <Contact> () ;
+        tmp=(Node<Contact>) head;
+         while(tmp!= null) {
+            if (targetEvent == null) {
                 return false;
             }
-
-        else if (tmp.getData().equals(targetEvent)) {
+    Node <Event> tem = new Node <Event> () ;
+        tem= tmp.getData().getEvents().getHead();
+         while(tem!= null) {
+        if (tem.getData().compareTo(targetEvent) == 0 ) {
             return  true;  
         }
-       tmp=tmp.getNext();
-    } return false; }
+       tem=tem.getNext();
+    }tmp=tmp.getNext(); 
+ } return false; }
 
 //exist in the list
     public boolean hasNext (){
