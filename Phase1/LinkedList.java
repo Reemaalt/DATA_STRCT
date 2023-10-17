@@ -97,7 +97,7 @@ if (isEmpty()){
     Node <Event> tem = new Node <Event> () ;
         tem= tmp.getData().getEvents().getHead();
          while(tem!= null) {
-        if (tem.getData().compareTo(targetEvent) == 0 ) {
+        if (tem.getData().equalsIgnoreCase(targetEvent)) {
             return  true;  
         }
        tem=tem.getNext();

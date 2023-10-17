@@ -200,6 +200,39 @@ public class PhoneBook {
         }
          
 
+        public LinkedList <Event> searchEventbyTitle(String titleEvent) {
+            
+            if (contacts.isEmpty() ){
+             System.out.println("No Contact in list");
+            return null ;
+            }
+             LinkedList<Event> EventsSharingtitle = new LinkedList<Event>();
+             Node <Contact> tmp = new Node <Contact> () ;
+            tmp=contacts.getHead();
+             while(tmp!= null) {
+
+        Node <Event> tem = new Node <Event> () ;
+            tem= tmp.getData().getEvents().getHead();
+             while(tem!= null) {
+            if (tem.getData().getTitle().compareTo(titleEvent) == 0 ) {
+                 EventsSharingtitle.AddEvent(tem.getData());
+                
+            } 
+           tem=tem.getNext();
+        }tmp=tmp.getNext(); 
+     }   if (EventsSharingtitle.isEmpty()) {
+            System.out.println("No Event");
+            return null ;
+        } else {
+            System.out.println("Event Found! /n");
+           /*  Node<Event> temp = EventsSharingtitle.getHead();
+            while (temp != null) {
+                System.out.println(temp.getData().toString());
+                temp = tmp.getNext();*/
+                return EventsSharingtitle;
+            }
+            } 
+
 //RUN
 public void runPhoneBook (){
     Scanner input=new Scanner (System.in);
