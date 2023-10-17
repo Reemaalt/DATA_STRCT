@@ -87,7 +87,7 @@ return Events;
     return "Name : " + name + " /n Phone Number :" + PhoneNumber + "/n Email Address :" + EmailAddr + "/n Address :" + Address
             + "/n Birthday : " + birthday + "/n Notes :" + notes;
 }
-//comparto for the serch method
+//comparto for the search method
 @Override
 public int compareTo(Contact o) {
  

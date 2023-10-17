@@ -23,10 +23,9 @@ public class PhoneBook {
      * the same name or phone number already exists in the list before adding a new
      * contact.
      */
-    public  void addContact(Contact contact, LinkedList<Contact> contacts) {
+    public  void addContact(Contact contact) {
         if (!contacts.contains(contact)) {
             contacts.AddContact(contact);
-            System.out.println("Contact added successfully.");
         } else {
             System.out.println("Contact already exists.");
         }
@@ -49,7 +48,7 @@ public class PhoneBook {
      */
     public  void printContactsSharingFirstName(String firstName) {
         LinkedList<Contact> contactsSharingFN = new LinkedList<>();
-        Node<Contact> tem = contacts.head;
+        Node<Contact> tem = contacts.getHead();
         while (contacts.hasNext()) {
             if (contacts.startsWith(((Contact) tem.getData()).getname(), firstName)) {
                 contactsSharingFN.AddContact(tem.getData());
@@ -61,7 +60,7 @@ public class PhoneBook {
             System.out.println("No contacts found sharing this first name.");
         } else {
             System.out.println("Contacts Found! /n");
-            Node<Contact> tmp = contacts.head;
+            Node<Contact> tmp = contacts.getHead();
             while (contactsSharingFN.hasNext()) {
                 {
                     System.out.println(((Contact) tmp.getData()).toString());
@@ -76,7 +75,7 @@ public class PhoneBook {
      * should return all contacts
      * that have these values
      */
-    public  void searchContactByCriteria(String criteria, LinkedList<Contact> contacts) {
+    public  void searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
         while (contacts.hasNext()) {
@@ -224,7 +223,7 @@ public void runPhoneBook (){
 
                 //adding a node of type contact to contacts list
                 Contact c1= new Contact(namerun,phone,email,address,bday,note);
-                addContact(c1,contacts);
+                addContact(c1);
                 break;
             //  Search for a contact
             case 2:
@@ -235,27 +234,27 @@ public void runPhoneBook (){
                     case 1:
                         System.out.println("Enter the contact's name:"); 
                         String Sname=input.next();
-                        searchContactByCriteria(Sname,contacts);
+                        searchContactByCriteria(Sname);
                         break;
                     case 2:
                         System.out.println("Enter the contact's phone number:");
                         String Sphone=input.next();
-                        searchContactByCriteria(Sphone,contacts);
+                        searchContactByCriteria(Sphone);
                         break;
                     case 3:
                         System.out.println("Enter the contact's email address:");
                         String Semail=input.next();
-                        searchContactByCriteria(Semail,contacts);
+                        searchContactByCriteria(Semail);
                         break;
                     case 4: 
                         System.out.println("Enter the contact's address:");
                         String Saddress=input.next();
-                        searchContactByCriteria(Saddress,contacts);
+                        searchContactByCriteria(Saddress);
                         break;
                     case 5:
                         System.out.println("Enter the contact's birthday:");
                         String Sbday=input.next();
-                        searchContactByCriteria(Sbday,contacts);
+                        searchContactByCriteria(Sbday);
                         break;
                     default:
                         System.out.println("invailed input!!");
@@ -313,7 +312,7 @@ public void runPhoneBook (){
             case 6:
             System.out.println("Enter the first name:");
             String fname= input.nextLine();
-            printContactsSharingFirstName(fname,contacts);
+            printContactsSharingFirstName(fname);
             break;
 
             case 7:
