@@ -101,29 +101,27 @@ public class PhoneBook {
      * an event as well as all
      * contacts that share the first name.
      */
-    public   void printContactsSharingEvent(Event event) {
-        LinkedList<Contact> SharingEvent = new LinkedList<>();
+    public void printContactsSharingEvent(Event event) {
+        LinkedList<Contact> sharingEvent = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
-        while (tem!=null) {
-            if (contacts.hasTheEvent(event)) {
-                SharingEvent.AddContact(tem.getData());
+        while (tem != null) {
+            if (tem.getData().hasTheEvent(event)) {
+                sharingEvent.AddContact(tem.getData());
             }
             tem = tem.getNext();
         }
-        if (SharingEvent.isEmpty()) {
+        if (sharingEvent.isEmpty()) {
             System.out.println("No contacts found sharing this event.");
         } else {
             System.out.println("Contacts sharing the event:");
-            Node<Contact> tmp = contacts.getHead();
-            SharingEvent.getHead();
-            while (tmp != null ) {
-                {
-                    System.out.println(((Contact) tmp.getData()).toString());
-                    tmp = tmp.getNext();
-                }
+            Node<Contact> tmp = sharingEvent.getHead();
+            while (tmp != null) {
+                System.out.println(tmp.getData().toString());
+                tmp = tmp.getNext();
             }
         }
     }
+    
 
     // Write a method that will list all events available ordered alphabetically by
     // event name in O(n) time
