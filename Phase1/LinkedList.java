@@ -102,10 +102,10 @@ if(!contains(null)){
      return current != null;
      
     }
-    public boolean contains(Contact othercontact) {
+    public boolean contains(Contact otherContact) {
        current = head;
         while (current != null) {
-            if ( (current.data) == (othercontact) ) {
+            if (current.data.equals(otherContact))  {
                 return true;
             }
             current = current.next;

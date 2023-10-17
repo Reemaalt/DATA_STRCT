@@ -241,7 +241,7 @@ public void runPhoneBook (){
                 switch(criteria){
                     case 1:
                         System.out.println("Enter the contact's name:"); 
-                        String Sname=input.next();
+                        String Sname=input.nextLine();
                         searchContactByCriteria(Sname);
                         break;
                     case 2:
