@@ -2,18 +2,18 @@
 It should have methods for adding, searching, and deleting contacts from the list */
 public class LinkedList <T> {
   
-private Node <T> head ;
-private Node <T> current ;
+public Node <T> head ;
+public Node <T> current ;
 public Object getData;
 
-// Getter and setter methods for the fields
+/*Getter and setter methods for the fields
     public void setHead(Node<T> head) {
     this.head = head;
-}
+}*/
 
-    public Node<T> getHead() {
+   /*  public Node<T> getHead() {
     return head;
-}
+}*/
 
 //chaking if the list is empty
     public boolean isEmpty() {

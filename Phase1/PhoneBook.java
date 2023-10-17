@@ -7,9 +7,15 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 
-//case5 & bigOs & test all case & exsp 
+//case5 & bigOs & test all case & exsp & getHead()
 
 public class PhoneBook {
+    private LinkedList<Contact> contacts;
+
+    public PhoneBook() {
+        contacts = new LinkedList<>();
+    }
+
 
     /*
      * Each contact in the phonebook should be unique. You can ensure this by
@@ -17,7 +23,7 @@ public class PhoneBook {
      * the same name or phone number already exists in the list before adding a new
      * contact.
      */
-    public static void addContact(Contact contact, LinkedList<Contact> contacts) {
+    public  void addContact(Contact contact, LinkedList<Contact> contacts) {
         if (!contacts.contains(contact)) {
             contacts.AddContact(contact);
             System.out.println("Contact added successfully.");
@@ -27,9 +33,9 @@ public class PhoneBook {
     }
 
     // When a contact is deleted all events with that contact are also deleted.
-    public  static void deleteContact(Contact contact, LinkedList<Contact> contacts) {
-
-        if (contacts.DeleteContact(contact)) {
+    public void deleteContact(Contact contactName) {
+      
+        if (contacts.DeleteContact(contactName)) {
             System.out.println("Contact removed successfully.");
         } else {
             System.out.println("Contact not found.");
@@ -41,9 +47,9 @@ public class PhoneBook {
      * an event as well as all
      * contacts that share the first name.
      */
-    public static void printContactsSharingFirstName(String firstName, LinkedList<Contact> contacts) {
+    public  void printContactsSharingFirstName(String firstName) {
         LinkedList<Contact> contactsSharingFN = new LinkedList<>();
-        Node<Contact> tem = contacts.getHead();
+        Node<Contact> tem = contacts.head;
         while (contacts.hasNext()) {
             if (contacts.startsWith(((Contact) tem.getData()).getname(), firstName)) {
                 contactsSharingFN.AddContact(tem.getData());
@@ -55,7 +61,7 @@ public class PhoneBook {
             System.out.println("No contacts found sharing this first name.");
         } else {
             System.out.println("Contacts Found! /n");
-            Node<Contact> tmp = contacts.getHead();
+            Node<Contact> tmp = contacts.head;
             while (contactsSharingFN.hasNext()) {
                 {
                     System.out.println(((Contact) tmp.getData()).toString());
@@ -70,7 +76,7 @@ public class PhoneBook {
      * should return all contacts
      * that have these values
      */
-    public static void searchContactByCriteria(String criteria, LinkedList<Contact> contacts) {
+    public  void searchContactByCriteria(String criteria, LinkedList<Contact> contacts) {
         LinkedList<Contact> searchResults = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
         while (contacts.hasNext()) {
@@ -101,7 +107,7 @@ public class PhoneBook {
      * an event as well as all
      * contacts that share the first name.
      */
-    public  static void printContactsSharingEvent(Event event, LinkedList<Contact> contacts) {
+    public   void printContactsSharingEvent(Event event, LinkedList<Contact> contacts) {
         LinkedList<Contact> SharingEvent = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
         while (contacts.hasNext()) {
@@ -127,7 +133,7 @@ public class PhoneBook {
     // Write a method that will list all events available ordered alphabetically by
     // event name in O(n) time
     // A method to print all events in alphabetical order
-    public static void printAllEventsAlphabetically(Contact c1) {
+    public  void printAllEventsAlphabetically(Contact c1) {
         // Use a temporary node to store the head of the list
         Node<Event> temp = c1.getEvents().getHead();
         // Loop until the list is empty
@@ -152,7 +158,7 @@ public class PhoneBook {
      * scheduled for a contact if
      * it has a conflict with a current scheduled event.
      */
-    private static boolean EventConflict(Contact contact, Event newEvent) {
+    private  boolean EventConflict(Contact contact, Event newEvent) {
         Node<Event> tmp = (contact.getEvents().getHead());
 
         while (contact.getEvents().hasNext()) {
@@ -166,7 +172,7 @@ public class PhoneBook {
         return false;
     }
 
-    public static void scheduleEvent(Event event, Contact contact) {
+    public  void scheduleEvent(Event event, Contact contact) {
 
         // Check for event conflicts
         if (!EventConflict(contact, event)) {
@@ -177,23 +183,22 @@ public class PhoneBook {
         }
 
     }
-    public static Node <Contact> searchContact (String Name, LinkedList<Contact> contacts){
+    public Contact searchContact (String Name ){
         Node<Contact> tem = contacts.getHead();
         while (contacts.hasNext()) {
             if (tem.getData().getname().equalsIgnoreCase(Name) ){
-     return tem;
+     return tem.getData();
     }
     tem=tem.getNext();
     }
-    return tem;
+    return tem.getData();
 }
-
-    // main method
-    public static void main(String[] args) {
-        //pass the input stream
+//RUN
+public void runPhoneBook (){
+    //pass the input stream
     Scanner input=new Scanner (System.in);
         // the contact list 
-    LinkedList <Contact> contacts = new LinkedList<Contact>();
+      
     int choice;
         System.out.println("Welcome to the Linked Tree Phonebook!\n");
       do {  System.gc();
@@ -263,8 +268,8 @@ public class PhoneBook {
             case 3:
             System.out.println("the  FULL name of the contact you want to delete:");
              String fullN=input.nextLine();
-             
-                 deleteContact((searchContact(fullN,contacts)).getData(),contacts);
+             Contact Condelete = searchContact(fullN) ;
+                 deleteContact(Condelete );
                 break;
             //Schedule an event
             case 4:
@@ -279,31 +284,31 @@ public class PhoneBook {
                 System.out.println("Enter event location:");
                 String eloc= input.nextLine();
 
-                Contact Cfound = searchContact(Cname,contacts).getData();
+                Contact Cfound = searchContact(Cname);
                 Event e1=new Event(title,edate,eloc,Cfound);
                 scheduleEvent(e1, Cfound);
                 break;
 
             //Print event details
-          /*   case 5:
+          case 5:
                 System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
                    int scriteria =input.nextInt();
                    switch(scriteria){
                     case 1:
                     System.out.println("Enter contact's name");
                      String cname=input.nextLine();
-                     printAllEventsAlphabetically(searchContact(cname,contacts).getData());
+                     printAllEventsAlphabetically(searchContact(cname));
                      break;
-                     
+                     /* 
                      case 2:
                      System.out.println("Enter event title");
                      String etitle =input.nextLine();
-
+*/
                      
-                     break;
+                     //1break;
                    }
             break;
-            */
+            
             //print ContactsSharing FirstName
             case 6:
             System.out.println("Enter the first name:");
@@ -315,7 +320,7 @@ public class PhoneBook {
     System.out.println("the  FULL name of the contact you want their events:");
              String full=input.nextLine();
 
-            printAllEventsAlphabetically((searchContact(full,contacts)).getData());
+            printAllEventsAlphabetically((searchContact(full)));
             break;
 
             //exiting 
@@ -332,6 +337,11 @@ System.out.println("unrecognized input!!");
                 
 
         }
-        
-    }
 
+
+    // main method
+   public static void main(String[] args) {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.runPhoneBook();
+    }
+}
