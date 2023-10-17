@@ -21,22 +21,25 @@ public Object getData;
     }
 
 //adding Contact to contactList
-    public void AddContact(T contact){
-Node <T> tmp = new Node <T> (contact) ;
+    public void AddContact( Contact contact){
+Node <Contact> tmp = new Node <Contact> (contact) ;
 
+    if(!contains( contact)){
  if (isEmpty()){
-      head = tmp ; }
+      head = (Node<T>) tmp ; }
  else {
     current = head ;
     while (current.next != null){
         current = current.next;
     }
-    current.next = tmp ;
+    current.next = (Node<T>) tmp ;
     System.out.println("Contact added successfully.");
-
+   
  }
 }
- 
+else {
+System.out.println("contact already exist");
+}}
 //adding event to eventList 
 // Make sure before adding an event that the contact in the event exist in the contact list
     public void AddEvent (Event event){

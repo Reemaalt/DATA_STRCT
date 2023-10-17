@@ -23,13 +23,7 @@ public class PhoneBook {
      * the same name or phone number already exists in the list before adding a new
      * contact.
      */
-    public  void addContact(Contact contact) {
-        if (!contacts.contains(contact)) {
-            contacts.AddContact(contact);
-        } else {
-            System.out.println("Contact already exists.");
-        }
-    }
+    
 
     // When a contact is deleted all events with that contact are also deleted.
     public void deleteContact(String contactName) {
@@ -231,7 +225,7 @@ public void runPhoneBook (){
 
                 //adding a node of type contact to contacts list
                 Contact c1= new Contact(namerun,phone,email,address,bday,note);
-                addContact(c1);
+                contacts.AddContact(c1);
                 break;
             //  Search for a contact
             case 2:
