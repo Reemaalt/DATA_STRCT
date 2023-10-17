@@ -94,4 +94,12 @@ public int compareTo(Contact o) {
    return(this.name.compareTo(o.name)) ;
    
 }
+// Override equals and hashCode to ensure contact uniqueness based on name or phone number
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Contact contact = (Contact) o;
+    return name.equals(contact.name) || PhoneNumber.equals(contact.PhoneNumber);
+}
 }

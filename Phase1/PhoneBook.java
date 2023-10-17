@@ -32,9 +32,10 @@ public class PhoneBook {
     }
 
     // When a contact is deleted all events with that contact are also deleted.
-    public void deleteContact(Contact contactName) {
-      
-        if (contacts.DeleteContact(contactName)) {
+    public void deleteContact(String contactName) {
+        Contact contactToRemove = searchContact(contactName);
+        if (contactToRemove != null) {
+            contacts.DeleteContact(contactToRemove);
             System.out.println("Contact removed successfully.");
         } else {
             System.out.println("Contact not found.");
@@ -49,7 +50,7 @@ public class PhoneBook {
     public  void printContactsSharingFirstName(String firstName) {
         LinkedList<Contact> contactsSharingFN = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
-        while (contacts.hasNext()) {
+        while (tem!=null) {
             if (contacts.startsWith(((Contact) tem.getData()).getname(), firstName)) {
                 contactsSharingFN.AddContact(tem.getData());
             }
@@ -78,7 +79,7 @@ public class PhoneBook {
     public  void searchContactByCriteria(String criteria) {
         LinkedList<Contact> searchResults = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
-        while (contacts.hasNext()) {
+        while (tem!=null) {
             if (tem.getData().getname().equalsIgnoreCase(criteria) ||
                     tem.getData().getPhoneNumber().equalsIgnoreCase(criteria) ||
                     tem.getData().getEmailAddr().equalsIgnoreCase(criteria) ||
@@ -109,7 +110,7 @@ public class PhoneBook {
     public   void printContactsSharingEvent(Event event, LinkedList<Contact> contacts) {
         LinkedList<Contact> SharingEvent = new LinkedList<>();
         Node<Contact> tem = contacts.getHead();
-        while (contacts.hasNext()) {
+        while (tem!=null) {
             if (contacts.hasTheEvent(event)) {
                 SharingEvent.AddContact(tem.getData());
             }
@@ -160,7 +161,7 @@ public class PhoneBook {
     private  boolean EventConflict(Contact contact, Event newEvent) {
         Node<Event> tmp = (contact.getEvents().getHead());
 
-        while (contact.getEvents().hasNext()) {
+        while (tmp!=null) {
 
             if (tmp.getData().getDateTime().equals(newEvent.getDateTime())) {
                 return true;
@@ -182,19 +183,26 @@ public class PhoneBook {
         }
 
     }
-    public Contact searchContact (String Name ){
-        Node<Contact> tem = contacts.getHead();
-        while (contacts.hasNext()) {
-            if (tem.getData().getname().equalsIgnoreCase(Name) ){
-     return tem.getData();
+    
+    public Contact searchContact(String contactName) {
+        return searchLinkedList(contacts.getHead(), contactName);
     }
-    tem=tem.getNext();
-    }
-    return tem.getData();
-}
+
+        private Contact searchLinkedList(Node<Contact> node, String contactName) {
+            if (node == null) {
+                return null;
+            }
+    
+            if (node.getData().getname().equalsIgnoreCase(contactName)) {
+                return node.getData();
+            }
+    
+            return searchLinkedList(node.getNext(), contactName);
+        }
+         
+
 //RUN
 public void runPhoneBook (){
-    //pass the input stream
     Scanner input=new Scanner (System.in);
         // the contact list 
       
@@ -267,8 +275,7 @@ public void runPhoneBook (){
             case 3:
             System.out.println("the  FULL name of the contact you want to delete:");
              String fullN=input.nextLine();
-             Contact Condelete = searchContact(fullN) ;
-                 deleteContact(Condelete );
+              deleteContact(fullN );
                 break;
             //Schedule an event
             case 4:
