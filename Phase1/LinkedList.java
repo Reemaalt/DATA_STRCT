@@ -91,22 +91,11 @@ if (isEmpty()){
             if (targetEvent == null) {
                 return false;
             }
-<<<<<<< HEAD
     Node <Event> tem = new Node <Event> () ;
         tem= tmp.getData().getEvents().getHead();
          while(tem!= null) {
         if (tem.getData().equalsIgnoreCase(targetEvent)) {
             return  true;  
-=======
-            Node<Event> tem = ((Contact) tmp.getData()).getEvents().getHead();
-            while (tem != null) {
-                if (tem.getData().compareTo(targetEvent) == 0) {
-                    return true;
-                }
-                tem = tem.getNext();
-            }
-            tmp = tmp.getNext();
->>>>>>> ac22149c840b33e2283b14dbb8a86ec3047f2a70
         }
         return false;
     }
