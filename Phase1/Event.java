@@ -58,5 +58,11 @@ private Contact Contact;
                 ;
     }
 
+    public int compareTo(Event o) {
+ 
+        return(this.title.compareTo(o.title)) ;
+        
+     }
+
 }
 

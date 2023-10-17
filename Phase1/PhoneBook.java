@@ -9,14 +9,7 @@ import java.util.*;
 
 //case5 & bigOs & test all case & exsp 
 
-public class PhoneBook implements Comparable<Contact> {
-
-    @Override
-    public int compareTo(Contact otherContact) {
-        // Implement comparison logic by comparing contact names
-        return 2;
-    }
-
+public class PhoneBook {
     private LinkedList<Contact> contacts;
 
     public PhoneBook() {
@@ -122,7 +115,8 @@ public class PhoneBook implements Comparable<Contact> {
         } else {
             System.out.println("Contacts sharing the event:");
             Node<Contact> tmp = contacts.getHead();
-            while (SharingEvent.hasNext()) {
+            SharingEvent.getHead();
+            while (tmp != null ) {
                 {
                     System.out.println(((Contact) tmp.getData()).toString());
                     tmp = tmp.getNext();
@@ -195,6 +189,10 @@ public class PhoneBook implements Comparable<Contact> {
             }
     
             if (node.getData().getname().equalsIgnoreCase(contactName)) {
+                return node.getData();
+            }
+
+            if (node.getData().getEvents().equalsIgnoreCase(contactName)) {
                 return node.getData();
             }
     
