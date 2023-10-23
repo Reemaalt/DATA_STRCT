@@ -84,8 +84,8 @@ return Events;
 
 @Override
     public String toString() {
-    return "Name : " + name + " /n Phone Number :" + PhoneNumber + "/n Email Address :" + EmailAddr + "/n Address :" + Address
-            + "/n Birthday : " + birthday + "/n Notes :" + notes;
+    return "Name : " + name + " \n Phone Number :" + PhoneNumber + "\n Email Address :" + EmailAddr + "\n Address :" + Address
+            + "\n Birthday : " + birthday + "\n Notes :" + notes;
 }
 //comparto for the search method
 @Override
