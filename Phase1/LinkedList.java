@@ -35,7 +35,7 @@ public void AddContact(Contact contact) {
             }
             current.next = newNode;
         }
-        System.out.println("Contact added successfully.");
+       // System.out.println("Contact added successfully.");
     } else {
         System.out.println("Contact with the same name or phone number already exists.");
     }
@@ -71,7 +71,7 @@ public boolean contains(String phoneNumber) {
   
 if (isEmpty()){
        head =  (Node<T>) tmp ; 
-      System.out.println("Event scheduled successfully.");
+      //System.out.println("Event scheduled successfully.");
     }
  else {
     current = head ;
@@ -80,7 +80,7 @@ if (isEmpty()){
 
     }
      current.next =   (Node<T>) tmp ;
- System.out.println("Event scheduled successfully.");
+ //System.out.println("Event scheduled successfully.");
 }
 }
 
@@ -139,29 +139,7 @@ if (isEmpty()){
      
     }
 
-  /*  public boolean contains(Contact otherContact) {
-       current = head;
-        while (current != null) {
-            if (current.data.equals(otherContact))  {
-                return true;
-            }
-            current = current.next;
-        }
-        return false;
-    } */
-    
-   /*  public boolean startsWith (String name , String searchName ){
-        if (name.length() != searchName.length()) {
-        return false ;
-        }
-        
-        for (int i =0 ; i< searchName.length() ; i++){
-            if (name.charAt(i) != searchName.charAt (i))
-            return false;
-        }
-
-        return true ;
-    } */
+  
 
     public boolean startsWith(String name, String searchName) {
         return name.contains(searchName);

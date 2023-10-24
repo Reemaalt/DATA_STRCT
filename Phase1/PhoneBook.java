@@ -54,7 +54,7 @@ public class PhoneBook {
         if (contactsSharingFN.isEmpty()) {
             System.out.println("No contacts found sharing this first name.");
         } else {
-            System.out.println("Contacts Found! /n");
+            System.out.println("Contacts Found! \n");
             Node<Contact> tmp = contacts.getHead();
             while (tmp != null) {
                 {
@@ -222,7 +222,7 @@ public class PhoneBook {
           
             return null ;
         } else {
-            System.out.println("Event Found! /n");
+            System.out.println("Event Found! \n");
            
                 return EventsSharingtitle;
             }
@@ -329,7 +329,7 @@ break;
 
          //Print event details
         case 5:
-                System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
+                System.out.println("Enter search criteria:/n 1.contactname /n 2.Event tittle");
                    int scriteria =input.nextInt();
                    input.nextLine();
 
