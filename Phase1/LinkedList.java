@@ -22,17 +22,17 @@ private Node <T> current ;
 
 //adding Contact to contactList
     public void AddContact( Contact contact){
-Node <Contact> tmp = new Node <Contact> (contact) ;
+        Node<T> tmp = new Node<T>((T) contact);
 
     if(!contains( contact)){
  if (isEmpty()){
-      head = (Node<T>) tmp ; }
+      head = tmp ; }
  else {
     current = head ;
     while (current.next != null){
         current = current.next;
     }
-    current.next = (Node<T>) tmp ;
+    current.next = tmp ;
     System.out.println("Contact added successfully.");
    
  }
@@ -78,8 +78,9 @@ if (isEmpty()){
         return false ;
         }
     
-     current = current.next ;   
-    previous.next = current ;
+        previous.next = current.next;
+     /*current = current.next ;   
+    previous.next = current ;*/
       return true ;
     }
  
