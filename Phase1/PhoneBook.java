@@ -263,6 +263,7 @@ public void runPhoneBook (){
                 System.out.println("Enter search criteria:\n1.Name\n2.Phone Number\n 3.Email Address\n 4.Address\n 5.Birthday\n");
                 
                 int criteria = input.nextInt();
+                input.nextLine();
                 switch(criteria){
                     case 1:
                         System.out.println("Enter the contact's name:"); 

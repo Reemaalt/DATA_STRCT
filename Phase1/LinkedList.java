@@ -21,25 +21,67 @@ private Node <T> current ;
     }
 
 //adding Contact to contactList
-    public void AddContact( Contact contact){
-        Node<T> tmp = new Node<T>((T) contact);
 
-    if(!contains( contact)){
- if (isEmpty()){
-      head = tmp ; }
- else {
-    current = head ;
-    while (current.next != null){
+public void AddContact(Contact contact) {
+    Node<T> newNode = new Node<T>((T) contact);
+
+    if (!contains(contact.getPhoneNumber()) && !containsName(contact)) {
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        System.out.println("Contact added successfully.");
+    } else {
+        System.out.println("Contact with the same name or phone number already exists.");
+    }
+}
+
+public boolean containsName(Contact contact) {
+    current = head;
+    while (current != null) {
+        if (((Contact) current.data).compareTo(contact) == 0) {
+            return true;
+        }
         current = current.next;
     }
+    return false;
+}
+
+public boolean contains(String phoneNumber) {
+    current = head;
+    while (current != null) {
+        if (((Contact) current.data).getPhoneNumber().equals(phoneNumber)) {
+            return true;
+        }
+        current = current.next;
+    }
+    return false;
+}
+
+
+  /*   public void AddContact( Contact contact){
+        Node<T> tmp = new Node<T>((T) contact);
+
+    if(!contains(contact)){
+       if (isEmpty()){
+      head = tmp ; }
+        else {
+           current = head ;
+             while (current.next != null){
+               current = current.next;
+    }
     current.next = tmp ;
-    System.out.println("Contact added successfully.");
-   
  }
+  System.out.println("Contact added successfully.");
 }
 else {
 System.out.println("contact already exist");
-}}
+}}   */
 //adding event to eventList 
 // Make sure before adding an event that the contact in the event exist in the contact list
     public void AddEvent (Event event){
@@ -111,7 +153,8 @@ if (isEmpty()){
      return current != null;
      
     }
-    public boolean contains(Contact otherContact) {
+
+  /*  public boolean contains(Contact otherContact) {
        current = head;
         while (current != null) {
             if (current.data.equals(otherContact))  {
@@ -120,9 +163,9 @@ if (isEmpty()){
             current = current.next;
         }
         return false;
-    }
+    } */
     
-    public boolean startsWith (String name , String searchName ){
+   /*  public boolean startsWith (String name , String searchName ){
         if (name.length() != searchName.length()) {
         return false ;
         }
@@ -133,7 +176,12 @@ if (isEmpty()){
         }
 
         return true ;
+    } */
+
+    public boolean startsWith(String name, String searchName) {
+        return name.contains(searchName);
     }
+    
    
 
 }
