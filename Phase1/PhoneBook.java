@@ -123,31 +123,31 @@ public class PhoneBook {
     }
     
 
-    // Write a method that will list all events available ordered alphabetically by
+ // Write a method that will list all events available ordered alphabetically by
     // event name in O(n) time
     // A method to print all events in alphabetical order
-    public  void printAllEventsAlphabetically(Contact c1) {
+
+    // A method to print all events in alphabetical order using selection sort
+     public void printAllEventsAlphabetically(Contact c1) { 
         // Use a temporary node to store the head of the list
-        Node<Event> temp = c1.getEvents().getHead();
-        // Loop until the list is empty
-        while (temp != null) {
-            // Find the node with the smallest event name in the list
-            Node<Event> min = temp;
-            Node<Event> current = temp.getNext();
-            while (current != null) {
-                if (current.getData().getTitle().compareTo(min.getData().getTitle()) < 0) {
-                    min = current;
-                    System.out.println(min.getData().getTitle());
-                }
-                current = current.getNext();
-              
-                
-
-            }   
-            temp = temp.getNext();
-
-        }
-    }
+         Node<Event> temp = c1.getEvents().getHead(); 
+         // Loop until the end of the list
+          while (temp != null) { 
+            // Find the node with the smallest event name in the remaining part of the list
+             Node<Event> min = temp; Node<Event> current = temp.getNext();
+              while (current != null) { 
+            if (current.getData().getTitle().compareTo(min.getData().getTitle()) < 0) {
+                 min = current;
+                 } 
+                 current = current.getNext(); }
+                 // Swap the data of the current node and the smallest node
+                 Event tempData = temp.getData(); 
+                 temp.setData(min.getData()); 
+                 min.setData(tempData); 
+                 // Print the event name of the current node 
+                 System.out.println(temp.getData().getTitle());
+                  // Move to the next node 
+                  temp = temp.getNext(); } }
 
     /*
      * There should be no conflict in event scheduling. A new event should not be
