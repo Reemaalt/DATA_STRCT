@@ -331,11 +331,16 @@ break;
         case 5:
                 System.out.println("Enter search criteria:\n 1.contactname \n 2.Event tittle");
                    int scriteria =input.nextInt();
+                   input.nextLine();
+
                    switch(scriteria){
                     case 1:
                     System.out.println("Enter contact's name");
                      String cname=input.nextLine();
+                     if(searchContact(cname)!=null)
                      printAllEventsAlphabetically(searchContact(cname));
+                     else
+                     System.out.println("contact not found");
                      break;
                       
                      case 2:
@@ -351,8 +356,9 @@ break;
                 System.out.println(temp.getData().toString());
                 temp = temp.getNext();
             }
-                     break;
-                   }}
+                     
+                   }break;
+                }
             break;
             
         //print ContactsSharing FirstName
