@@ -25,7 +25,7 @@ private Node <T> current ;
 public void AddContact(Contact contact) {
     Node<T> newNode = new Node<T>((T) contact);
 
-    if (!contains(contact.getPhoneNumber()) && !containsName(contact)) {
+    if (!contains(contact.getPhoneNumber()) || !containsName(contact)) {
         if (isEmpty()) {
             head = newNode;
         } else {
@@ -64,37 +64,23 @@ public boolean contains(String phoneNumber) {
 }
 
 
-  /*   public void AddContact( Contact contact){
-        Node<T> tmp = new Node<T>((T) contact);
-
-    if(!contains(contact)){
-       if (isEmpty()){
-      head = tmp ; }
-        else {
-           current = head ;
-             while (current.next != null){
-               current = current.next;
-    }
-    current.next = tmp ;
- }
-  System.out.println("Contact added successfully.");
-}
-else {
-System.out.println("contact already exist");
-}}   */
-//adding event to eventList 
+ 
 // Make sure before adding an event that the contact in the event exist in the contact list
     public void AddEvent (Event event){
-    Node <T> tmp = new Node <T> () ;
+    Node <Event> tmp = new Node <Event> (event) ;
+  
 if (isEmpty()){
-      head =  tmp ; }
+       head =  (Node<T>) tmp ; 
+      System.out.println("Event scheduled successfully.");
+    }
  else {
     current = head ;
     while (current.next != null){
         current = current.next;
-    }
-     current.next = tmp ;
 
+    }
+     current.next =   (Node<T>) tmp ;
+ System.out.println("Event scheduled successfully.");
 }
 }
 
@@ -121,8 +107,7 @@ if (isEmpty()){
         }
     
         previous.next = current.next;
-     /*current = current.next ;   
-    previous.next = current ;*/
+     
       return true ;
     }
  

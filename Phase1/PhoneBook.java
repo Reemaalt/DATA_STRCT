@@ -137,11 +137,14 @@ public class PhoneBook {
             while (current != null) {
                 if (current.getData().getTitle().compareTo(min.getData().getTitle()) < 0) {
                     min = current;
+                    System.out.println(min.getData().getTitle());
                 }
-                System.out.println(min.getData().getTitle());
                 current = current.getNext();
+              
+                
 
-            }
+            }   
+            temp = temp.getNext();
 
         }
     }
@@ -170,7 +173,7 @@ public class PhoneBook {
         // Check for event conflicts
         if (!EventConflict(contact, event)) {
             contact.getEvents().AddEvent(event);
-            System.out.println("Event scheduled successfully.");
+           
         } else {
             System.out.println("There is a conflict with an existing event for this contact.");
         }
@@ -312,7 +315,7 @@ break;
                 String title= input.nextLine();
                 System.out.println("Enter contact name:");
                 String Cname= input.nextLine();
-                System.out.println("Enter event date and time (MM/DD/YYYY HH:MM): ");
+                System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
                 String useredate = input.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
