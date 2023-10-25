@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "PhoneBook",
+      "request": "launch",
+      "mainClass": "PhoneBook",
+      "projectName": "DATA_STRCT_b85b284"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
