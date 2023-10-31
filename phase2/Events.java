@@ -1,6 +1,10 @@
 package phase2;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+
+import org.w3c.dom.events.Event;
+
 
 public class Events {
 
@@ -9,9 +13,19 @@ private String title;
 private LocalDateTime dateTime;
 private String location;
 private Contact Contact;
+private  LinkedList <Contact> involedContacts ;
 
-// Constructor 1 for the appointment
-    public Events(String title, LocalDateTime dateTime, String location, Contact contact) {
+// Constructor 1 for the events
+public Events(String title, LocalDateTime dateTime, String location) {
+        this.title = title;
+        this.dateTime = dateTime;
+        this.location = location;
+        
+        involedContacts = new LinkedList<Contact>();
+}
+
+// Constructor 2 for the appointment
+public Events(String title, LocalDateTime dateTime, String location, Contact contact) {
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
