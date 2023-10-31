@@ -3,12 +3,9 @@ package phase2;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-import org.w3c.dom.events.Event;
-
-
 public class Events {
 
-    // Fields for the event 
+// Fields for the event 
 private String title;
 private LocalDateTime dateTime;
 private String location;
