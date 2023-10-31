@@ -46,7 +46,13 @@ class Contact implements Comparable<Contact> {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+    
+    @Override
+    public int compareTo(Contact o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    }
 
-    // Constructors, getters, setters, compareTo method
+   
     
 }
