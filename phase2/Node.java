@@ -1,20 +1,20 @@
 package phase2;
-public class Node<K extends Comparable<K> , T> { 
-        public K key ;
+public class Node<T> { 
+        public String key ;
         public T data; 
-        public Node<K ,T> left , right;
+        public Node<T> left , right;
 
 public Node () { 
     left = right = null ;
     }
 
-public Node (K key ,T data) {
+public Node (String key ,T data) {
     this.key = key  ;  
     this.data = data;
     left = right = null;
 } 
 
-public Node(K key, T data, Node<K,T> left, Node<K,T> right){
+public Node(String key, T data, Node<T> left, Node<T> right){
     this.key = key  ;  
     this.data = data;
     this.left = left;

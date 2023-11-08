@@ -1,34 +1,35 @@
 package phase2;
 
-public class ContactBTS <K extends Comparable<K>, T> {
-    private  Node<K,T> root , current;
-    //WHY K AND T NOT ONLY T?
+public class ContactBST <T extends Comparable<T>> {
+    private  Node<T> root , current;
     private T data;
     private String key;
-    private ContactBTS<K,T> left , right;
+    private ContactBST<T> left , right;
 
 
-//bst 
-public ContactBTS() {
+
+public ContactBST() {
         root = null;
-        current = null;
+        current = null ;
+       
 }
-public ContactBTS(String name, T val){
+
+public ContactBST(String name, T val){
     key=name;
     data=val;
     left=right=null;
 }
 
-public boolean empty() {
+public boolean isEmpty() {
         return root == null;
 }
 
-public T searchKey(K key) {
+public T searchKey(String key) {
     return searchKeyRecursive(root, key);
 }
 
-private T searchKeyRecursive(Node<K, T> data, K key) {
-    if (empty()) {
+private T searchKeyRecursive(Node<T> data, String key) {
+    if (isEmpty()) {
         return null;
     }
 
@@ -41,30 +42,51 @@ private T searchKeyRecursive(Node<K, T> data, K key) {
     }
 
     return searchKeyRecursive(data.right, key);
-
-    private boolean addcontact (String name, T val){
-        ContactBTS<K,T> p , q=current;
-        //also usse order traversal for phone num
-        if (findkey (name))
-        {  
-           current=q;
-           return false;
-        }
-        p=new ContactBTS<K,T>(name,val);
-        if (empty()){
-            root=current=p;
-            return true;
-        }
-        else{
-            //current on parent of key
-            if(name.compareTo(cuurrent.key)<0)//how does compareto work
-            current.left=p;
-            else
-            current.right=p;
-            current=p;
-            return true;
-        }
-        
-    }
 }
+
+private boolean addcontact (String name, T val){
+    ContactBST<T> p;
+    Node<T> q=current;
+    //also usse order traversal for phone num
+    if (findkey (name))
+    {  
+       current=q;
+       return false;
+    }
+    p=new ContactBST<T>(name,val);
+    if (isEmpty()){
+        root=current=p;
+        return true;
+    }
+    else{
+        //current on parent of key
+        if(name.compareTo(current.key)<0)//how does compareto work
+        current.left=p;
+        else
+        current.right=p;
+        current=p;
+        return true;
+    }
+    
+}
+}
+
+public String toString() {
+    String str = "";
+    if (isEmpty())
+      return str;
+    str = recInOrderTraversal ( root , str );
+    return str;
+
+}
+
+private String recInOrderTraversal(Node<T> node, String result) {
+    if (!isEmpty()) {
+        result = recInOrderTraversal(node.left, result);
+        result += node.data.toString()+ "    ";
+        result = recInOrderTraversal(node.right, result);
+    }
+    return result;
+}
+
 }
