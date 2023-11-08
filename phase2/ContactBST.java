@@ -44,11 +44,11 @@ private T searchKeyRecursive(Node<T> data, String key) {
     return searchKeyRecursive(data.right, key);
 }
 
-private boolean addcontact (String name, T val){
+private boolean addcontact (Node<T> contact, T val){
     ContactBST<T> p;
     Node<T> q=current;
     //also usse order traversal for phone num
-    if (findkey (name))
+    if (findkey (contact.key)|| recInOrderTraversal(contact , contact.data).equals(contact.data.phoneNumber))
     {  
        current=q;
        return false;
