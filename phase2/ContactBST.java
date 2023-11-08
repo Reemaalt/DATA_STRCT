@@ -4,7 +4,7 @@ import javax.swing.tree.TreeNode;
 
 public class ContactBST <T extends Comparable<T>> {
 
-private  Node<T> root , current;
+private  Node<Contact> root , current;
 private T data;
    
 
@@ -21,12 +21,12 @@ public boolean isEmpty() {
 }
 
 //take the string of the key the call searchKeyRecursive to find it
-public T searchKey(String key) {
+public Contact searchKey(String key) {
     return searchKeyRecursive(root, key);
 }
 
 //search for the in the tree
-private T searchKeyRecursive(Node<T> info, String key) {
+private Contact searchKeyRecursive(Node<Contact> info, String key) {
     if (isEmpty()) {
         return null;
     }
@@ -44,7 +44,7 @@ private T searchKeyRecursive(Node<T> info, String key) {
 
 //find name dose the key exsis 
 public boolean findkey(String name) { 
-    Node<T> p = root ,q = root;
+    Node<Contact> p = root ,q = root;
     if(isEmpty())
     return false;
 
@@ -66,17 +66,17 @@ public boolean findkey(String name) {
 }
 
 private boolean addcontact( Contact contact, String name){
-    Node<T> p;
-    Node<T> q= current;
+    Node<Contact> p;
+    Node<Contact> q= current;
 
     //is rec in order used correctly?
-    if (findkey (contact.getName())|| recInOrderTraversal( contact , contact.getPhoneNumber()))
+    if (findkey (contact.getName()) || contactExists(contact))
     {  
        current=q;
        return false;
     }
     
-    p=new Node<T>(name, contact);
+    p=new Node<Contact>(name, contact);
     if (isEmpty()){
         root=current=p;
         return true;
@@ -96,12 +96,12 @@ public boolean contactExists(Contact contact) {
     return contactExists(root, contact);
 }
 
-private boolean contactExists(TreeNode node, Contact contact) {
+private boolean contactExists(Node<Contact> node, Contact contact) {
         if (node == null) {
             return false;
         }
 
-        int compareResult = contact.compareTo(node.contact);
+        int compareResult = contact.compareToPhone(node.getData().getPhoneNumber());
 
         if (compareResult == 0) {
             // The contact with the same name already exists.
@@ -118,7 +118,7 @@ private boolean contactExists(TreeNode node, Contact contact) {
 
 
 //printing all the tree
-private String recInOrderTraversal(Node<T> node, String result) {
+private String recInOrderTraversal(Node<Contact> node, String result) {
     if (!isEmpty()) {
         result = recInOrderTraversal(node.left, result);
         result += node.data.toString()+ "    ";
@@ -135,5 +135,5 @@ public String toString() {
     return str;
 
 }
-
+}
 
