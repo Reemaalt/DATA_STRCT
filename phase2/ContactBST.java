@@ -1,10 +1,9 @@
 package phase2;
 
-import javax.print.DocFlavor.STRING;
-
 public class ContactBST <T extends Comparable<T>> {
-    private  Node<T> root , current;
-    private T data;
+
+private  Node<T> root , current;
+private T data;
    
 
 
@@ -14,31 +13,34 @@ public ContactBST() {
        
 }
 
-
+//cheak if the tree is empty
 public boolean isEmpty() {
         return root == null;
 }
 
+//take the string of the key the call searchKeyRecursive to find it
 public T searchKey(String key) {
     return searchKeyRecursive(root, key);
 }
 
-private T searchKeyRecursive(Node<T> data, String key) {
+//search for the in the tree
+private T searchKeyRecursive(Node<T> info, String key) {
     if (isEmpty()) {
         return null;
     }
 
-    if (key.compareTo(data.key) == 0) {
-        return data.data;
+    if (key.compareTo(info.key) == 0) {
+        return info.data;
     }
 
-    if (key.compareTo(data.key) < 0) {
-        return searchKeyRecursive(data.left, key);
+    if (key.compareTo(info.key) < 0) {
+        return searchKeyRecursive(info.left, key);
     }
 
-    return searchKeyRecursive(data.right, key);
+    return searchKeyRecursive(info.right, key);
 }
 
+//find name dose the key exsis 
 public boolean findkey(String name) { 
     Node<T> p = root ,q = root;
     if(isEmpty())
@@ -61,12 +63,12 @@ public boolean findkey(String name) {
     return false;
 }
 
-private boolean addcontact ( <Contact> contact, String name){
+private boolean addcontact( Contact contact, String name){
     Node<T> p;
-    Node<T> q=current;
+    Node<T> q= current;
 
     //is rec in order used correctly?
-    if (findkey (contact.getName())|| recInOrderTraversal(contact , contact.getPhoneNumber()))
+    if (findkey (contact.getName())|| recInOrderTraversal( contact , contact.getPhoneNumber()))
     {  
        current=q;
        return false;
@@ -90,15 +92,8 @@ private boolean addcontact ( <Contact> contact, String name){
 }
 
 
-public String toString() {
-    String str = "";
-    if (isEmpty())
-      return str;
-    str = recInOrderTraversal ( root , str );
-    return str;
 
-}
-//how does it work
+//printing all the tree
 private String recInOrderTraversal(Node<T> node, String result) {
     if (!isEmpty()) {
         result = recInOrderTraversal(node.left, result);
@@ -106,6 +101,15 @@ private String recInOrderTraversal(Node<T> node, String result) {
         result = recInOrderTraversal(node.right, result);
     }
     return result;
+}
+//printing
+public String toString() {
+    String str = "";
+    if (isEmpty())
+      return str;
+    str = recInOrderTraversal ( root , str );
+    return str;
+
 }
 
 }

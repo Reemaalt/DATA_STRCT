@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.w3c.dom.events.Event;
 
 public class PhoneBook {
     private ContactBST contactTree;
