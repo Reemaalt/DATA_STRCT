@@ -3,9 +3,7 @@ package phase2;
 public class ContactBST <T extends Comparable<T>> {
     private  Node<T> root , current;
     private T data;
-    private String key;
-    private ContactBST<T> left , right;
-
+   
 
 
 public ContactBST() {
@@ -14,11 +12,6 @@ public ContactBST() {
        
 }
 
-public ContactBST(String name, T val){
-    key=name;
-    data=val;
-    left=right=null;
-}
 
 public boolean isEmpty() {
         return root == null;
