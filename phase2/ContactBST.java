@@ -1,5 +1,7 @@
 package phase2;
 
+import javax.swing.tree.TreeNode;
+
 public class ContactBST <T extends Comparable<T>> {
 
 private  Node<T> root , current;
@@ -90,6 +92,28 @@ private boolean addcontact( Contact contact, String name){
     }
     
 }
+public boolean contactExists(Contact contact) {
+    return contactExists(root, contact);
+}
+
+private boolean contactExists(TreeNode node, Contact contact) {
+        if (node == null) {
+            return false;
+        }
+
+        int compareResult = contact.compareTo(node.contact);
+
+        if (compareResult == 0) {
+            // The contact with the same name already exists.
+            return true;
+        } else if (compareResult < 0) {
+            // The contact may exist in the left subtree.
+            return contactExists(node.left, contact);
+        } else {
+            // The contact may exist in the right subtree.
+            return contactExists(node.right, contact);
+        }
+    }
 
 
 
@@ -112,4 +136,4 @@ public String toString() {
 
 }
 
-}
+
