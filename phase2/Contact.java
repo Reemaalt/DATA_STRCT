@@ -1,6 +1,10 @@
 package phase2;
 
-    // Contact class representing a single contact in the phonebook
+import java.util.LinkedList;
+
+
+
+// Contact class representing a single contact in the phonebook
 class Contact implements Comparable<Contact> {
     private String name;
     private String phoneNumber;
@@ -8,6 +12,7 @@ class Contact implements Comparable<Contact> {
     private String address;
     private String birthday;
     private String notes;
+    private LinkedList <Events> EventsAndAppointments;
 
     
     public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday,
@@ -18,7 +23,14 @@ class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
+         this.EventsAndAppointments = new LinkedList<Events>();
     }
+    
+//add events
+
+
+
+
     public String getName() {
         return name;
     }

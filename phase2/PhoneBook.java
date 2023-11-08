@@ -7,12 +7,9 @@ import java.util.Scanner;
 
 public class PhoneBook {
     private ContactBST contactTree;
-    private List<Event> events;
+   // private List<Event> events;
 
-    public PhoneBook() {
-        contactTree = new ContactBST();
-        events = new ArrayList<>();
-    }
+   
 
     // Method to print all events by title or contact name.
  public void printEventsByTitleOrContact(String criteria, String searchTerm) {

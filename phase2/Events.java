@@ -11,23 +11,26 @@ private LocalDateTime dateTime;
 private String location;
 private Contact Contact;
 private  LinkedList <Contact> involedContacts ;
+private boolean isAppointment;
+
+
+
 
 // Constructor 1 for the events
-public Events(String title, LocalDateTime dateTime, String location) {
+public Events(String title, LocalDateTime dateTime, String location , boolean isAppointment,Contact Contact) {
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
-        
+       if( this.isAppointment= isAppointment= true)
+       {this.Contact=Contact;}
+else{
         involedContacts = new LinkedList<Contact>();
+                involedContacts.add(Contact);
+
+}
 }
 
-// Constructor 2 for the appointment
-public Events(String title, LocalDateTime dateTime, String location, Contact contact) {
-        this.title = title;
-        this.dateTime = dateTime;
-        this.location = location;
-        this.Contact = contact;
-    }
+
 
 // Getter and setter methods for the fields
     public String getTitle() {
@@ -61,10 +64,21 @@ public Events(String title, LocalDateTime dateTime, String location, Contact con
     public void setContact(Contact contact) {
         this.Contact = contact;
     }
+    
+
+public boolean isAppointment() {
+    return isAppointment;
+}
+
+
+public void setAppointment(boolean isAppointment) {
+    this.isAppointment = isAppointment;
+}
 
     @Override
     public String toString() {
         return "Event title:" + title + ", event date and Time (MM/DD/YYYY HH:MM):" + dateTime + ", event location:" + location + ", Contact name:"//Contact.getname()
                 ;
     }
+    
 }
