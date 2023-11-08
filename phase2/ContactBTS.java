@@ -44,7 +44,7 @@ private T searchKeyRecursive(Node<K, T> data, K key) {
 
     private boolean addcontact (String name, T val){
         ContactBTS<K,T> p , q=current;
-
+        //also usse order traversal for phone num
         if (findkey (name))
         {  
            current=q;
