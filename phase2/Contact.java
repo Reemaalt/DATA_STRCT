@@ -77,6 +77,12 @@ class Contact implements Comparable<Contact> {
             return (this.phoneNumber.compareToIgnoreCase(PhoneNum));
     }
 
+    @Override
+    public String toString() {
+        return "Contact /n Name : " + name + " /n Phone Number : " + phoneNumber + "/n Email Address : " + emailAddress
+                + "/n Address : " + address + "/n Birthday : " + birthday + "/n Notes : " + notes ;
+    }
+
    
     
 }

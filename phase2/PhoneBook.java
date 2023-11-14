@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.w3c.dom.events.Event;
+
 
 public class PhoneBook {
     private ContactBST contactTree;
@@ -49,15 +51,52 @@ public class PhoneBook {
                 String name = scanner.nextLine();
                 
                 break;
+
+                // Search a contact
             case 2:
-                // Search for a contact
-                System.out.println("Enter search criteria:");
-                // Prompt the user to select search criteria
-                String criteria = scanner.nextLine();
-                System.out.print("Enter the search term: ");
-                String searchTerm = scanner.nextLine();
-                phonebook.searchContact(criteria, searchTerm);
-                break;
+                System.out.println("Enter search criteria:/n 1. Name/n2. Phone Number/n3. Email Address/n4. Address/n5. Birthday/n");
+
+                int number = scanner.nextInt();
+                scanner.nextLine(); 
+
+                switch(number) {
+
+                    case 1:
+                        System.out.println("Enter the contact's name:");
+                        String Contname = scanner.nextLine();
+                        contactTree.searchKey(Contname);
+                        break;
+
+                    case 2:
+                        System.out.println("Enter the contact's phone number:");
+                        String Contphone = scanner.nextLine();
+                        contactTree.searchByCriteria(1, Contphone);
+                        break;
+
+                    case 3:
+                        System.out.println("Enter the contact's email address:");
+                        String Contemail = scanner.nextLine();
+                        contactTree.searchByCriteria(2, Contemail);
+                        break;
+
+                    case 4:
+                        System.out.println("Enter the contact's address:");
+                        String Contadd = scanner.nextLine();
+                        contactTree.searchByCriteria(3, Contadd);
+                        break;
+
+                    case 5:
+                        System.out.println("Enter the contact's birthday:");
+                        String Sbday = scanner.nextLine();
+                        contactTree.searchByCriteria(4, Sbday);
+                        break;
+
+                    default:
+                        System.out.println("Invalid input!!");
+                        break;
+                }
+            break;
+
             case 3:
                 // Delete a contact
                 System.out.print("Enter the contact's name: ");
@@ -75,8 +114,14 @@ public class PhoneBook {
             case 6:
                 // Print contacts by first name
                 System.out.print("Enter the first name: ");
+                scanner.nextLine();
                 String firstName = scanner.nextLine();
-                // Implement this part based on the project description
+
+                if (contactTree.isEmpty())
+                  System.out.println("No Contacts found !");
+                else
+                  contactTree.searchSameFirstName(firstName);
+             
                 break;
             case 7:
                 // Print all events alphabetically
