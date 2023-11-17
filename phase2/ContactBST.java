@@ -94,9 +94,9 @@ boolean addcontact( Contact contact, String name){
 }
 public boolean deleteContact(String name){
    
-    Contact removedContact = RemoveNode(root, name);
+    root = RemoveNode(root, name); //to modify root after deletion
     
-   if( removedContact != null){
+   if( root != null){
    System.out.println("Contact removed successfully!");
    return true;
    }
@@ -107,37 +107,57 @@ public boolean deleteContact(String name){
    }
 }
 
-public Contact RemoveNode(Node<Contact> root , String name){
+public Node<Contact> RemoveNode(Node<Contact> root , String name){
+    Node<Contact> min;
     if (root == null) {
         return null; // Contact not found empty bst
     }
-
+    //search
     if (name.compareTo(root.key) < 0) {
-        root.left = RemoveNode(root.left , name)
+        root.left = RemoveNode(root.left , name);
+
     } else if (name.compareTo(root.key) > 0) {
+
         root.right = RemoveNode(root.right, name);
     } else {
-        // Contact found
-        Contact removedContact = root.data;
 
+        // Contact found
+        
+        if(root.right!=null && root.left!=null){
+          min=minValue(root.right);
+          root.key=min.key;
+          root.data=min.getData();
+          root.right= RemoveNode(root.right, min.key);
+        }
         // Node with one or no child
         if (root.left == null) {
-            return root.right != null ? root.right.data : null;
-        } else if (root.right == null) {
-            return root.left.data;
-        }
+            return root.right ;//return right child
 
-        // Node with two children
-        root.key = minValue(root.right); // Find in-order successor
-        root.right = removeContact(root.right, root.key);
+        } else if (root.right == null) {
+            return root.left;//return left child
+        }
+        else if (root.left == null && root.right == null) {
+            return null;  // node is a leaf, return null to remove it
+        }
         
-        return removedContact;
+
+        
+        
     }
 
-    return null;
+    return root;
+}
+//find left most node which is smallest in the tree
+private Node<Contact> minValue(Node<Contact> root) {
+    
+    while (root.left != null) {
+        
+        root = root.left;
+    }
+    return root;
 }
 
-}
+
 public boolean contactExists(Contact contact) {
     return contactExists(root, contact);
 }
