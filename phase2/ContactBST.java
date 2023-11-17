@@ -42,7 +42,7 @@ private Contact searchKeyRecursive(Node<Contact> info, String key) {
     return searchKeyRecursive(info.right, key);
 }
 
-//find name dose the key exsis 
+//does name already exist?
 public boolean findkey(String name) { 
     Node<Contact> p = root ,q = root;
     if(isEmpty())
@@ -56,21 +56,21 @@ public boolean findkey(String name) {
     return true;
     }
     else if(name.compareTo(p.key)< 0)
-    p=p.left;
+    p=p.left; //name smaller than key
     else 
-    p=p.right;
+    p=p.right; //name larger than key
     }
     
     current = q; 
     return false;
 }
 
-private boolean addcontact( Contact contact, String name){
+boolean addcontact( Contact contact, String name){
     Node<Contact> p;
     Node<Contact> q= current;
 
-    //is rec in order used correctly?
-    if (findkey (contact.getName()) || contactExists(contact))
+    
+    if (findkey (contact.getName()) || contactExists(contact))//check if a contact with same phone num or name already exist
     {  
        current=q;
        return false;
@@ -92,11 +92,57 @@ private boolean addcontact( Contact contact, String name){
     }
     
 }
+public boolean deleteContact(String name){
+   
+    Contact removedContact = RemoveNode(root, name);
+    
+   if( removedContact != null){
+   System.out.println("Contact removed successfully!");
+   return true;
+   }
+   else
+   {
+   System.out.println("Couldn't remove contact :( ");
+   return false;
+   }
+}
+
+public Contact RemoveNode(Node<Contact> root , String name){
+    if (root == null) {
+        return null; // Contact not found empty bst
+    }
+
+    if (name.compareTo(root.key) < 0) {
+        root.left = RemoveNode(root.left , name)
+    } else if (name.compareTo(root.key) > 0) {
+        root.right = RemoveNode(root.right, name);
+    } else {
+        // Contact found
+        Contact removedContact = root.data;
+
+        // Node with one or no child
+        if (root.left == null) {
+            return root.right != null ? root.right.data : null;
+        } else if (root.right == null) {
+            return root.left.data;
+        }
+
+        // Node with two children
+        root.key = minValue(root.right); // Find in-order successor
+        root.right = removeContact(root.right, root.key);
+        
+        return removedContact;
+    }
+
+    return null;
+}
+
+}
 public boolean contactExists(Contact contact) {
     return contactExists(root, contact);
 }
-
-private boolean contactExists(Node<Contact> node, Contact contact) {
+//check uniqueness of phone num
+private boolean contactExists(Node<Contact> node, Contact contact) { 
         if (node == null) {
             return false;
         }

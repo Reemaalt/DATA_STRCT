@@ -23,6 +23,13 @@ public class PhoneBook {
             }
         }
     }
+
+    public void AddContact(Contact c, String name){
+        if (contactTree.addcontact(c, name))
+        System.out.println("Contact added successfully! ");
+        else 
+        System.out.println("Couldn't add contact :( ");
+    }
     
     public void runPhoneBook (){
     Scanner scanner=new Scanner (System.in);
@@ -49,6 +56,21 @@ public class PhoneBook {
                 // Add a contact
                 System.out.print("Enter the contact's name: ");
                 String name = scanner.nextLine();
+                System.out.println("Enter the contact's phone number:");
+                String phone= scanner.nextLine();
+                System.out.println("Enter the contact's email address: ");
+                String email= scanner.nextLine();
+                System.out.println("Enter the contact's address:");
+                String address= scanner.nextLine();
+                System.out.println("Enter the contact's birthday:");
+                String bday= scanner.nextLine(); 
+
+               System.out.println("Enter any notes for the contact:");
+                String note= scanner.nextLine();
+
+                Contact c1=new Contact( name, phone, email, address, bday, note);
+                AddContact(c1, name);
+
                 
                 break;
 
