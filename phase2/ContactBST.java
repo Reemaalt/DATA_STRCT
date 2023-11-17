@@ -92,19 +92,19 @@ boolean addcontact( Contact contact, String name){
     }
     
 }
-public boolean deleteContact(String name){
+public void deleteContact(String name){
    
     root = RemoveNode(root, name); //to modify root after deletion
     
-   if( root != null){
+   if( root != null)
    System.out.println("Contact removed successfully!");
-   return true;
-   }
+   
+   
    else
-   {
+   
    System.out.println("Couldn't remove contact :( ");
-   return false;
-   }
+  
+   
 }
 
 public Node<Contact> RemoveNode(Node<Contact> root , String name){
