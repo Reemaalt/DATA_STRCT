@@ -9,7 +9,7 @@ public class Events {
 private String title;
 private LocalDateTime dateTime;
 private String location;
-private Contact Contact;
+private String Contact; 
 private  LinkedList <Contact> involedContacts ;
 private boolean isAppointment;
 
@@ -17,12 +17,14 @@ private boolean isAppointment;
 
 
 // Constructor 1 for the events
-public Events(String title, LocalDateTime dateTime, String location , boolean isAppointment,Contact Contact) {
+public Events(String title, LocalDateTime dateTime, String location , boolean isAppointment,String Contact) {
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
-       if( this.isAppointment= isAppointment= true)
-       {this.Contact=Contact;}
+       if( isAppointment)
+     {this.Contact=Contact;
+      
+     }
 else{
         involedContacts = new LinkedList<Contact>();
                 involedContacts.add(Contact);
@@ -30,6 +32,25 @@ else{
 }
 }
 //+1
+
+public void AddContact(String contactname) {
+    Node<String> newNode = new Node<String>((Contact) contact);
+     if (isAppointment() && involedContacts.size()==0)
+     {
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+       // System.out.println("Contact added successfully.");
+    } else {
+        System.out.println("Contact with the same name or phone number already exists.");
+    }
+}
 
 
 // Getter and setter methods for the fields
