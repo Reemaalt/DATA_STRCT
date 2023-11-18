@@ -13,6 +13,7 @@ class Contact implements Comparable<Contact> {
     private String birthday;
     private String notes;
     private LinkedList <Events> EventsAndAppointments;
+    
 
     
     public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday,
