@@ -22,6 +22,7 @@ public Events(String title, LocalDateTime dateTime, String location , boolean is
         this.dateTime = dateTime;
         this.location = location;
        if( this.isAppointment= isAppointment= true)
+    
        {this.Contact=Contact;}
 else{
         involedContacts = new LinkedList<Contact>();
@@ -29,7 +30,10 @@ else{
 
 }
 }
-//add to involedContacts 
+//add to involedContacts string 
+
+//delete the contact name involedContacts
+
 
 
 // Getter and setter methods for the fields

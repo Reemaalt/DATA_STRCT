@@ -27,7 +27,7 @@ class Contact implements Comparable<Contact> {
          this.EventsAndAppointments = new LinkedList<Events>();
     }
     
-//add events
+//add events to EventsAndAppointments
 
 
 

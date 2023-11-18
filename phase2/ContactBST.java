@@ -104,7 +104,7 @@ public void deleteContact(String name){
    
    System.out.println("Couldn't remove contact :( ");
   
-   
+    
 }
 
 public Node<Contact> RemoveNode(Node<Contact> root , String name){
