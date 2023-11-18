@@ -29,7 +29,7 @@ else{
 
 }
 }
-//+1
+//add to involedContacts 
 
 
 // Getter and setter methods for the fields
