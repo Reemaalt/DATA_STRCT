@@ -11,7 +11,10 @@ public class PhoneBook {
     private ContactBST contactTree;
    // private List<Event> events;
 
-   
+
+
+   //add events list must have if (titele !=this.title && time!=this.time && location!==this.location) and cheak if the contact is in the BST
+    //delete contact that call the bst delete and call delete contact from the involedContacts
 
     // Method to print all events by title or contact name.
  public void printEventsByTitleOrContact(String criteria, String searchTerm) {
@@ -31,6 +34,7 @@ public class PhoneBook {
         System.out.println("Couldn't add contact :( ");
     }
     
+
     public void runPhoneBook (){
     Scanner scanner=new Scanner (System.in);
     System.out.println("Welcome to the Phonebook!");

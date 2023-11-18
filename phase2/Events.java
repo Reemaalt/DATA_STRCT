@@ -21,17 +21,23 @@ public Events(String title, LocalDateTime dateTime, String location , boolean is
         this.title = title;
         this.dateTime = dateTime;
         this.location = location;
+
        if( isAppointment)
      {this.Contact=Contact;
       
      }
+
+       
 else{
         involedContacts = new LinkedList<Contact>();
                 involedContacts.add(Contact);
 
 }
 }
-//+1
+//add to involedContacts string 
+
+//delete the contact name involedContacts
+
 
 public void AddContact(String contactname) {
     Node<String> newNode = new Node<String>((Contact) contact);
