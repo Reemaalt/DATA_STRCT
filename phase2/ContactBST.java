@@ -96,7 +96,7 @@ public void deleteContact(String name){
    
     root = RemoveNode(root, name); //to modify root after deletion
     
-   if( root != null)
+   if( root != null){
    System.out.println("Contact removed successfully!");
    
    
@@ -104,7 +104,7 @@ public void deleteContact(String name){
    
    System.out.println("Couldn't remove contact :( ");
   
-    
+   
 }
 
 public Node<Contact> RemoveNode(Node<Contact> root , String name){

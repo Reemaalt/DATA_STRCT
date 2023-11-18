@@ -21,11 +21,11 @@ public void AddContact(String contactname) {
 }
 
 // Getter and setter methods for the fields
-    public void setHead(Node<T> head) {
+    public void setHead(nodeLL<String> head) {
     this.head = head;
 }
 
-    public Node<T> getHead() {
+    public nodeLL<String> getHead() {
     return head;
 }
 
