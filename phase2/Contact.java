@@ -1,6 +1,6 @@
 package phase2;
 
-import java.util.LinkedList;
+
 
 
 
@@ -12,7 +12,7 @@ class Contact implements Comparable<Contact> {
     private String address;
     private String birthday;
     private String notes;
-    private LinkedList <Events> EventsAndAppointments;
+    private linkedlist <Events> EventsAndAppointments;
     
 
     
@@ -24,7 +24,7 @@ class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
-         this.EventsAndAppointments = new LinkedList<Events>();
+         this.EventsAndAppointments = new linkedlist<Events>();
     }
     
 //add events to EventsAndAppointments

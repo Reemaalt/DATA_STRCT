@@ -1,7 +1,7 @@
 package phase2;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
+
 
 public class Events {
 
@@ -10,7 +10,7 @@ private String title;
 private LocalDateTime dateTime;
 private String location;
 private String Contact; 
-private  LinkedList <Contact> involedContacts ;
+private  linkedlist <String> involedContacts ;
 private boolean isAppointment;
 
 
@@ -23,40 +23,23 @@ public Events(String title, LocalDateTime dateTime, String location , boolean is
         this.location = location;
 
        if( isAppointment)
-     {this.Contact=Contact;
-      
-     }
-
-       
-else{
-        involedContacts = new LinkedList<Contact>();
-                involedContacts.add(Contact);
-
+       {
+        this.Contact=Contact;
+       }
+       else{
+       involedContacts = new linkedlist<String>();
+        String[] names = Contact.split("\\s*,\\s*"); // Split names by comma and trim spaces
+        for (int i = 0; i < names.length; i++) {
+            involedContacts.AddContact(names[i]);
+        }
+    }
 }
-}
+
 //add to involedContacts string 
 
 //delete the contact name involedContacts
 
 
-public void AddContact(String contactname) {
-    Node<String> newNode = new Node<String>((Contact) contact);
-     if (isAppointment() && involedContacts.size()==0)
-     {
-        if (isEmpty()) {
-            head = newNode;
-        } else {
-            current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
-       // System.out.println("Contact added successfully.");
-    } else {
-        System.out.println("Contact with the same name or phone number already exists.");
-    }
-}
 
 
 // Getter and setter methods for the fields
