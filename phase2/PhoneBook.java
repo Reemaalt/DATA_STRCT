@@ -27,7 +27,18 @@ public void AddContact(Contact c, String name){
         System.out.println("Couldn't add contact :( ");
 }
     
-//public boolean addeventapp (Event event , Contact c){}
+
+public boolean addeventapp(Events event, Contact contact) {
+    if (contactTree.contactExists(contact)) {
+
+        contact.addEvent(event);
+        ALLevents.Add(event);
+        return true;
+    } 
+    else 
+        return false;
+}
+
         //calls add event only if contact exist in bst
  
 
