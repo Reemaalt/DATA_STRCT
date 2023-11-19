@@ -1,22 +1,17 @@
 package phase2;
-
-
-
-
-
 // Contact class representing a single contact in the phonebook
 class Contact implements Comparable<Contact> {
-    private String name;
-    private String phoneNumber;
-    private String emailAddress;
-    private String address;
-    private String birthday;
-    private String notes;
-    private linkedlist <Events> EventsAndAppointments;
+private String name;
+private String phoneNumber;
+private String emailAddress;
+ private String address;
+private String birthday;
+private String notes;
+private linkedlist <Events> EventsAndAppointments;
     
 
-    
-    public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday,
+ //Constructor  
+public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday,
             String notes) {
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -25,13 +20,15 @@ class Contact implements Comparable<Contact> {
         this.birthday = birthday;
         this.notes = notes;
          this.EventsAndAppointments = new linkedlist<Events>();
-    }
+      }
     
 //add events to EventsAndAppointments
 
 
 
 
+
+// Getter and setter methods for the fields
     public String getName() {
         return name;
     }

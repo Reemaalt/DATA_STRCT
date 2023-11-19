@@ -1,18 +1,15 @@
 package phase2;
 
-
 import java.util.Scanner;
 
 import org.w3c.dom.events.Event;
-
-
 public class PhoneBook {
-    private ContactBST contactTree;
-   // private List<Event> events;
 
-   
+private ContactBST contactTree;
+private linkedlist<Event> ALLevents = new linkedlist<>();
 
-    // Method to print all events by title or contact name.
+
+ // Method to print all events by title or contact name.
  public void printEventsByTitleOrContact(String criteria, String searchTerm) {
         for (Event event : events) {
             if (criteria.equals("contact name") && event.isContactInEvent(searchTerm)) {
@@ -21,18 +18,20 @@ public class PhoneBook {
                 System.out.println(event.toString());
             }
         }
-    }
+ }
 
-    public void AddContact(Contact c, String name){
+public void AddContact(Contact c, String name){
         if (contactTree.addcontact(c, name))
         System.out.println("Contact added successfully! ");
         else 
         System.out.println("Couldn't add contact :( ");
-    }
+}
     
-    public boolean addeventapp (Event event , Contact c){
+public boolean addeventapp (Event event , Contact c){
         //calls add event only if contact exist in bst
-    }
+ }
+
+
     public void runPhoneBook (){
     Scanner scanner=new Scanner (System.in);
     System.out.println("Welcome to the Phonebook!");
@@ -125,7 +124,7 @@ public class PhoneBook {
                 // Delete a contact
                 System.out.print("Enter the contact's name: ");
                 String deleteName = scanner.nextLine();
-                phonebook.deleteContact(deleteName);
+                .deleteContact(deleteName);
                 break;
             case 4:
                 // Schedule an event/appointment
@@ -141,15 +140,15 @@ public class PhoneBook {
                 scanner.nextLine();
                 String firstName = scanner.nextLine();
 
-                if (contactTree.isEmpty())
+                if (.isEmpty())
                   System.out.println("No Contacts found !");
                 else
-                  contactTree.searchSameFirstName(firstName);
+                  .searchSameFirstName(firstName);
              
                 break;
             case 7:
                 // Print all events alphabetically
-                phonebook.listAllEventsAlphabetically();
+                .listAllEventsAlphabetically();
                 break;
             case 8:
                 System.out.println("Goodbye!");
