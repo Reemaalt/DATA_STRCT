@@ -10,7 +10,7 @@ private linkedlist<Event> ALLevents = new linkedlist<>();
 
 
  // Method to print all events by title or contact name.
- public void printEventsByTitleOrContact(String criteria, String searchTerm) {
+ /*public void printEventsByTitleOrContact(String criteria, String searchTerm) {
         for (Event event : events) {
             if (criteria.equals("contact name") && event.isContactInEvent(searchTerm)) {
                 System.out.println(event.toString());
@@ -18,7 +18,7 @@ private linkedlist<Event> ALLevents = new linkedlist<>();
                 System.out.println(event.toString());
             }
         }
- }
+ }*/
 
 public void AddContact(Contact c, String name){
         if (contactTree.addcontact(c, name))
@@ -27,9 +27,9 @@ public void AddContact(Contact c, String name){
         System.out.println("Couldn't add contact :( ");
 }
     
-public boolean addeventapp (Event event , Contact c){
+//public boolean addeventapp (Event event , Contact c){}
         //calls add event only if contact exist in bst
- }
+ 
 
 
     public void runPhoneBook (){
@@ -124,7 +124,7 @@ public boolean addeventapp (Event event , Contact c){
                 // Delete a contact
                 System.out.print("Enter the contact's name: ");
                 String deleteName = scanner.nextLine();
-                .deleteContact(deleteName);
+                contactTree.deleteContact(deleteName);
                 break;
             case 4:
                 // Schedule an event/appointment
@@ -140,15 +140,15 @@ public boolean addeventapp (Event event , Contact c){
                 scanner.nextLine();
                 String firstName = scanner.nextLine();
 
-                if (.isEmpty())
+                if (contactTree.isEmpty())
                   System.out.println("No Contacts found !");
                 else
-                  .searchSameFirstName(firstName);
+                  contactTree.searchSameFirstName(firstName);
              
                 break;
             case 7:
                 // Print all events alphabetically
-                .listAllEventsAlphabetically();
+                contactTree.listAllEventsAlphabetically();
                 break;
             case 8:
                 System.out.println("Goodbye!");

@@ -24,6 +24,31 @@ public Contact(String name, String phoneNumber, String emailAddress, String addr
     
 //add events to EventsAndAppointments
 
+public void addEvent(Events event) {
+   
+    if (!event.isAppointment() || (event.isAppointment() && event.getContact2() != null)  ) {
+        
+        boolean isDuplicate = false;
+
+        nodeLL<Events> current = EventsAndAppointments.getHead();
+        while (current != null) {
+            if (current.getData().getDateTime().isEqual(event.getDateTime())) {
+                isDuplicate = true;
+                break;
+            }
+            current = current.getNext();
+        }
+
+        if (!isDuplicate) {
+            EventsAndAppointments.Add(event);
+            System.out.println("Event added successfully.");
+        } else {
+            System.out.println("Event found can not add");
+        }
+    } else {
+        System.out.println("there is appointment can not add");
+    }
+}
 
 
 
