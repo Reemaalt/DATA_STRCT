@@ -98,7 +98,6 @@ public void deleteContact(String name){
    if( root != null)
    System.out.println("Contact removed successfully!");
    
-   
    else
    
    System.out.println("Couldn't remove contact :( ");
