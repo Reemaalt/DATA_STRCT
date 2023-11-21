@@ -23,10 +23,9 @@ public Contact(String name, String phoneNumber, String emailAddress, String addr
       }
     
 //add events to EventsAndAppointments
-
 public void addEvent(Events event) {
    
-    if (!event.isAppointment() || (event.isAppointment() && event.getContact2() != null)  ) {
+    if (!event.isAppointment() || (event.isAppointment() && event.getContactname() != null)  ) {
         
         boolean isDuplicate = false;
 
@@ -46,7 +45,7 @@ public void addEvent(Events event) {
             System.out.println("Event found can not add");
         }
     } else {
-        System.out.println("there is appointment can not add");
+        System.out.println("this appointment already have a contact");
     }
 }
 

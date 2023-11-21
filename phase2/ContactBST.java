@@ -5,7 +5,6 @@ package phase2;
 public class ContactBST <T extends Comparable<T>> {
 
 private  Node<Contact> root , current;
-private T data;
    
 
 

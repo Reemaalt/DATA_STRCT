@@ -6,9 +6,14 @@ import org.w3c.dom.events.Event;
 public class PhoneBook {
 
 private ContactBST contactTree;
-private linkedlist<Event> ALLevents = new linkedlist<>();
+private linkedlist<Events> ALLevents = new linkedlist<Events>();
+
+/*• There should be no conflict in event/appointment scheduling. A new event should/appointment not
+be scheduled for a contact if it has a conflict with a current scheduled event/appointment that the
+phonebook user has. */
 
 
+//Print all events 
  // Method to print all events by title or contact name.
  /*public void printEventsByTitleOrContact(String criteria, String searchTerm) {
         for (Event event : events) {
@@ -20,6 +25,9 @@ private linkedlist<Event> ALLevents = new linkedlist<>();
         }
  }*/
 
+ /*Write a method that will list all events and appointments available ordered alphabetically by
+event/appointment name in O(n) time */
+
 public void AddContact(Contact c, String name){
         if (contactTree.addcontact(c, name))
         System.out.println("Contact added successfully! ");
@@ -27,8 +35,10 @@ public void AddContact(Contact c, String name){
         System.out.println("Couldn't add contact :( ");
 }
     
+//cheak befor adding a new event to BST and ALLevents
+//calls add event only if contact exist in bst
+public boolean addeventOrapp(Events event, Contact contact) {
 
-public boolean addeventapp(Events event, Contact contact) {
     if (contactTree.contactExists(contact)) {
 
         contact.addEvent(event);
@@ -39,7 +49,7 @@ public boolean addeventapp(Events event, Contact contact) {
         return false;
 }
 
-        //calls add event only if contact exist in bst
+        
  
 
 
@@ -130,7 +140,12 @@ public boolean addeventapp(Events event, Contact contact) {
                         break;
                 }
             break;
-
+/*When a contact is deleted, all appointments with that contact are also deleted. If the contact belonged
+in a scheduled event, then he should be removed from the event. Make sure before adding an event
+or appointment that the contact in the event exist in the contact BST. All contacts need to be in the
+contact BST before an event is added. */
+//delet bst --> delete contact involedContacts -->???
+//delet app from all
             case 3:
                 // Delete a contact
                 System.out.print("Enter the contact's name: ");
