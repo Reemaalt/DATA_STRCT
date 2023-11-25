@@ -181,8 +181,8 @@ contact BST before an event is added. */
                 else {
                     System.out.println("contact wasnt in any events");
                 }
-                ALLevents.setCurrent(ALLevents.getCurrent().getNext());
             }
+             ALLevents.setCurrent(ALLevents.getCurrent().getNext());
         }
 
                 break;
