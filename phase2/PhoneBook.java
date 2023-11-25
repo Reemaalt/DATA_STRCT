@@ -3,6 +3,8 @@ package phase2;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import org.w3c.dom.events.Event;
+
 
 public class PhoneBook {
 
@@ -167,6 +169,22 @@ contact BST before an event is added. */
                 System.out.print("Enter the contact's name: ");
                 String deleteName = scanner.nextLine();
                 contactTree.deleteContact(deleteName);
+                ALLevents.setCurrent(ALLevents.getHead());
+                 
+                for (int i = 0; i < ALLevents.size(); i++) {
+            if (!ALLevents.getCurrent().getData().isAppointment()) {
+                // The event is not an appointment, check if the contact is in the list
+                if (ALLevents.getCurrent().getData().hasContact(deleteName))
+                {
+                    System.out.println("contact deleated from event ");
+                } 
+                else {
+                    System.out.println("contact wasnt in any events");
+                }
+                ALLevents.setCurrent(ALLevents.getCurrent().getNext());
+            }
+        }
+
                 break;
             case 4:
                 // Schedule an event/appointment

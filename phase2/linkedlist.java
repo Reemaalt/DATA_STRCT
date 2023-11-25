@@ -29,6 +29,17 @@ public void setCurrent(nodeLL<T> current) {
 public boolean isEmpty() {
         return head == null;
 }
+public int size() {
+    int count = 0;
+     current = head;
+
+    while (current != null) {
+        count++;
+        current = current.getNext();
+    }
+
+    return count;
+}
 
 public void AddContact(String contactname) {
 nodeLL<T> contactInEvent = new nodeLL<T>((T) contactname);
@@ -76,7 +87,7 @@ public void DeleteContact ( String contact){
         System.out.println("Contact deleted successfully.");
     }
     else {
-        // previous = null ;
+        previous = null ;
      current = getHead().getNext();
     
             while (current != null && !current.data.equals(contact)){
