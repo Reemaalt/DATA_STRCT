@@ -1,8 +1,9 @@
 package phase2;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
-import org.w3c.dom.events.Event;
+
 public class PhoneBook {
 
 private ContactBST contactTree;
@@ -13,17 +14,32 @@ be scheduled for a contact if it has a conflict with a current scheduled event/a
 phonebook user has. */
 
 
-//Print all events 
- // Method to print all events by title or contact name.
- /*public void printEventsByTitleOrContact(String criteria, String searchTerm) {
-        for (Event event : events) {
-            if (criteria.equals("contact name") && event.isContactInEvent(searchTerm)) {
-                System.out.println(event.toString());
-            } else if (criteria.equals("Event title") && event.getTitle().equalsIgnoreCase(searchTerm)) {
-                System.out.println(event.toString());
+//Print all events :Method to print all events by title or contact name.
+ public void printEventsByTitleOrContact(String searchTerm) {
+         linkedlist<Events> searchResults = new linkedlist<Events>();
+         nodeLL<Events>  tem = ALLevents.getHead();
+        
+        while (tem!=null) {
+            if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ||
+                    tem.getData().getContactname().equalsIgnoreCase(searchTerm) ||
+                    tem.getData().getInvoledContacts().equalsIgnoreCase(searchTerm))//IDK if this would work 
+                     {
+                searchResults.Add(tem.getData());
+            }
+            tem = tem.getNext();
+        }
+        if (searchResults.isEmpty()) {
+            System.out.println("No event found.");
+        } else {
+            System.out.println("events Found! /n");
+            nodeLL<Events> tmp = searchResults.getHead();
+            while (tmp != null) {
+                System.out.println(tmp.getData().toString());
+                tmp = tmp.getNext();
+            }
             }
         }
- }*/
+ 
 
  /*Write a method that will list all events and appointments available ordered alphabetically by
 event/appointment name in O(n) time */
@@ -174,7 +190,7 @@ contact BST before an event is added. */
                 break;
             case 7:
                 // Print all events alphabetically
-                contactTree.listAllEventsAlphabetically();
+                //contactTree.listAllEventsAlphabetically();
                 break;
             case 8:
                 System.out.println("Goodbye!");

@@ -94,5 +94,9 @@ private  linkedlist <String> involedContacts ;
     public int compareTo(Events o) {
         return this.title.compareTo(o.title);
     }
+
+    public static nodeLL<Events> getHead() {
+        return null;
+    }
     
 }
