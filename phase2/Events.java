@@ -34,7 +34,7 @@ public Events(String title, LocalDateTime dateTime, String location , boolean is
 
 public boolean hasContact(String contactName) {
     involedContacts.setCurrent(involedContacts.getHead());
-    for (int i = 0; i < involvedContacts.size(); i++) {
+    while (involvedContacts.getCurrent() != null) {
     
         if (involvedContacts.getCurrent().getData().equals(contactName)) {
             involedContacts.DeleteContact(involedContacts.getCurrent().getData());

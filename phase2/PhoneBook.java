@@ -171,7 +171,7 @@ contact BST before an event is added. */
                 contactTree.deleteContact(deleteName);
                 ALLevents.setCurrent(ALLevents.getHead());
                  
-                for (int i = 0; i < ALLevents.size(); i++) {
+                while (ALLevents.getCurrent() != null) {
             if (!ALLevents.getCurrent().getData().isAppointment()) {
                 // The event is not an appointment, check if the contact is in the list
                 if (ALLevents.getCurrent().getData().hasContact(deleteName))

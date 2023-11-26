@@ -82,7 +82,7 @@ public void DeleteContact ( String contact){
     if ( isEmpty() )
         System.out.println("no events to delete");
         
-    else if (head.equals(contact)){
+    else if (head.getData().equals(contact)){
         head = head.getNext() ;
         System.out.println("Contact deleted successfully.");
     }
