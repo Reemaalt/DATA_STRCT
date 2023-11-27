@@ -1,4 +1,9 @@
 package phase2;
+
+import java.util.LinkedList;
+
+import org.w3c.dom.events.Event;
+
 // Contact class representing a single contact in the phonebook
 class Contact implements Comparable<Contact> {
 private String name;
@@ -25,7 +30,7 @@ public Contact(String name, String phoneNumber, String emailAddress, String addr
 //add events to EventsAndAppointments
 public void addEvent(Events event) {
    
-    if (!event.isAppointment() || (event.isAppointment() && event.getContactname() != null)  ) {
+    if (!event.isAppointment() || (event.isAppointment() && event.getContact2() != null)  ) {
         
         boolean isDuplicate = false;
 
@@ -45,7 +50,7 @@ public void addEvent(Events event) {
             System.out.println("Event found can not add");
         }
     } else {
-        System.out.println("this appointment already have a contact");
+        System.out.println("there is appointment can not add");
     }
 }
 
@@ -90,6 +95,9 @@ public void addEvent(Events event) {
         this.notes = notes;
     }
     
+    public linkedlist <Events> getEvents() {
+        return EventsAndAppointments;
+    }
     @Override
     public int compareTo(Contact o) {
         return this.name.compareTo(o.getName());
@@ -103,6 +111,14 @@ public void addEvent(Events event) {
     public String toString() {
         return "Contact /n Name : " + name + " /n Phone Number : " + phoneNumber + "/n Email Address : " + emailAddress
                 + "/n Address : " + address + "/n Birthday : " + birthday + "/n Notes : " + notes ;
+    }
+
+    public linkedlist<Events> getEventsAndAppointments() {
+        return EventsAndAppointments;
+    }
+
+    public void setEventsAndAppointments(linkedlist<Events> eventsAndAppointments) {
+        EventsAndAppointments = eventsAndAppointments;
     }
 
    

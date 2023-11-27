@@ -53,6 +53,18 @@ public void AddContact(Contact c, String name){
         System.out.println("Couldn't add contact :( ");
 }
     
+public boolean eventConflict(Contact contact, Events newEvent) {
+    nodeLL<Events> tmp = (contact.getEvents().getHead());
+
+    while (tmp!= null) {
+        if (tmp.getData().getDateTime().equals(newEvent.getDateTime())) {
+            return true;
+        }
+        tmp = tmp.getNext();
+    }
+    return false;
+}
+
 //cheak befor adding a new event to BST and ALLevents
 //calls add event only if contact exist in bst
 public boolean addeventOrapp(Events event, Contact contact) {
