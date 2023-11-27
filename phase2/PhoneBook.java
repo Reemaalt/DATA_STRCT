@@ -1,5 +1,7 @@
 package phase2;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -87,7 +89,7 @@ public boolean addeventOrapp(Events event, Contact contact) {
     Scanner scanner=new Scanner (System.in);
     System.out.println("Welcome to the Phonebook!");
 
-    while (true) {
+    do {
         System.out.println("Please choose an option:");
         System.out.println("1. Add a contact");
         System.out.println("2. Search for a contact");
@@ -168,7 +170,7 @@ public boolean addeventOrapp(Events event, Contact contact) {
                     default:
                         System.out.println("Invalid input!!");
                         break;
-                }
+                } 
             break;
 /*When a contact is deleted, all appointments with that contact are also deleted. If the contact belonged
 in a scheduled event, then he should be removed from the event. Make sure before adding an event
@@ -199,9 +201,48 @@ contact BST before an event is added. */
 
                 break;
             case 4:
-                // Schedule an event/appointment
-                // Implement this part based on the project description
+            System.out.println("Enter type:\n 1.event\n2.appointment\n Enter choice: ");
+                int chice=scanner.nextInt();
+                
+                switch (chice)
+                  case 1: 
+                  System.out.println("Enter event title:");
+                String title= scanner.nextLine();
+                System.out.println("Enter contact name:");
+                String Cname= scanner.nextLine();
+                System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
+                String useredate = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
+                System.out.println("Enter event location:");
+                String eloc= scanner.nextLine();
+                if(contactTree.findkey(Cname)){
+                Contact Cfound = contactTree.searchKey(Cname);
+                Events e1=new Events(title,edate,eloc,false,Cname);
+                addeventOrapp(e1, Cfound);
+                
+                }
                 break;
+
+                case 2:
+                System.out.println("Enter appointment title:");
+                String titleA= scanner.nextLine();
+                System.out.println("Enter contact name:");
+                String CnameA= scanner.nextLine();
+                System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
+                String useredateA = scanner.nextLine();
+                DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime edateA = LocalDateTime.parse(useredate, formatter);
+                System.out.println("Enter appointment location:");
+                String elocA= scanner.nextLine();
+                if(contactTree.findkey(Cname)){
+                Contact CfoundA = contactTree.searchKey(Cname);
+                Events app1=new Events(titleA,edateA,elocA,true,CnameA);
+                addeventOrapp(app1, CfoundA);
+                }
+                break;
+            break;
+
             case 5:
                 // Print event details
                 // Implement this part based on the project description
@@ -225,11 +266,14 @@ contact BST before an event is added. */
             case 8:
                 System.out.println("Goodbye!");
                 System.exit(0);
+
                 break;
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
     }
+    while(choice!=8);
+    scanner.close();
 }
 
 public static void main(String[] args) {
