@@ -10,7 +10,7 @@ public class PhoneBook {
 
 private ContactBST contactTree;
 private linkedlist<Events> ALLevents = new linkedlist<Events>();
-
+//added
 /*• There should be no conflict in event/appointment scheduling. A new event should/appointment not
 be scheduled for a contact if it has a conflict with a current scheduled event/appointment that the
 phonebook user has. */
