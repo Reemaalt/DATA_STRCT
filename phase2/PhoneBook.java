@@ -53,6 +53,8 @@ public class PhoneBook {
      * Write a method that will list all events and appointments available ordered
      * alphabetically by
      * event/appointment name in O(n) time
+     * ALLevents is already sorted, and we are  just iterating through it,
+     *  the time complexity would be O(n).
      */
     public void listAllEventsAlphabetically() {
         if (ALLevents.isEmpty()) {
