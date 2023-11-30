@@ -5,86 +5,110 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import org.w3c.dom.events.Event;
-
-
 public class PhoneBook {
 
-private ContactBST contactTree;
-private linkedlist<Events> ALLevents = new linkedlist<Events>();
-//added
-/*• There should be no conflict in event/appointment scheduling. A new event should/appointment not
-be scheduled for a contact if it has a conflict with a current scheduled event/appointment that the
-phonebook user has. */
+    private ContactBST contactTree;
+    private linkedlist<Events> ALLevents = new linkedlist<Events>();
 
+    // Print all events :Method to print all events by title or contact name.
+    public void printEventsByTitleOrContact(String searchTerm) {
+        linkedlist<Events> searchResults = new linkedlist<Events>();
+        nodeLL<Events> tem = ALLevents.getHead();
 
-//Print all events :Method to print all events by title or contact name.
- public void printEventsByTitleOrContact(String searchTerm) {
-         linkedlist<Events> searchResults = new linkedlist<Events>();
-         nodeLL<Events>  tem = ALLevents.getHead();
-        
-        while (tem!=null) {
+        while (tem != null) {
             if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ||
                     tem.getData().getContactname().equalsIgnoreCase(searchTerm) ||
-                    tem.getData().getInvoledContacts().equalsIgnoreCase(searchTerm))//IDK if this would work 
-                     {
+                    containsIgnoreCase(tem.getData().getInvoledContacts(), searchTerm)) {
+
                 searchResults.Add(tem.getData());
             }
             tem = tem.getNext();
         }
+
         if (searchResults.isEmpty()) {
             System.out.println("No event found.");
         } else {
-            System.out.println("events Found! /n");
+            System.out.println("Events Found! \n");
             nodeLL<Events> tmp = searchResults.getHead();
             while (tmp != null) {
                 System.out.println(tmp.getData().toString());
                 tmp = tmp.getNext();
             }
+        }
+    }
+
+    // i added this method so the above print works
+    private boolean containsIgnoreCase(List<String> list, String searchTerm) {
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String item = iterator.next();
+            if (item.equalsIgnoreCase(searchTerm)) {
+                return true;
             }
         }
- 
-
- /*Write a method that will list all events and appointments available ordered alphabetically by
-event/appointment name in O(n) time */
-
-public void AddContact(Contact c, String name){
-        if (contactTree.addcontact(c, name))
-        System.out.println("Contact added successfully! ");
-        else 
-        System.out.println("Couldn't add contact :( ");
-}
-    
-public boolean eventConflict(Contact contact, Events newEvent) {
-    nodeLL<Events> tmp = (contact.getEvents().getHead());
-
-    while (tmp!= null) {
-        if (tmp.getData().getDateTime().equals(newEvent.getDateTime())) {
-            return true;
-        }
-        tmp = tmp.getNext();
-    }
-    return false;
-}
-
-//cheak befor adding a new event to BST and ALLevents
-//calls add event only if contact exist in bst
-public boolean addeventOrapp(Events event, Contact contact) {
-
-    if (contactTree.contactExists(contact)) {
-
-        contact.addEvent(event);
-        ALLevents.Add(event);
-        return true;
-    } 
-    else 
         return false;
-}
+    }
 
-        
- 
+    /*
+     * Write a method that will list all events and appointments available ordered
+     * alphabetically by
+     * event/appointment name in O(n) time
+     */
+    public void listAllEventsAlphabetically() {
+        if (ALLevents.isEmpty()) {
+            System.out.println("No events or appointments found.");
+            return;
+        }
 
+        LinkedList<Events> sortedEvents = ALLevents; // ALLevents is already sorted right?
 
+        System.out.println("All events and appointments ordered alphabetically:");
+        Node<Events> tmp = sortedEvents.getHead();
+        while (tmp != null) {
+            System.out.println(tmp.getData().toString());
+            tmp = tmp.getNext();
+        }
+    }
+
+    // method to call add contact from the BST class
+    public void AddContact(Contact c, String name) {
+        if (contactTree.addcontact(c, name))
+            System.out.println("Contact added successfully! ");
+        else
+            System.out.println("Couldn't add contact :( ");
+    }
+
+    // // no conflict in event/appointment scheduling. A new event
+    // should/appointment not
+    // be scheduled for a contact if it has a conflict with a current scheduled
+    // event/appointment that the
+    // phonebook user has.
+    public boolean eventConflict(Contact contact, Events newEvent) {
+        nodeLL<Events> tmp = (contact.getEvents().getHead());
+
+        while (tmp != null) {
+            if (tmp.getData().getDateTime().equals(newEvent.getDateTime())) {
+                return true;
+            }
+            tmp = tmp.getNext();
+        }
+        return false;
+    }
+
+    // cheak befor adding a new event to BST and ALLevents
+    // calls add event only if contact exist in bst
+    public boolean addeventOrapp(Events event, Contact contact) {
+
+        if (contactTree.contactExists(contact)) {
+
+            contact.addEvent(event);
+            ALLevents.Add(event);
+            return true;
+        } else
+            return false;
+    }
+
+    // the meanu
     public void runPhoneBook (){
     Scanner scanner=new Scanner (System.in);
     System.out.println("Welcome to the Phonebook!");
@@ -106,8 +130,9 @@ public boolean addeventOrapp(Events event, Contact contact) {
         scanner.nextLine();  // Consume the newline character
 
         switch (choice) {
+        // Add a contact
             case 1:
-                // Add a contact
+                
                 System.out.print("Enter the contact's name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter the contact's phone number:");
@@ -126,9 +151,10 @@ public boolean addeventOrapp(Events event, Contact contact) {
                 AddContact(c1, name);
 
                 
-                break;
+            break;
 
-                // Search a contact
+
+        // Search a contact
             case 2:
                 System.out.println("Enter search criteria:/n 1. Name/n2. Phone Number/n3. Email Address/n4. Address/n5. Birthday/n");
 
@@ -171,84 +197,111 @@ public boolean addeventOrapp(Events event, Contact contact) {
                         System.out.println("Invalid input!!");
                         break;
                 } 
-            break;
-/*When a contact is deleted, all appointments with that contact are also deleted. If the contact belonged
-in a scheduled event, then he should be removed from the event. Make sure before adding an event
-or appointment that the contact in the event exist in the contact BST. All contacts need to be in the
-contact BST before an event is added. */
-//delet bst --> delete contact involedContacts -->???
-//delet app from all
+                        break;
+            /*When a contact is deleted, all appointments with that contact are also deleted. If the contact belonged
+            in a scheduled event, then he should be removed from the event. Make sure before adding an event
+            or appointment that the contact in the event exist in the contact BST. All contacts need to be in the*/
             case 3:
-                // Delete a contact
-                System.out.print("Enter the contact's name: ");
-                String deleteName = scanner.nextLine();
-                contactTree.deleteContact(deleteName);
-                ALLevents.setCurrent(ALLevents.getHead());
+                    // Delete a contact
+                    System.out.print("Enter the contact's name: ");
+                    String deleteName = scanner.nextLine();
+                    contactTree.deleteContact(deleteName);
+                    ALLevents.setCurrent(ALLevents.getHead());
                  
-                while (ALLevents.getCurrent() != null) {
-            if (!ALLevents.getCurrent().getData().isAppointment()) {
-                // The event is not an appointment, check if the contact is in the list
-                if (ALLevents.getCurrent().getData().hasContact(deleteName))
-                {
+                    while (ALLevents.getCurrent() != null) {
+                        if (!ALLevents.getCurrent().getData().isAppointment()) {
+                        // The event is not an appointment, check if the contact is in the list
+                    if (ALLevents.getCurrent().getData().hasContact(deleteName))
+                         {
                     System.out.println("contact deleated from event ");
-                } 
-                else {
+                         } 
+                    else {
                     System.out.println("contact wasnt in any events");
-                }
-            }
-             ALLevents.setCurrent(ALLevents.getCurrent().getNext());
-        }
+                        }
+                                }
+                            ALLevents.setCurrent(ALLevents.getCurrent().getNext());
+                             }
 
-                break;
+            
+                             break;
+
+             //Schedule an event/appointment                
             case 4:
-            System.out.println("Enter type:\n 1.event\n2.appointment\n Enter choice: ");
+                System.out.println("Enter type:\n 1.event\n2.appointment\n Enter choice: ");
                 int chice=scanner.nextInt();
                 
                 switch (chice)
-                  case 1: 
-                  System.out.println("Enter event title:");
-                String title= scanner.nextLine();
-                System.out.println("Enter contact name:");
-                String Cname= scanner.nextLine();
-                System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
-                String useredate = scanner.nextLine();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
-                System.out.println("Enter event location:");
-                String eloc= scanner.nextLine();
-                if(contactTree.findkey(Cname)){
-                Contact Cfound = contactTree.searchKey(Cname);
-                Events e1=new Events(title,edate,eloc,false,Cname);
-                addeventOrapp(e1, Cfound);
-                
-                }
-                break;
+                        case 1: 
+                        System.out.println("Enter event title:");
+                        String title= scanner.nextLine();
+                        System.out.println("Enter contact name:");
+                        String Cname= scanner.nextLine();
+                        System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
+                        String useredate = scanner.nextLine();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        LocalDateTime edate = LocalDateTime.parse(useredate, formatter);
+                        System.out.println("Enter event location:");
+                        String eloc= scanner.nextLine();
+                        if(contactTree.findkey(Cname)){
+                        Contact Cfound = contactTree.searchKey(Cname);
+                        Events e1=new Events(title,edate,eloc,false,Cname);
+                        addeventOrapp(e1, Cfound);
+                        
+                    }
+                    break;
 
-                case 2:
-                System.out.println("Enter appointment title:");
-                String titleA= scanner.nextLine();
-                System.out.println("Enter contact name:");
-                String CnameA= scanner.nextLine();
-                System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
-                String useredateA = scanner.nextLine();
-                DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime edateA = LocalDateTime.parse(useredate, formatter);
-                System.out.println("Enter appointment location:");
-                String elocA= scanner.nextLine();
-                if(contactTree.findkey(Cname)){
-                Contact CfoundA = contactTree.searchKey(Cname);
-                Events app1=new Events(titleA,edateA,elocA,true,CnameA);
-                addeventOrapp(app1, CfoundA);
-                }
-                break;
+                        case 2:
+                        System.out.println("Enter appointment title:");
+                        String titleA= scanner.nextLine();
+                        System.out.println("Enter contact name:");
+                        String CnameA= scanner.nextLine();
+                        System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
+                        String useredateA = scanner.nextLine();
+                        DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        LocalDateTime edateA = LocalDateTime.parse(useredate, formatter);
+                        System.out.println("Enter appointment location:");
+                        String elocA= scanner.nextLine();
+                        if(contactTree.findkey(Cname)){
+                        Contact CfoundA = contactTree.searchKey(Cname);
+                        Events app1=new Events(titleA,edateA,elocA,true,CnameA);
+                        addeventOrapp(app1, CfoundA);
+                        }
+                        break;
             break;
 
+            // Print event details
             case 5:
-                // Print event details
-                // Implement this part based on the project description
-                break;
+                
+                System.out.println("Enter search criteria:");
+                System.out.println("1. Contact name");
+                System.out.println("2. Event title");
+                System.out.print("Enter your choice: ");
+                int searchChoice = scanner.nextInt();
+                scanner.nextLine(); // Consume the newline character
+
+                switch (searchChoice) {
+                    case 1:
+                        System.out.println("Enter the contact's name:");
+                        String contactName = scanner.nextLine();
+                        printEventsByTitleOrContact(contactName);
+                        break;
+
+                    case 2:
+                        System.out.println("Enter the event title:");
+                        String eventTitle = scanner.nextLine();
+                        printEventsByTitleOrContact(eventTitle);
+                        break;
+
+                    default:
+                        System.out.println("Invalid input!!");
+                        break;
+                }
+                 
+                
+            break;
+            // Print contacts by first name
             case 6:
-                // Print contacts by first name
+                
                 System.out.print("Enter the first name: ");
                 scanner.nextLine();
                 String firstName = scanner.nextLine();
@@ -258,17 +311,21 @@ contact BST before an event is added. */
                 else
                   contactTree.searchSameFirstName(firstName);
              
-                break;
+            break;
+            
+            // Print all events alphabetically
             case 7:
-                // Print all events alphabetically
-                //contactTree.listAllEventsAlphabetically();
-                break;
+                // just this ?? idk 
+            listAllEventsAlphabetically();
+
+            break;
             case 8:
                 System.out.println("Goodbye!");
                 System.exit(0);
 
-                break;
-            default:
+            break;
+            
+                default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
     }
@@ -276,8 +333,8 @@ contact BST before an event is added. */
     scanner.close();
 }
 
-public static void main(String[] args) {
-    PhoneBook phonebook = new PhoneBook();
-    phonebook.runPhoneBook();
-}//main
+    public static void main(String[] args) {
+        PhoneBook phonebook = new PhoneBook();
+        phonebook.runPhoneBook();
+    }// main
 }
