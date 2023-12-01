@@ -83,8 +83,11 @@ public class PhoneBook {
         System.out.println("All events and appointments ordered alphabetically:");
         nodeLL<Events> tmp = sortedEvents.getHead();
         while (tmp != null) {
-            System.out.println(tmp.getData().toString());
-            tmp = tmp.getNext();
+          if(!(tmp.getData().isAppointment()))
+                tmp.getData().toStringevents();
+                if((tmp.getData().isAppointment()))
+                System.out.println(tmp.getData().toString());
+                tmp = tmp.getNext();
         }
     }
 
