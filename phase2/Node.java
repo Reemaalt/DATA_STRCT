@@ -13,22 +13,7 @@ public class Node<T> {
         this.left = null;
         this.right = null;
     }
-// public Node () { 
-//     left = right = null ;
-//     }
 
-// public Node (String key ,T data) {
-//     this.key = key  ;  
-//     this.data = data;
-//     left = right = null;
-// } 
-
-// public Node(String key, T data, Node<T> left, Node<T> right){
-//     this.key = key  ;  
-//     this.data = data;
-//     this.left = left;
-//     this.right = right ;
-// }
 
 public T getData() {
         return data;
