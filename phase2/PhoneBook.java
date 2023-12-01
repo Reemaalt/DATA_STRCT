@@ -2,12 +2,11 @@ package phase2;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class PhoneBook {
 
-    private ContactBST contactTree;
+    private ContactBST <Contact> contactTree=new ContactBST<Contact>();
     private linkedlist<Events> ALLevents = new linkedlist<Events>();
 
     // Print all events :Method to print all events by title or contact name.
@@ -160,7 +159,7 @@ public class PhoneBook {
 
         // Search a contact
             case 2:
-                System.out.println("Enter search criteria:/n 1. Name/n2. Phone Number/n3. Email Address/n4. Address/n5. Birthday/n");
+                System.out.println("Enter search criteria:\n 1. Name\n2. Phone Number\n3. Email Address\n4. Address\n5. Birthday\n");
 
                 int number = scanner.nextInt();
                 scanner.nextLine(); 
@@ -170,7 +169,8 @@ public class PhoneBook {
                     case 1:
                         System.out.println("Enter the contact's name:");
                         String Contname = scanner.nextLine();
-                        contactTree.searchKey(Contname);
+                        Contact n=contactTree.searchKey(Contname);
+                        System.out.println(n.toString());
                         break;
 
                     case 2:
@@ -233,7 +233,8 @@ public class PhoneBook {
             case 4:
                 System.out.println("Enter type:\n 1.event\n2.appointment\n Enter choice: ");
                 int chice=scanner.nextInt();
-                
+                                scanner.nextLine(); 
+
                 switch (chice){
                         case 1: 
                         System.out.println("Enter event title:");

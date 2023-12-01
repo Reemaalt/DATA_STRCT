@@ -109,8 +109,8 @@ public void addEvent(Events event) {
 
     @Override
     public String toString() {
-        return "Contact /n Name : " + name + " /n Phone Number : " + phoneNumber + "/n Email Address : " + emailAddress
-                + "/n Address : " + address + "/n Birthday : " + birthday + "/n Notes : " + notes ;
+        return "Contact \n Name : " + name + " \n Phone Number : " + phoneNumber + "\n Email Address : " + emailAddress
+                + "\n Address : " + address + "\n Birthday : " + birthday + "\n Notes : " + notes ;
     }
 
     public linkedlist<Events> getEventsAndAppointments() {

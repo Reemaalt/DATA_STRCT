@@ -44,8 +44,10 @@ private Contact searchKeyRecursive(Node<Contact> info, String key) {
 //does name already exist?
 public boolean findkey(String name) { 
     Node<Contact> p = root ,q = root;
-    if(isEmpty())
-    return false;
+    if(isEmpty()){
+        current = null;  
+            return false;
+    }
 
     while(p != null) { 
         q = p;
@@ -65,37 +67,54 @@ public boolean findkey(String name) {
 }
 
 boolean addcontact( Contact contact, String name){
-    Node<Contact> p;
-    Node<Contact> q= current;
+    Node<Contact> p=new Node<Contact>(name,contact);
 
-    
+    if (current==null){
+        root=current;
+       
+    }
     if (findkey (contact.getName()) || contactExists(contact))//check if a contact with same phone num or name already exist
     {  
-       current=q;
+       current=null;
        return false;
     }
-    
-    p=new Node<Contact>(name, contact);
-    if (isEmpty()){
-        root=current=p;
+    if (isEmpty()) {
+        // Tree is empty, add as the root
+        root = current = p;
         return true;
     }
+
     else{
+        while(current!=null){
         //current on parent of key
-        if(name.compareTo(current.key)<0)//to insert in alphabatecal order
-              current.left=p;
-        else
-              current.right=p;
-        current=p;
-        return true;
+        if(name.compareTo(current.key)<0){//to insert in alphabatecal order
+        if (current.left == null) {
+            current.left = p;
+            current = null; // Reset current
+            return true;
+        }
+        current = current.left;
     }
-    
+        else{
+            if (current.right == null) {
+                current.right = p;
+                current = null; // Reset current
+                return true;
+            }
+            current = current.right;
+             
+        }
+       
+    }
+     return false;
+}   
 }
 public void deleteContact(String name){
-   
+    boolean wasNonEmpty = root != null; // Check if the tree was initially non-empty
+
     root = RemoveNode(root, name); //to modify root after deletion
     
-   if( root != null)
+   if(wasNonEmpty && root == null)
    System.out.println("Contact removed successfully!");
    
    else
@@ -105,7 +124,7 @@ public void deleteContact(String name){
    
 }
 
-public Node<Contact> RemoveNode(Node<Contact> root , String name){
+/*public Node<Contact> RemoveNode(Node<Contact> root , String name){
     Node<Contact> min;
     if (root == null) {
         return null; // Contact not found empty bst
@@ -122,11 +141,12 @@ public Node<Contact> RemoveNode(Node<Contact> root , String name){
         // Contact found
         
         if(root.right!=null && root.left!=null){
-          min=minValue(root.right);
-          root.key=min.key;
-          root.data=min.getData();
-          root.right= RemoveNode(root.right, min.key);
+            min=minValue(root.right);
+            root.right= RemoveNode(root.right, min.key);
+            root.key=min.key;
+            root.data=min.getData();
         }
+        
         // Node with one or no child
         if (root.left == null) {
             return root.right ;//return right child
@@ -134,7 +154,7 @@ public Node<Contact> RemoveNode(Node<Contact> root , String name){
         } else if (root.right == null) {
             return root.left;//return left child
         }
-        else if (root.left == null && root.right == null) {
+        else  {
             return null;  // node is a leaf, return null to remove it
         }
         
@@ -144,7 +164,35 @@ public Node<Contact> RemoveNode(Node<Contact> root , String name){
     }
 
     return root;
+}*/
+public Node<Contact> RemoveNode(Node<Contact> root, String name) {
+    if (root == null) {
+        return null; // Contact not found in an empty BST
+    }
+
+    // Search for the node to be deleted
+    if (name.compareTo(root.key) < 0) {
+        root.left = RemoveNode(root.left, name);
+    } else if (name.compareTo(root.key) > 0) {
+        root.right = RemoveNode(root.right, name);
+    } else {
+        // Node with one or no child
+        if (root.left == null) {
+            return root.right; // Return right child or null if it's a leaf
+        } else if (root.right == null) {
+            return root.left; // Return left child
+        } else {
+            // Node with two children
+            Node<Contact> min = minValue(root.right);
+            root.key = min.key;
+            root.data = min.getData();
+            root.right = RemoveNode(root.right, min.key);
+        }
+    }
+
+    return root;
 }
+
 //find left most node which is smallest in the tree
 private Node<Contact> minValue(Node<Contact> root) {
     
@@ -157,6 +205,9 @@ private Node<Contact> minValue(Node<Contact> root) {
 
 
 public boolean contactExists(Contact contact) {
+    if (root == null || contact == null || contact.getPhoneNumber() == null) {
+        return false;
+    }
     return contactExists(root, contact);
 }
 //check uniqueness of phone num
@@ -185,8 +236,10 @@ public void searchSameFirstName(String name) {
     }
     
 private void searchSameFirstNameRec(Node<Contact> p, String name) {
-        if (p == null) 
-            return;
+        if (p == null) {
+            System.out.println("empty");
+               return ; 
+        }
 
         String[] allContact = ((Contact) p.data).getName().split(" ");
             if (allContact[0].compareToIgnoreCase(name) == 0) 
