@@ -18,18 +18,18 @@ public Events(String title, LocalDateTime dateTime, String location, boolean isA
     this.title = title;
     this.dateTime = dateTime;
     this.location = location;
+    this.involedContacts = new linkedlist<String>(); // Initialize the list
 
     if (isAppointment) {
         this.Contactname = Contactname;
     } else {
-        this.involedContacts = new linkedlist<String>();
-        String[] names = Contactname.split("\\s*,\\s*"); // Split names by comma and trim spaces
+
+        String[] names = Contactname.split("\\s*,\\s*");
         for (int i = 0; i < names.length; i++) {
             involedContacts.AddContact(names[i]);
         }
     }
 }
-
 
 
 public boolean hasContact(String contactName) {
@@ -104,6 +104,19 @@ private  linkedlist <String> involedContacts ;
     public String toString() {
         return "Event title:" + title + ", event date and Time (MM/DD/YYYY HH:MM):" + dateTime + ", event location:" + location + ", Contact name:" +Contactname ;
     }
+
+    public void toStringevents(){
+     System.out.println("Event title:" + title + ", event date and Time (MM/DD/YYYY HH:MM):" + dateTime + ", event location:" + location + ", Contact names:"); 
+
+        nodeLL<String> tem = involedContacts.getHead();
+
+        while (tem != null) {
+            System.out.println(tem.getData());
+            tem=tem.getNext();
+            }
+            
+    }
+            
 
     @Override
     public int compareTo(Events o) {
