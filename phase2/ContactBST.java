@@ -67,48 +67,37 @@ public boolean findkey(String name) {
 }
 
 boolean addcontact( Contact contact, String name){
-    Node<Contact> p=new Node<Contact>(name,contact);
+    Node<Contact> newNode = new Node<>(name, contact);
 
-    if (current==null){
-        root=current;
-       
+    if (findkey(contact.getName()) || contactExists(contact)) {
+        return false; // Contact with the same name or phone number already exists
     }
-    if (findkey (contact.getName()) || contactExists(contact))//check if a contact with same phone num or name already exist
-    {  
-       current=null;
-       return false;
-    }
+    
+    
     if (isEmpty()) {
         // Tree is empty, add as the root
-        root = current = p;
+        root = newNode;
         return true;
     }
 
-    else{
-        while(current!=null){
-        //current on parent of key
-        if(name.compareTo(current.key)<0){//to insert in alphabatecal order
-        if (current.left == null) {
-            current.left = p;
-            current = null; // Reset current
-            return true;
-        }
-        current = current.left;
-    }
-        else{
-            if (current.right == null) {
-                current.right = p;
-                current = null; // Reset current
-                return true;
+    Node<Contact> current = root;
+        while(true){
+            int comparison = name.compareTo(current.key);
+            if (comparison < 0) {
+                if (current.left == null) {
+                    current.left = newNode;
+                    return true; // Successfully added
+                }
+                current = current.left;
+            } else {
+                if (current.right == null) {
+                    current.right = newNode;
+                    return true; // Successfully added
+                }
+                current = current.right;
             }
-            current = current.right;
-             
         }
-       
     }
-     return false;
-}   
-}
 /*new one 
 public void deleteContact(String name) {
     Node <Contact> p = root;
