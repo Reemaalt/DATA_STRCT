@@ -109,7 +109,58 @@ boolean addcontact( Contact contact, String name){
      return false;
 }   
 }
-public void deleteContact(String name){
+
+public void deleteContact(String name) {
+    root = removeNode(root, name);
+    if (root != null) {
+        System.out.println("Contact removed successfully!");
+    } else {
+        System.out.println("Couldn't remove contact :(");
+    }
+}
+
+private Node<Contact> removeNode(Node<Contact> root, String name) {
+    if (root == null) {
+        System.out.println("Contact not found!");
+        return null;
+    }
+
+    if (name.compareTo(root.key) < 0) {
+        root.left = removeNode(root.left, name);
+    } else if (name.compareTo(root.key) > 0) {
+        root.right = removeNode(root.right, name);
+    } else {
+        if (root.left == null) {
+            return root.right;
+        } else if (root.right == null) {
+            return root.left;
+        } else {
+            Node<Contact> successor = findSuccessor(root.right);
+            if (successor != null) {
+                root.key = successor.key;
+                root.data = successor.getData();
+                root.right = removeNode(root.right, successor.key);
+            } else {
+                return null;  // This handles the case where successor is null
+            }
+        }
+    }
+
+    return root;
+}
+
+private Node<Contact> findSuccessor(Node<Contact> root) {
+    if (root == null) {
+        return null;
+    }
+
+    while (root.left != null) {
+        root = root.left;
+    }
+    return root;
+}
+
+/*public void deleteContact(String name){
     boolean wasNonEmpty = root != null; // Check if the tree was initially non-empty
 
     root = RemoveNode(root, name); //to modify root after deletion
@@ -124,7 +175,7 @@ public void deleteContact(String name){
    
 }
 
-/*public Node<Contact> RemoveNode(Node<Contact> root , String name){
+public Node<Contact> RemoveNode(Node<Contact> root , String name){
     Node<Contact> min;
     if (root == null) {
         return null; // Contact not found empty bst
@@ -164,9 +215,10 @@ public void deleteContact(String name){
     }
 
     return root;
-}*/
+}
 public Node<Contact> RemoveNode(Node<Contact> root, String name) {
     if (root == null) {
+         System.out.println("Contact not found!");
         return null; // Contact not found in an empty BST
     }
 
@@ -201,7 +253,7 @@ private Node<Contact> minValue(Node<Contact> root) {
         root = root.left;
     }
     return root;
-}
+}*/
 
 
 public boolean contactExists(Contact contact) {

@@ -6,6 +6,13 @@
       "name": "PhoneBook",
       "request": "launch",
       "mainClass": "phase2.PhoneBook",
+      "projectName": "DATA_STRCT_610d10b1"
+    },
+    {
+      "type": "java",
+      "name": "PhoneBook",
+      "request": "launch",
+      "mainClass": "phase2.PhoneBook",
       "projectName": "DATA_STRCT_b85b284"
     },
     {
