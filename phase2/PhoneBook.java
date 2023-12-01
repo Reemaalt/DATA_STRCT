@@ -12,7 +12,7 @@ public class PhoneBook {
 
     // Print all events :Method to print all events by title or contact name.
     public void printEventsByTitleOrContact(String searchTerm) {
-      private  linkedlist<Events> searchResults = new linkedlist<Events>();
+      linkedlist<Events> searchResults = new linkedlist<Events>();
         nodeLL<Events> tem = ALLevents.getHead();
 
         while (tem != null) {
