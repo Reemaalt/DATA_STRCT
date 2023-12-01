@@ -256,56 +256,70 @@ public class PhoneBook {
                     }
                     break;
 
-                        case 2:
-                        System.out.println("Enter appointment title:");
-                        String titleA= scanner.nextLine();
-                        System.out.println("Enter contact name:");
-                        String CnameA= scanner.nextLine();
-                        System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
-                        String useredateA = scanner.nextLine();
-                        DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        LocalDateTime edateA = LocalDateTime.parse(useredateA, formatterA);
-                        System.out.println("Enter appointment location:");
-                        String elocA= scanner.nextLine();
-                        if(contactTree.findkey(CnameA)){
+                    case 2:
+                    System.out.println("Enter appointment title:");
+                    String titleA = scanner.nextLine();
+                    System.out.println("Enter contact name:");
+                    String CnameA = scanner.nextLine();
+                    System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
+                    String useredateA = scanner.nextLine();
+                    DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    LocalDateTime edateA = LocalDateTime.parse(useredateA, formatterA);
+                    System.out.println("Enter appointment location:");
+                    String elocA = scanner.nextLine();
+                    
+                    if (contactTree.findkey(CnameA)) {
                         Contact CfoundA = contactTree.searchKey(CnameA);
-                        Events app1=new Events(titleA,edateA,elocA,true,CnameA);
+                        Events app1 = new Events(titleA, edateA, elocA, true, CnameA);
+                        
+                        // Add the appointment to the phone book
                         addeventOrapp(app1, CfoundA);
-                        }
-                        break;
+                    } else {
+                        System.out.println("Contact not found. Please add the contact first.");
+                    }
+                    break;
+                
                     }
             break;
 
             // Print event details
             case 5:
-                
-                System.out.println("Enter search criteria:");
-                System.out.println("1. Contact name");
-                System.out.println("2. Event title");
-                System.out.print("Enter your choice: ");
-                int searchChoice = scanner.nextInt();
-                scanner.nextLine(); // Consume the newline character
+                    
+            System.out.println("Enter search criteria:");
+            System.out.println("1. Contact name");
+            System.out.println("2. Event title");
+            System.out.print("Enter your choice: ");
+            int searchChoice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
 
-                switch (searchChoice) {
-                    case 1:
-                        System.out.println("Enter the contact's name:");
-                        String contactName = scanner.nextLine();
+            switch (searchChoice) {
+                case 1:
+                    System.out.println("Enter the contact's name:");
+                    String contactName = scanner.nextLine();
+                    
+                    // Check if the contact exists before searching for events
+                    if (contactTree.findkey(contactName)) {
                         printEventsByTitleOrContact(contactName);
-                        break;
+                    } else {
+                        System.out.println("Contact not found.");
+                    }
+                    break;
 
-                    case 2:
-                        System.out.println("Enter the event title:");
-                        String eventTitle = scanner.nextLine();
-                        printEventsByTitleOrContact(eventTitle);
-                        break;
+                case 2:
+                    System.out.println("Enter the event title:");
+                    String eventTitle = scanner.nextLine();
+                    printEventsByTitleOrContact(eventTitle);
+                    break;
 
-                    default:
-                        System.out.println("Invalid input!!");
-                        break;
-                }
-                 
-                
+                default:
+                    System.out.println("Invalid input!!");
+                    break;
+            }
             break;
+
+                        
+                        
+            
             // Print contacts by first name
             case 6:
                 
