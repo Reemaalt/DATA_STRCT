@@ -19,7 +19,7 @@ public Events(String title, LocalDateTime dateTime, String location, boolean isA
     this.dateTime = dateTime;
     this.location = location;
     this.involedContacts = new linkedlist<String>(); // Initialize the list
-
+this.isAppointment= isAppointment;
     if (isAppointment) {
         this.Contactname = Contactname;
     } else {
