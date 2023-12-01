@@ -322,17 +322,16 @@ public class PhoneBook {
             
             // Print contacts by first name
             case 6:
-                
-                System.out.print("Enter the first name: ");
-                scanner.nextLine();
-                String firstName = scanner.nextLine();
-
-                if (contactTree.isEmpty())
-                  System.out.println("No Contacts found !");
-                else
-                  contactTree.searchSameFirstName(firstName);
-             
+            System.out.print("Enter the first name: ");
+            String firstName = scanner.nextLine();
+        
+            if (contactTree.isEmpty())
+                System.out.println("No Contacts found!");
+            else
+                contactTree.searchSameFirstName(firstName);
             break;
+        
+        
             
             // Print all events alphabetically
             case 7:
