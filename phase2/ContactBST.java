@@ -109,7 +109,7 @@ boolean addcontact( Contact contact, String name){
      return false;
 }   
 }
-
+//new one 
 public void deleteContact(String name) {
     root = removeNode(root, name);
     if (root != null) {
