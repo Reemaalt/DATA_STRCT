@@ -14,40 +14,21 @@ private linkedlist<String> involvedContacts; //for events
 
 
 // Constructor  for the events
-public Events(String title, LocalDateTime dateTime, String location , boolean isAppointment,String Contactname ) {
-        this.title = title;
-        this.dateTime = dateTime;
-        this.location = location;
+public Events(String title, LocalDateTime dateTime, String location, boolean isAppointment, String Contactname) {
+    this.title = title;
+    this.dateTime = dateTime;
+    this.location = location;
 
-       if( isAppointment)
-       {
-        this.Contactname=Contactname;
-       }
-       else{
-       involedContacts = new linkedlist<String>();
+    if (isAppointment) {
+        this.Contactname = Contactname;
+    } else {
+        this.involedContacts = new linkedlist<String>();
         String[] names = Contactname.split("\\s*,\\s*"); // Split names by comma and trim spaces
         for (int i = 0; i < names.length; i++) {
             involedContacts.AddContact(names[i]);
         }
     }
 }
-
-//not sure :))
-// public Events(String title, LocalDateTime dateTime, String location, boolean isAppointment, String Contactname) {
-//     this.title = title;
-//     this.dateTime = dateTime;
-//     this.location = location;
-
-//     if (isAppointment) {
-//         this.Contactname = Contactname;
-//     } else {
-//         this.involedContacts = new linkedlist<String>();
-//         String[] names = Contactname.split("\\s*,\\s*"); // Split names by comma and trim spaces
-//         for (int i = 0; i < names.length; i++) {
-//             involedContacts.AddContact(names[i]);
-//         }
-//     }
-// }
 
 
 

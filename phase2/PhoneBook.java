@@ -16,7 +16,7 @@ public class PhoneBook {
 
         while (tem != null) {
             if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ||
-                    tem.getData().getContactname().equalsIgnoreCase(searchTerm) ||
+ 
                     containsIgnoreCase(tem.getData().getInvoledContacts(), searchTerm)) {
 
                 searchResults.Add(tem.getData());
