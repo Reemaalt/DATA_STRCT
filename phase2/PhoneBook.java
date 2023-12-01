@@ -15,13 +15,26 @@ public class PhoneBook {
         nodeLL<Events> tem = ALLevents.getHead();
 
         while (tem != null) {
-            if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ||
- 
-                    containsIgnoreCase(tem.getData().getInvoledContacts(), searchTerm)) {
+            //if its just the title
+            if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ) {
+                 searchResults.Add(tem.getData());
+
+            }
+            //by contact name and its an appo
+            if(tem.getData().isAppointment()){
+           if( tem.getData().getContactname().equalsIgnoreCase(searchTerm)){
+                     searchResults.Add(tem.getData());
+
+           }
+        }
+           //by contact name and its an events so it need to read the involed contact list 
+           if(!(tem.getData().isAppointment())){
+          if(containsIgnoreCase(tem.getData().getInvoledContacts(), searchTerm)) {
 
                 searchResults.Add(tem.getData());
             }
-            tem = tem.getNext();
+        }
+                tem = tem.getNext();
         }
 
         if (searchResults.isEmpty()) {
@@ -30,6 +43,9 @@ public class PhoneBook {
             System.out.println("Events Found! \n");
             nodeLL<Events> tmp = searchResults.getHead();
             while (tmp != null) {
+                if(!(tmp.getData().isAppointment()))
+                tmp.getData().toStringevents();
+                if((tmp.getData().isAppointment()))
                 System.out.println(tmp.getData().toString());
                 tmp = tmp.getNext();
             }
@@ -38,9 +54,9 @@ public class PhoneBook {
 
     // i added this method so the above print works
     private boolean containsIgnoreCase(linkedlist<String> list, String searchTerm) {
- nodeLL<String> tmp = list.getHead();
+    nodeLL<String> tmp = list.getHead();
        while (tmp != null)  {
-           // String item = tmp.getData();
+           
             if ( tmp.getData().equalsIgnoreCase(searchTerm)) {
                 return true;
             }
@@ -67,8 +83,11 @@ public class PhoneBook {
         System.out.println("All events and appointments ordered alphabetically:");
         nodeLL<Events> tmp = sortedEvents.getHead();
         while (tmp != null) {
-            System.out.println(tmp.getData().toString());
-            tmp = tmp.getNext();
+          if(!(tmp.getData().isAppointment()))
+                tmp.getData().toStringevents();
+                if((tmp.getData().isAppointment()))
+                System.out.println(tmp.getData().toString());
+                tmp = tmp.getNext();
         }
     }
 
