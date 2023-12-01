@@ -38,13 +38,14 @@ public class PhoneBook {
     }
 
     // i added this method so the above print works
-    private boolean containsIgnoreCase(List<String> list, String searchTerm) {
-        Iterator<String> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            String item = iterator.next();
-            if (item.equalsIgnoreCase(searchTerm)) {
+    private boolean containsIgnoreCase(linkedlist<String> list, String searchTerm) {
+ nodeLL<String> tmp = list.getHead();
+       while (tmp != null)  {
+           // String item = tmp.getData();
+            if ( tmp.getData().equalsIgnoreCase(searchTerm)) {
                 return true;
             }
+            tmp = tmp.getNext();
         }
         return false;
     }
@@ -62,10 +63,10 @@ public class PhoneBook {
             return;
         }
 
-        LinkedList<Events> sortedEvents = ALLevents; // ALLevents is already sorted right?
+        linkedlist<Events> sortedEvents = ALLevents; // ALLevents is already sorted right?
 
         System.out.println("All events and appointments ordered alphabetically:");
-        Node<Events> tmp = sortedEvents.getHead();
+        nodeLL<Events> tmp = sortedEvents.getHead();
         while (tmp != null) {
             System.out.println(tmp.getData().toString());
             tmp = tmp.getNext();
@@ -114,7 +115,7 @@ public class PhoneBook {
     public void runPhoneBook (){
     Scanner scanner=new Scanner (System.in);
     System.out.println("Welcome to the Phonebook!");
-
+    int choice;
     do {
         System.out.println("Please choose an option:");
         System.out.println("1. Add a contact");
@@ -128,7 +129,8 @@ public class PhoneBook {
 
         System.out.print("Enter your choice: ");
        
-        int choice = scanner.nextInt();
+        
+        choice = scanner.nextInt();
         scanner.nextLine();  // Consume the newline character
 
         switch (choice) {
@@ -232,7 +234,7 @@ public class PhoneBook {
                 System.out.println("Enter type:\n 1.event\n2.appointment\n Enter choice: ");
                 int chice=scanner.nextInt();
                 
-                switch (chice)
+                switch (chice){
                         case 1: 
                         System.out.println("Enter event title:");
                         String title= scanner.nextLine();
@@ -260,15 +262,16 @@ public class PhoneBook {
                         System.out.println("Enter event date and time (yyyy-MM-dd HH:mm:ss): ");
                         String useredateA = scanner.nextLine();
                         DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        LocalDateTime edateA = LocalDateTime.parse(useredate, formatter);
+                        LocalDateTime edateA = LocalDateTime.parse(useredateA, formatterA);
                         System.out.println("Enter appointment location:");
                         String elocA= scanner.nextLine();
-                        if(contactTree.findkey(Cname)){
-                        Contact CfoundA = contactTree.searchKey(Cname);
+                        if(contactTree.findkey(CnameA)){
+                        Contact CfoundA = contactTree.searchKey(CnameA);
                         Events app1=new Events(titleA,edateA,elocA,true,CnameA);
                         addeventOrapp(app1, CfoundA);
                         }
                         break;
+                    }
             break;
 
             // Print event details

@@ -8,9 +8,9 @@ public class Events implements Comparable<Events> {
 private String title;
 private LocalDateTime dateTime;
 private String location;
-private String Contactname; 
+private String Contactname; //for appointment
 private boolean isAppointment;
-private linkedlist<String> involvedContacts;
+private linkedlist<String> involvedContacts; //for events
 
 
 // Constructor  for the events
