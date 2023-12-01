@@ -9,49 +9,7 @@ public class PhoneBook {
     private ContactBST <Contact> contactTree=new ContactBST<Contact>();
     private linkedlist<Events> ALLevents = new linkedlist<Events>();
 
-    // Print all events :Method to print all events by title or contact name.
-    // public void printEventsByTitleOrContact(String searchTerm) {
-    //   linkedlist<Events> searchResults = new linkedlist<Events>();
-    //     nodeLL<Events> tem = ALLevents.getHead();
-
-    //     while (tem != null) {
-    //         //if its just the title
-    //         if (tem.getData().getTitle().equalsIgnoreCase(searchTerm) ) {
-    //              searchResults.Add(tem.getData());
-
-    //         }
-    //         //by contact name and its an appo
-    //         if(tem.getData().isAppointment()){
-    //        if( tem.getData().getContactname().equalsIgnoreCase(searchTerm)){
-    //                  searchResults.Add(tem.getData());
-
-    //        }
-    //     }
-    //        //by contact name and its an events so it need to read the involed contact list 
-    //        if(!(tem.getData().isAppointment())){
-    //       if(containsIgnoreCase(tem.getData().getInvoledContacts(), searchTerm)) {
-
-    //             searchResults.Add(tem.getData());
-    //         }
-    //     }
-    //             tem = tem.getNext();
-    //     }
-
-    //     if (searchResults.isEmpty()) {
-    //         System.out.println("No event found.");
-    //     } else {
-    //         System.out.println("Events Found! \n");
-    //         nodeLL<Events> tmp = searchResults.getHead();
-    //         while (tmp != null) {
-    //             if(!(tmp.getData().isAppointment()))
-    //             tmp.getData().toStringevents();
-    //             if((tmp.getData().isAppointment()))
-    //             System.out.println(tmp.getData().toString());
-    //             tmp = tmp.getNext();
-    //         }
-    //     }
-    // }
-
+    
     public void printEventsByTitleOrContact(String searchTerm) {
         // Create a linked list to store search results
         linkedlist<Events> searchResults = new linkedlist<Events>();
@@ -145,7 +103,7 @@ public class PhoneBook {
             System.out.println("Couldn't add contact :( ");
     }
 
-    // // no conflict in event/appointment scheduling. A new event
+    // no conflict in event/appointment scheduling. A new event
     // should/appointment not
     // be scheduled for a contact if it has a conflict with a current scheduled
     // event/appointment that the
