@@ -2,7 +2,7 @@ package phase2;
 
 import java.util.LinkedList;
 
-import org.w3c.dom.events.Event;
+
 
 // Contact class representing a single contact in the phonebook
 class Contact implements Comparable<Contact> {
