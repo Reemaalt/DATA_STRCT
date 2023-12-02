@@ -98,47 +98,7 @@ boolean addcontact( Contact contact, String name){
             }
         }
     }
-/*new one 
-public void deleteContact(String name) {
-    Node <Contact> p = root;
-    p = removeNode(root, name);
-    if (p != null) {
-        System.out.println("Contact removed successfully!");
-    } else {
-        System.out.println("Couldn't remove contact :(");
-    }
-}
 
-private Node<Contact> removeNode(Node<Contact> root, String name ) {
-    if (root == null) {
-
-        System.out.println("Contact not found!");
-        return null;
-    }
-
-    if (name.compareTo(root.key) < 0) {
-        root.left = removeNode(root.left, name);
-    } else if (name.compareTo(root.key) > 0) {
-        root.right = removeNode(root.right, name);
-    } else {
-        if (root.left == null) {
-            return root.right;
-        } else if (root.right == null) {
-            return root.left;
-        } else {
-            Node<Contact> successor = findSuccessor(root.right);
-            if (successor != null) {
-                root.key = successor.key;
-                root.data = successor.getData();
-                root.right = removeNode(root.right, successor.key);
-            } else {
-                return null;  // This handles the case where successor is null
-            }
-        }
-    }
-
-    return root;
-}*/
 
 public void deleteContact(String name) {
     Node<Contact> p = root;
@@ -200,6 +160,7 @@ public boolean contactExists(Contact contact) {
     }
     return contactExists(root, contact);
 }
+
 //check uniqueness of phone num
 private boolean contactExists(Node<Contact> node, Contact contact) { 
         if (node == null) {
@@ -240,12 +201,11 @@ private void searchSameFirstNameRec(Node<Contact> p, String name) {
         searchSameFirstNameRec(p.right, name);
     }
 
-
 public void searchByCriteria(int criteria , String value) {
         searchByCriteriaRec(root, criteria, value);
     }
     
-    private void searchByCriteriaRec(Node<Contact> p, int criteria, String value) {
+ private void searchByCriteriaRec(Node<Contact> p, int criteria, String value) {
         if (p == null) {
             return;
         }
