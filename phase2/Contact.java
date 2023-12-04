@@ -30,7 +30,7 @@ public Contact(String name, String phoneNumber, String emailAddress, String addr
 //add events to EventsAndAppointments
 public void addEvent(Events event) {
    
-    if (!event.isAppointment() || (event.isAppointment() && event.getContactname() != null)  ) {
+    if (!event.isAppointment() || (event.isAppointment() && event.getContactname() == null)  ) {
         
         boolean isDuplicate = false;
 

@@ -116,16 +116,27 @@ private Node<Contact> removeNode(Node<Contact> root, String name) {
         return null;
     }
 
+
     if (name.compareTo(root.key) < 0) {
         root.left = removeNode(root.left, name);
     } else if (name.compareTo(root.key) > 0) {
         root.right = removeNode(root.right, name);
+   // Node to be deleted found
     } else {
-        if (root.left == null) {
+        if (root.left == null && root.right == null) {
+            // Case 1: Node to be deleted is a leaf node
+            root.key = null ;
+            root.data = null;
+            return null;
+        } else if (root.left == null) {
+            // Case 2: Node to be deleted has only a right child
             return root.right;
         } else if (root.right == null) {
+            // Case 3: Node to be deleted has only a left child
             return root.left;
-        } else {
+        }
+    
+    else {
             Node<Contact> successor = findSuccessor(root.right);
             if (successor != null) {
                 root.key = successor.key;
